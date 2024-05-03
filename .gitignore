@@ -6,6 +6,7 @@
 .idea/
 
 # User-specific files
+*.package-lock.json
 *.rsuser
 *.suo
 *.user

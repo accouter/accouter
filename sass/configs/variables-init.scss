@@ -1,0 +1,85 @@
+// Scheme Hue and Saturation
+
+$dark-l:               20%;
+$light-l:              90%;
+$scheme-h:             221;
+$scheme-s:             14%;
+
+// Colors
+
+$white:                #ffffff !default;
+$gray-100:             #f8f9fa !default;
+$gray-200:             #e9ecef !default;
+$gray-300:             #dee2e6 !default;
+$gray-400:             #ced4da !default;
+$gray-500:             #adb5bd !default;
+$gray-600:             #6c757d !default;
+$gray-700:             #495057 !default;
+$gray-800:             #343a40 !default;
+$gray-900:             #212529 !default;
+$black:                #000000 !default;
+
+$grays:                (
+                         "100": $gray-100,
+                         "200": $gray-200,
+                         "300": $gray-300,
+                         "400": $gray-400,
+                         "500": $gray-500,
+                         "600": $gray-600,
+                         "700": $gray-700,
+                         "800": $gray-800,
+                         "900": $gray-900
+                       ) !default;
+
+$blue:                 #0457d2 !default;
+$indigo:               #5308cf !default;
+$purple:               #6a2ddc !default;
+$pink:                 #dd1378 !default;
+$red:                  #d51124 !default;
+$orange:               #dd6c0d !default;
+$yellow:               #efba12 !default;
+$green:                #0d812f !default;
+$teal:                 #11baa6 !default;
+$cyan:                 #0d94cd !default;
+
+$colors:               (
+                         "blue": $blue,
+                         "indigo": $indigo,
+                         "purple": $purple,
+                         "pink": $pink,
+                         "red": $red,
+                         "orange": $orange,
+                         "yellow": $yellow,
+                         "green": $green,
+                         "teal": $teal,
+                         "cyan": $cyan,
+                         "black": $black,
+                         "white": $white,
+                         "gray": $gray-600,
+                         "gray-dark": $gray-800
+                       ) !default;
+
+$contrast-min-ratio:   4.5 !default;
+$contrast-color-dark:  $black !default;
+$contrast-color-light: $black !default;
+
+// Typography
+
+$family-sans-serif:    "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+$family-monospace:     "Inconsolata", "Hack", "SF Mono", "Roboto Mono", "Source Code Pro", "Ubuntu Mono", monospace !default;
+$render-mode:          optimizeLegibility !default;
+
+$size-1: 3rem !default;
+$size-2: 2.5rem !default;
+$size-3: 2rem !default;
+$size-4: 1.5rem !default;
+$size-5: 1.25rem !default;
+$size-6: 1rem !default;
+$size-7: 0.75rem !default;
+
+$weight-light: 300 !default;
+$weight-normal: 400 !default;
+$weight-medium: 500 !default;
+$weight-semibold: 600 !default;
+$weight-bold: 700 !default;
+$weight-extrabold: 800 !default;
