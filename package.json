@@ -11,6 +11,18 @@
         "type": "git",
         "url": "https://github.com/accouter/accouter.git"
     },
+    "keywords": [
+        "css",
+        "sass",
+        "scss",
+        "flexbox",
+        "grid",
+        "responsive",
+        "framework"
+    ],
+    "bugs": {
+        "url": "https://github.com/accouter/accouter/issues"
+    },
     "devDependencies": {
         "cssnano": "^6.1.2",
         "postcss-cli": "^11.0.0",
