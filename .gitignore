@@ -4,9 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 .idea/
+package-lock.json
 
 # User-specific files
-*.package-lock.json
 *.rsuser
 *.suo
 *.user
