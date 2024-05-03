@@ -2,26 +2,26 @@
 
 // Colors
 
-$black:   #000000 !default;
-$gray-100: #1a1a1a !default;
-$gray-200: #333333 !default;
-$gray-300: #4d4d4d !default;
-$gray-400: #666666 !default;
-$gray-500: #808080 !default;
-$gray-600: #999999 !default;
-$gray-700: #b3b3b3 !default;
-$gray-800: #cccccc !default;
-$gray-900: #e6e6e6 !default;
-$white:   #ffffff !default;
+$black:    #000000 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$white:    #ffffff !default;
 
-$grays:   (
-            "100": $gray-100,
-            "200": $gray-200,
-            "300": $gray-300,
-            "400": $gray-400,
-            "500": $gray-500,
-            "600": $gray-600,
-            "700": $gray-700,
-            "800": $gray-800,
-            "900": $gray-900
-          ) !default;
+$grays:    (
+             "100": $gray-100,
+             "200": $gray-200,
+             "300": $gray-300,
+             "400": $gray-400,
+             "500": $gray-500,
+             "600": $gray-600,
+             "700": $gray-700,
+             "800": $gray-800,
+             "900": $gray-900
+           ) !default;
