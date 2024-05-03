@@ -36,4 +36,4 @@ ij_scss_properties_order                   =font, font-family, font-size, font-w
 ij_scss_space_after_colon                  =true
 ij_scss_space_before_opening_brace         =true
 ij_scss_use_double_quotes                  =true
-ij_scss_value_alignment                    =0
+ij_scss_value_alignment                    =2

@@ -1,0 +1,27 @@
+// Scheme Hue and Saturation
+
+// Colors
+
+$black:   #000000 !default;
+$gray-10: #1a1a1a !default;
+$gray-20: #333333 !default;
+$gray-30: #4d4d4d !default;
+$gray-40: #666666 !default;
+$gray-50: #808080 !default;
+$gray-60: #999999 !default;
+$gray-70: #b3b3b3 !default;
+$gray-80: #cccccc !default;
+$gray-90: #e6e6e6 !default;
+$white:   #ffffff !default;
+
+$grays:   (
+            10: $gray-10,
+            20: $gray-20,
+            30: $gray-30,
+            40: $gray-40,
+            50: $gray-50,
+            60: $gray-60,
+            70: $gray-70,
+            80: $gray-80,
+            90: $gray-90
+          ) !default;
