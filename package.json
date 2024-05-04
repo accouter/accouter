@@ -5,7 +5,8 @@
     "description": "",
     "license": "MIT",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "npm run build-accouter",
+        "build-accouter": "sass --style=expanded --source-map accouter.scss css/accouter.css"
     },
     "repository": {
         "type": "git",
