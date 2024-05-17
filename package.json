@@ -5,8 +5,9 @@
     "description": "",
     "license": "MIT",
     "scripts": {
-        "build": "npm run build-accouter",
-        "build-accouter": "sass --style=expanded --source-map accouter.scss css/accouter.css"
+        "build": "npm run build-scss && npm run build-minify",
+        "build-scss": "sass --style=expanded --source-map accouter.scss css/accouter.css",
+        "build-minify": "postcss css/accouter.css --no-map --use cssnano --output css/accouter.min.css"
     },
     "repository": {
         "type": "git",
