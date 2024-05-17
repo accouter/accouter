@@ -5,6 +5,8 @@
 
 .idea/
 _site/
+templates/default/
+templates/modern/
 package-lock.json
 
 # User-specific files
