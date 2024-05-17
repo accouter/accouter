@@ -18,6 +18,12 @@ ij_editorconfig_space_after_comma                 =true
 indent_size=2
 tab_width  =2
 
+[*.{tmpl,tmpl.partial}]
+indent_size = 2
+tab_width   = 2
+
+[*.{html,htm}]
+
 [*.md]
 trim_trailing_whitespace=false
 

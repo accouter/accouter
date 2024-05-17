@@ -1,33 +1,34 @@
 {
-    "build": {
-        "content": [
-            {
-                "files": [
-                    "**/*.{md,yml}"
-                ],
-                "exclude": [
-                    "_site/**"
-                ]
-            }
+  "build": {
+    "markdownEngineName": "markdig",
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
         ],
-        "resource": [
-            {
-                "files": [
-                    "images/**"
-                ]
-            }
-        ],
-        "output": "_site",
-        "template": [
-            "default",
-            "modern",
-            "accouter"
-        ],
-        "globalMetadata": {
-            "_appName": "accouter",
-            "_appTitle": "accouter",
-            "_enableSearch": true,
-            "pdf": false
-        }
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern",
+      "./templates/accouter"
+    ],
+    "globalMetadata": {
+      "_appName": "accouter",
+      "_appTitle": "accouter",
+      "_enableSearch": true,
+      "pdf": false
     }
+  }
 }
