@@ -14,6 +14,19 @@ ij_editorconfig_spaces_around_assignment_operators=false
 ij_editorconfig_align_group_field_declarations    =true
 ij_editorconfig_space_after_comma                 =true
 
+[*.json]
+indent_size=2
+tab_width  =2
+
+[*.{tmpl,tmpl.partial}]
+indent_size = 2
+tab_width   = 2
+
+[*.{html,htm}]
+
+[*.md]
+trim_trailing_whitespace=false
+
 [*.scss]
 indent_size                                =2
 tab_width                                  =2
