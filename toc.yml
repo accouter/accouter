@@ -1,4 +1,6 @@
-- name: Interfaces
-  href: interfaces/
+- name: Interface
+  href: interface/
+- name: Layout
+  href: layout/
 - name: Docs
   href: docs/
