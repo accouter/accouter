@@ -1,36 +1,44 @@
 {
-    "name": "accouter",
-    "version": "1.0.0",
-    "homepage": "https://accouter.dev",
-    "description": "",
-    "license": "MIT",
-    "scripts": {
-        "build": "npm run build-scss && npm run build-minify",
-        "build-scss": "sass --style=expanded --source-map accouter.scss css/accouter.css",
-        "build-minify": "postcss css/accouter.css --no-map --use cssnano --output css/accouter.min.css",
-        "clean": "rimraf css/"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/accouter/accouter.git"
-    },
-    "keywords": [
-        "css",
-        "sass",
-        "scss",
-        "flexbox",
-        "grid",
-        "responsive",
-        "framework"
-    ],
-    "bugs": {
-        "url": "https://github.com/accouter/accouter/issues"
-    },
-    "devDependencies": {
-        "cssnano": "^6.1.2",
-        "postcss-cli": "^11.0.0",
-        "prettier": "^3.2.5",
-        "rimraf": "^5.0.5",
-        "sass": "^1.76.0"
-    }
+  "name": "accouter",
+  "version": "1.0.0",
+  "homepage": "https://accouter.dev",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build-scss && npm run build-minify",
+    "build-scss": "sass --style=expanded --source-map accouter.scss css/accouter.css",
+    "build-minify": "postcss css/accouter.css --no-map --use cssnano --output css/accouter.min.css",
+    "docfx-style": "cpy css/accouter.* templates/accouter/styles/ --flat",
+    "docfx-serve": "docfx build -serve",
+    "clean": "rimraf css/",
+    "watch": "npm-run-all -p watch-*",
+    "watch-scss": "npm-watch scss/ --on-change 'npm run build'",
+    "watch-docfx": "npm-watch docfx-serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/accouter/accouter.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "flexbox",
+    "grid",
+    "responsive",
+    "framework"
+  ],
+  "bugs": {
+    "url": "https://github.com/accouter/accouter/issues"
+  },
+  "devDependencies": {
+    "cssnano": "^6.1.2",
+    "npm-watch": "^0.13.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7",
+    "sass": "^1.77.2",
+    "cpy-cli": "^5.0.0"
+  }
 }
