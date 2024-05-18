@@ -20,8 +20,6 @@
     ],
     "output": "_site",
     "template": [
-      "default",
-      "modern",
       "./templates/accouter"
     ],
     "globalMetadata": {
