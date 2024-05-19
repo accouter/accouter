@@ -10,13 +10,13 @@
     "build-scss": "sass --style=expanded --source-map accouter.scss css/accouter.css",
     "build-minify": "postcss css/accouter.css --no-map --use cssnano --output css/accouter.min.css",
     "docfx": "npm-run-all docfx-style docfx-serve",
-    "docfx-style": "cpy css/accouter.* templates/accouter/styles/ --flat",
+    "docfx-style": "cpy css/accouter.* templates/accouter/public/ --flat",
     "docfx-serve": "docfx build docfx.json --serve",
     "clean": "rimraf css/",
     "watch": "npm-run-all -p watch-* livereload",
     "watch-scss": "nodemon -w scss/ -x 'npm run build'",
     "watch-style": "nodemon -w css/ -x 'npm run docfx-style'",
-    "watch-docfx": "nodemon -w templates/ -w docs/ -w interface/ -w layout/ -x 'npm run docfx-serve'"
+    "watch-docfx": "nodemon -w templates/* -w docs/ -w interface/ -w layout/ -x 'npm run docfx-serve'"
   },
   "repository": {
     "type": "git",

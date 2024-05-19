@@ -8,7 +8,8 @@ css/
 _site/
 templates/default/
 templates/modern/
-templates/accouter/styles
+templates/accouter/public/
+templates/accouter/styles/
 package-lock.json
 
 # User-specific files
