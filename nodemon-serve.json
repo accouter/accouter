@@ -1,0 +1,22 @@
+{
+  "delay": 2500,
+  "verbose": true,
+  "restartable": "rs",
+  "ext": "js,json,css,md,js,yml,ico,svg,png,jpg,webp,tmpl,partial",
+  "watch": [
+    "docfx.json",
+    "index.md",
+    "templates/*",
+    "interface/*",
+    "docs/*",
+    "layout/*"
+  ],
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "_site/node_modules"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

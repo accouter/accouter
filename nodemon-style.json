@@ -1,0 +1,15 @@
+{
+  "verbose": true,
+  "restartable": "rs",
+  "ext": "css,map",
+  "watch": [
+    "css/*"
+  ],
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

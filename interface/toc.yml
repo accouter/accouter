@@ -1,2 +1,4 @@
-- name:  Alerts
-  href:  /interface/alerts.md
+- name: Interface
+  href: home.md
+- name: Alerts
+  href: alerts.md

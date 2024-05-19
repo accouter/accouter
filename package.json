@@ -5,18 +5,21 @@
   "description": "",
   "license": "MIT",
   "scripts": {
-    "livereload": "browser-sync start --server _site/ --port 8080 --files='_site/*'",
     "build": "npm run build-scss && npm run build-minify",
     "build-scss": "sass --style=expanded --source-map accouter.scss css/accouter.css",
     "build-minify": "postcss css/accouter.css --no-map --use cssnano --output css/accouter.min.css",
     "docfx": "npm-run-all docfx-style docfx-serve",
     "docfx-style": "cpy css/accouter.* templates/accouter/public/ --flat",
-    "docfx-serve": "docfx build docfx.json --serve",
-    "clean": "rimraf css/",
-    "watch": "npm-run-all -p watch-* livereload",
-    "watch-scss": "nodemon -w scss/ -x 'npm run build'",
-    "watch-style": "nodemon -w css/ -x 'npm run docfx-style'",
-    "watch-docfx": "nodemon -w templates/* -w docs/ -w interface/ -w layout/ -x 'npm run docfx-serve'"
+    "docfx-build": "docfx build docfx.json --logLevel error",
+    "docfx-serve": "docfx build docfx.json --serve --logLevel error",
+    "clean": "npm-run-all clean-*",
+    "clean-css": "rimraf css/",
+    "clean-docfx": "rimraf _site/",
+    "watch": "npm-run-all -s clean -p watch-scss watch-style watch-browser watch-serve",
+    "watch-scss": "nodemon -x 'npm run build'  --config nodemon-scss.json",
+    "watch-style": "nodemon -x 'npm run docfx-style' --config nodemon-style.json",
+    "watch-serve": "nodemon -x 'npm run docfx-serve' --config nodemon-serve.json",
+    "watch-browser": "browser-sync start --server _site/ --port 8080 --no-open --files='_site/*'"
   },
   "repository": {
     "type": "git",
