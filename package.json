@@ -11,7 +11,7 @@
     "build-minify": "postcss css/accouter.css --no-map --use cssnano --output css/accouter.min.css",
     "docfx": "npm-run-all docfx-style docfx-serve",
     "docfx-style": "cpy css/accouter.* templates/accouter/public/ --flat",
-    "docfx-serve": "docfx build docfx.json --serve",
+    "docfx-serve": "docfx build docfx.json --serve --logLevel error",
     "clean": "rimraf css/",
     "watch": "npm-run-all -p watch-* livereload",
     "watch-scss": "nodemon -w scss/ -x 'npm run build'",
