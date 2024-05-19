@@ -1,5 +1,10 @@
 {
   "build": {
+    "output": "_site",
+    "template": [
+      "default",
+      "./templates/accouter"
+    ],
     "content": [
       {
         "files": [
@@ -16,10 +21,6 @@
           "images/**"
         ]
       }
-    ],
-    "output": "_site",
-    "template": [
-      "./templates/accouter"
     ],
     "globalMetadata": {
       "_appName": "accouter",
