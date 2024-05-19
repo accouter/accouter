@@ -7,7 +7,7 @@
 @use "functions" as fn;
 
 @function buildVar($name) {
-  @return "--#{vi.$prefix}#{$name}";
+  @return --#{vi.$prefix}#{$name};
 }
 
 @function getVar($name) {

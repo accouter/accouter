@@ -1,5 +1,16 @@
 @use "variables-init" as vi;
 @use "functions" as fn;
 
-$bg-color-light: vi.$gray-100 !default;
-$bg-color-dark:  vi.$gray-900 !default;
+// Colors
+
+$bg-color-light:   vi.$gray-100 !default;
+$bg-color-dark:    vi.$gray-900 !default;
+
+$text-color-light: vi.$gray-900 !default;
+$text-color-dark:  vi.$gray-100 !default;
+
+// Typography
+
+$family-primary:   vi.$family-sans-serif !default;
+$family-secondary: vi.$family-sans-serif !default;
+$family-code:      vi.$family-monospace !default;

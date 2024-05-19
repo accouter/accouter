@@ -1,6 +1,8 @@
-@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
 
-body, [data-theme="dark"]{
-  //--#{vs.$prefix}body-bg-color: var(--#{vs.$prefix}bg-color);
-  //background-color: var(--#{vs.$prefix}body-bg-color);
+
+:root, [data-theme="dark"] {
+  --#{vi.$prefix}bg-color:   #{vd.$bg-color-dark};
+  --#{vi.$prefix}text-color: #{vd.$text-color-dark};
 }

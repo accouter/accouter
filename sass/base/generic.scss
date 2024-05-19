@@ -1,7 +1,56 @@
 @use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
 
-$body-bg-color: vs.getVar("bg-color");
+$body-bg-color:   vs.getVar("bg-color");
+$body-text-color: vs.getVar("text-color");
+$body-min-width:  300px !default;
+$body-rendering:  optimizeLegibility !default;
+$body-family:     vs.getVar("family-primary") !default;
 
-html{
+$code-family:     vs.getVar("family-code") !default;
+
+:root{
+  --#{vi.$prefix}family-primary:   #{vd.$family-primary};
+  --#{vi.$prefix}family-secondary: #{vd.$family-secondary};
+  --#{vi.$prefix}family-code:      #{vd.$family-code};
+}
+
+html {
   background-color: $body-bg-color;
+
+  text-rendering:   $body-rendering;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: $body-family;
+}
+
+code,
+pre {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing:  auto;
+  font-family:             $code-family;
+}
+
+body {
+  color:       $body-text-color;
+  //font-size:   cv.getVar("body-font-size");
+  //font-weight: cv.getVar("body-weight");
+  //line-height: cv.getVar("body-line-height");
 }
