@@ -1,6 +1,5 @@
 {
   "build": {
-    "markdownEngineName": "markdig",
     "content": [
       {
         "files": [
@@ -20,8 +19,6 @@
     ],
     "output": "_site",
     "template": [
-      "default",
-      "modern",
       "./templates/accouter"
     ],
     "globalMetadata": {

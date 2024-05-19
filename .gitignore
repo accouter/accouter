@@ -3,10 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+css/
 .idea/
 _site/
 templates/default/
 templates/modern/
+templates/accouter/public/
+templates/accouter/styles/
 package-lock.json
 
 # User-specific files
