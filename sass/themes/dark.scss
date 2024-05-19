@@ -1,0 +1,6 @@
+@use "../configs/variables-scss" as vs;
+
+body, [data-theme="dark"]{
+  --#{vs.$prefix}body-bg-color: var(--#{vs.$prefix}bg-color);
+  background-color: var(--#{vs.$prefix}body-bg-color);
+}

@@ -5,3 +5,8 @@
 
 @use "variables-init" as vi;
 @use "functions" as fn;
+
+$prefix:         "actr-" !default;
+
+$bg-color-light: vi.$gray-100 !default;
+$bg-color-dark:  vi.$gray-900 !default;

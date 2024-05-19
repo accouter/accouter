@@ -1,5 +1,5 @@
 ---
-_layout: master
+_layout: landing
 ---
 
 # This is the **HOMEPAGE**.

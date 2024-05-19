@@ -1,4 +1,10 @@
-:root,
-[data-theme="light"]{
+@use "variables-scss" as vs;
 
+:root,
+[data-theme="light"] {
+  --#{vs.$prefix}bg-color: #{vs.$bg-color-light};
+}
+
+[data-theme="dark"] {
+  --#{vs.$prefix}bg-color: #{vs.$bg-color-dark};
 }
