@@ -6,7 +6,11 @@
 @use "variables-init" as vi;
 @use "functions" as fn;
 
-$prefix:         "actr-" !default;
+@function buildVar($name) {
+  @return "--#{vi.$prefix}#{$name}";
+}
 
-$bg-color-light: vi.$gray-100 !default;
-$bg-color-dark:  vi.$gray-900 !default;
+@function getVar($name) {
+  $varName: buildVar($name);
+  @return var($varName);
+}

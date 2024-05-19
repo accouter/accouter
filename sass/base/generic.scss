@@ -1,0 +1,7 @@
+@use "../configs/variables-scss" as vs;
+
+$body-bg-color: vs.getVar("bg-color");
+
+html{
+  background-color: $body-bg-color;
+}
