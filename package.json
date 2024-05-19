@@ -15,7 +15,7 @@
     "watch": "npm-run-all watch-scss watch-style watch-docfx watch-browser",
     "watch-scss": "nodemon -w scss/ -x 'npm run build'",
     "watch-style": "nodemon -w css/ -x 'npm run docfx-style'",
-    "watch-docfx": "nodemon -x 'npm run docfx-serve' -e css,md,js,yml,ico,svg,png,jpg,webp,tmpl,partial -w docfx.json,index.md,templates/*,docs/,interface/,layout/"
+    "watch-docfx": "nodemon -x 'npm run docfx-serve' -e css,md,js,yml,ico,svg,png,jpg,webp,tmpl,partial -w docfx.json -w index.md -w templates/* -w docs/ -w interface/ -w layout/",
     "watch-browser": "browser-sync start --server _site/ --port 8080 --files='_site/*'"
   },
   "repository": {
