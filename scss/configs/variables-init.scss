@@ -7,7 +7,6 @@ $light-l:              90%;
 
 // Colors
 
-$white:                #ffffff !default;
 $gray-100:             #f8f9fa !default;
 $gray-200:             #e9ecef !default;
 $gray-300:             #dee2e6 !default;
@@ -17,7 +16,6 @@ $gray-600:             #6c757d !default;
 $gray-700:             #495057 !default;
 $gray-800:             #343a40 !default;
 $gray-900:             #212529 !default;
-$black:                #000000 !default;
 
 $grays:                (
                          "100": $gray-100,
@@ -30,6 +28,21 @@ $grays:                (
                          "800": $gray-800,
                          "900": $gray-900
                        ) !default;
+
+$black:                hsl(221, 14%, 4%) !default;
+$black-bis:            hsl(221, 14%, 9%) !default;
+$black-ter:            hsl(221, 14%, 14%) !default;
+
+$gray-darker:          hsl(221, 14%, 21%) !default;
+$gray-dark:            hsl(221, 14%, 29%) !default;
+$gray:                 hsl(221, 14%, 48%) !default;
+$gray-light:           hsl(221, 14%, 71%) !default;
+$gray-lighter:         hsl(221, 14%, 86%) !default;
+$gray-lightest:        hsl(221, 14%, 93%) !default;
+
+$white-ter:            hsl(221, 14%, 96%) !default;
+$white-bis:            hsl(221, 14%, 98%) !default;
+$white:                hsl(221, 14%, 100%) !default;
 
 $blue:                 #0457d2 !default;
 $indigo:               #5308cf !default;

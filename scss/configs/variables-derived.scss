@@ -3,14 +3,45 @@
 
 // Colors
 
-$bg-color-light:   vi.$gray-100 !default;
-$bg-color-dark:    vi.$gray-900 !default;
+$bg-color-light:    vi.$gray-100 !default;
+$bg-color-dark:     vi.$gray-900 !default;
 
-$text-color-light: vi.$gray-900 !default;
-$text-color-dark:  vi.$gray-100 !default;
+$text-color-light:  vi.$gray-900 !default;
+$text-color-dark:   vi.$gray-100 !default;
+
+// Scheme colors
+$scheme-main:       vi.$white !default;
+$scheme-main-bis:   vi.$white-bis !default;
+$scheme-main-ter:   vi.$white-ter !default;
+$scheme-invert:     vi.$black !default;
+$scheme-invert-bis: vi.$black-bis !default;
+$scheme-invert-ter: vi.$black-ter !default;
+
+// Text colors
+$text-color:        vi.$gray-900 !default;
+$text-weak:         vi.$gray !default;
+$text-strong:       vi.$gray-darker !default;
+
+// Status colors
+
+$primary:           vi.$teal !default;
+$info:              vi.$cyan !default;
+$success:           vi.$green !default;
+$warning:           vi.$yellow !default;
+$danger:            vi.$red !default;
+$light:             vi.$white-ter !default;
+$dark:              vi.$gray-darker !default;
 
 // Typography
 
-$family-primary:   vi.$family-sans-serif !default;
-$family-secondary: vi.$family-sans-serif !default;
-$family-code:      vi.$family-monospace !default;
+$family-primary:    vi.$family-sans-serif !default;
+$family-secondary:  vi.$family-sans-serif !default;
+$family-code:       vi.$family-monospace !default;
+
+$size-small:        vi.$size-7 !default;
+$size-normal:       vi.$size-6 !default;
+$size-medium:       vi.$size-5 !default;
+$size-large:        vi.$size-4 !default;
+
+// Effects
+$shadow-color:      vi.$black !default;
