@@ -1,14 +1,6 @@
 @use "variables-init" as vi;
 @use "functions" as fn;
 
-// Colors
-
-$bg-color-light:    vi.$gray-100 !default;
-$bg-color-dark:     vi.$gray-900 !default;
-
-$text-color-light:  vi.$gray-900 !default;
-$text-color-dark:   vi.$gray-100 !default;
-
 // Scheme colors
 $scheme-main:       vi.$white !default;
 $scheme-main-bis:   vi.$white-bis !default;
@@ -19,6 +11,7 @@ $scheme-invert-ter: vi.$black-ter !default;
 
 // Text colors
 $text-color:        vi.$gray-900 !default;
+$text-invert:       fn.findColorInvert($text-color) !default;
 $text-weak:         vi.$gray !default;
 $text-strong:       vi.$gray-darker !default;
 

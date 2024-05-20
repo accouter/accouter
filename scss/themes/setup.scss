@@ -9,10 +9,30 @@
         #{vs.getVar("scheme-s")},
         #{vs.getVar("scheme-main-l")}
     ),
+    "scheme-main-bis": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("scheme-main-bis-l")}
+    ),
+    "scheme-main-ter": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("scheme-main-ter-l")}
+    ),
     "background": hsl(
         #{vs.getVar("scheme-h")},
         #{vs.getVar("scheme-s")},
         #{vs.getVar("background-l")}
+    ),
+    "text-color": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("text-l")}
+    ),
+    "text-strong": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("text-strong-l")}
     ),
   ));
 }
