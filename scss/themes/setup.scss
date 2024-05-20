@@ -69,6 +69,21 @@
         #{vs.getVar("scheme-s")},
         #{vs.getVar("text-strong-l")}
     ),
+    "scheme-invert": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("scheme-invert-l")}
+    ),
+    "scheme-invert-ter": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("scheme-invert-ter-l")}
+    ),
+    "scheme-invert-bis": hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("scheme-invert-bis-l")}
+    ),
     "link":hsl(
         #{vs.getVar("link-h")},
         #{vs.getVar("link-s")},
