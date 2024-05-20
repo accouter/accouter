@@ -14,3 +14,14 @@
   $varName: buildVar($name);
   @return var($varName);
 }
+
+@mixin register-var($name, $value) {
+  $varName: buildVar($name);
+  #{$varName}: #{$value};
+}
+
+@mixin register-vars($vars) {
+  @each $name, $value in $vars {
+    @include register-var($name, $value);
+  }
+}
