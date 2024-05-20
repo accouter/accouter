@@ -24,6 +24,41 @@
         #{vs.getVar("scheme-s")},
         #{vs.getVar("background-l")}
     ),
+    "background-hover":hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        calc(#{vs.getVar("background-l")} + #{vs.getVar("hover-background-l-delta")})
+    ),
+    "background-active":hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        calc(#{vs.getVar("background-l")} + #{vs.getVar("active-background-l-delta")})
+    ),
+    "border-weak":hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("border-weak-l")}
+    ),
+    "border":hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        #{vs.getVar("border-l")}
+    ),
+    "border-hover":hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        calc(#{vs.getVar("border-l")} + #{vs.getVar("hover-border-l-delta")})
+    ),
+    "border-active":hsl(
+        #{vs.getVar("scheme-h")},
+        #{vs.getVar("scheme-s")},
+        calc(#{vs.getVar("border-l")} + #{vs.getVar("active-border-l-delta")})
+    ),
+    "text-weak":hsl(
+        #{vs.getVar("text-h")},
+        #{vs.getVar("text-s")},
+        #{vs.getVar("text-weak-l")}
+    ),
     "text-color": hsl(
         #{vs.getVar("scheme-h")},
         #{vs.getVar("scheme-s")},
@@ -34,5 +69,45 @@
         #{vs.getVar("scheme-s")},
         #{vs.getVar("text-strong-l")}
     ),
+    "link":hsl(
+        #{vs.getVar("link-h")},
+        #{vs.getVar("link-s")},
+        #{vs.getVar("link-l")}
+    ),
+    "link-text":hsl(
+        #{vs.getVar("link-h")},
+        #{vs.getVar("link-s")},
+        #{vs.getVar("link-on-scheme-l")}
+    ),
+    "link-text-hover":hsl(
+        #{vs.getVar("link-h")},
+        #{vs.getVar("link-s")},
+        calc(#{vs.getVar("link-on-scheme-l")} + #{vs.getVar("hover-color-l-delta")})
+    ),
+    "link-text-active":hsl(
+        #{vs.getVar("link-h")},
+        #{vs.getVar("link-s")},
+        calc(#{vs.getVar("link-on-scheme-l")} + #{vs.getVar("active-color-l-delta")})
+    ),
+    "focus-h": #{vs.getVar("link-h")},
+    "focus-s": #{vs.getVar("link-s")},
+    "focus-l": #{vs.getVar("link-l")},
+    "focus-offset": 1px,
+    "focus-style": solid,
+    "focus-width": 2px,
+    "focus-shadow-size": 0 0 0 0.1875em,
+    "focus-shadow-alpha": 0.25,
+    "code": hsl(
+        #{vs.getVar("danger-h")},
+        #{vs.getVar("danger-s")},
+        #{vs.getVar("danger-on-scheme-l")}
+    ),
+    "code-background": #{vs.getVar("background")},
+    "pre": #{vs.getVar("text")},
+    "pre-background": #{vs.getVar("background")},
+    "shadow": (
+      0 0.5em 1em -0.125em hsla(#{vs.getVar("shadow-h")}, #{vs.getVar("shadow-s")}, #{vs.getVar("shadow-l")}, 0.1),
+      0 0px 0 1px hsla(#{vs.getVar("shadow-h")}, #{vs.getVar("shadow-s")}, #{vs.getVar("shadow-l")}, 0.02)
+    )
   ));
 }

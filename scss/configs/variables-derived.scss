@@ -25,6 +25,23 @@ $danger:            vi.$red !default;
 $light:             vi.$white-ter !default;
 $dark:              vi.$gray-darker !default;
 
+// Link colors
+$link:              vi.$blue !default;
+
+// Decorative colors
+
+$background:        vi.$white-ter !default;
+$border:            vi.$gray-lighter !default;
+$border-weak:       vi.$gray-lightest !default;
+
+// Code colors
+
+$code:              vi.$red !default;
+$code-background:   $background !default;
+
+$pre:               $text-color !default;
+$pre-background:    $background !default;
+
 // Typography
 
 $family-primary:    vi.$family-sans-serif !default;

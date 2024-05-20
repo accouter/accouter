@@ -70,6 +70,11 @@
 
 {{^redirect_url}}
   <body class="" data-theme="dark" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
+  <aside class="navbar navbar-vertical">
+    {{^_disableSidebar}}
+
+    {{/_disableSidebar}}
+  </aside>
   <header class="navbar">
     {{^_disableNavbar}}
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
