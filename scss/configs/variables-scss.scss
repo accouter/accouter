@@ -16,12 +16,27 @@
 }
 
 @mixin register-var($name, $value) {
-  $varName: buildVar($name);
+  $varName:    buildVar($name);
   #{$varName}: #{$value};
 }
 
 @mixin register-vars($vars) {
   @each $name, $value in $vars {
     @include register-var($name, $value);
+  }
+}
+
+@mixin accouter-theme($name) {
+  [data-#{vi.$prefix}theme="#{$name}"],
+  .#{vi.$prefix}theme-#{$name} {
+    @content;
+  }
+}
+
+@mixin system-theme($name) {
+  @media (prefers-color-scheme: #{$name}) {
+    :root {
+      @content;
+    }
   }
 }

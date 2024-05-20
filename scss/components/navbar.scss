@@ -1,5 +1,27 @@
 @use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
 
-.navbar{
+$navbar-bg-color:         vs.getVar("bg-color");
+$navbar-box-shadow-size:  0 2px 0 0 !default;
+$navbar-box-shadow-color: vs.getVar("background") !default;
+$navbar-height:           3.5rem !default;
 
+:root {
+  @include vs.register-vars((
+    "navbar-height": #{$navbar-height}
+  ));
+}
+
+.#{vi.$prefix}navbar {
+  @include vs.register-vars((
+    "navbar-bg-color": #{$navbar-bg-color}
+  ));
+}
+
+
+.#{vi.$prefix}navbar {
+  background-color: vs.getVar("navbar-bg-color");
+  min-height:       vs.getVar("navbar-height");
+  position:         relative;
 }

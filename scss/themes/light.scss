@@ -1,8 +1,34 @@
+@use "sass:list";
+
 @use "../configs/variables-derived" as vd;
 @use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+
+@use "setup";
 
 
-:root, [data-theme="light"] {
-  --#{vi.$prefix}bg-color:   #{vd.$bg-color-light};
-  --#{vi.$prefix}text-color: #{vd.$text-color-light};
+@mixin light-theme {
+  @include vs.register-vars((
+    "scheme-h": vi.$scheme-h,
+    "scheme-s": vi.$scheme-s,
+    "light-l": vi.$light-l,
+    "light-invert-l": vi.$dark-l,
+    "dark-l": vi.$dark-l,
+    "dark-invert-l": vi.$light-l,
+    "soft-l": vi.$light-l,
+    "soft-invert-l": vi.$dark-l,
+    "bold-l": vi.$dark-l,
+    "bold-invert-l": vi.$light-l,
+
+    "bg-color": vd.$bg-color-light,
+    "text-color": vd.$text-color-light,
+
+    // Typography
+    "family-primary": vd.$family-primary,
+    "family-secondary": vd.$family-secondary,
+    "family-code": vd.$family-code,
+
+    // Other
+    "block-spacing": vi.$block-spacing,
+  ));
 }

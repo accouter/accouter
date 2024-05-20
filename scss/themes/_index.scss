@@ -1,6 +1,35 @@
 @charset "utf-8";
 
 /* Accouter Themes */
-@forward "setup";
-@forward "light";
-@forward "dark";
+@use "../configs/variables-scss" as vs;
+
+@use "light";
+@use "dark";
+@use "setup";
+
+:root {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}
+
+// prefers-color-scheme: light
+@include vs.system-theme($name: "light") {
+  @include light.light-theme;
+}
+
+// prefers-color-scheme: dark
+@include vs.system-theme($name: "dark") {
+  @include dark.dark-theme;
+}
+
+// :root, [data-theme=light], .theme-light
+@include vs.accouter-theme($name: "light") {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}
+
+// [data-theme=dark], .theme-dark
+@include vs.accouter-theme($name: "dark") {
+  @include dark.dark-theme;
+  @include setup.setup-theme;
+}

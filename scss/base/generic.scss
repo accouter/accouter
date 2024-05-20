@@ -2,24 +2,52 @@
 @use "../configs/variables-derived" as vd;
 @use "../configs/variables-init" as vi;
 
-$body-bg-color:   vs.getVar("bg-color");
-$body-text-color: vs.getVar("text-color");
-$body-min-width:  300px !default;
-$body-rendering:  optimizeLegibility !default;
-$body-family:     vs.getVar("family-primary") !default;
+$body-bg-color:    vs.getVar("bg-color");
+$body-size:        1em !default;
+$body-min-width:   300px !default;
+$body-rendering:   optimizeLegibility !default;
+$body-family:      vs.getVar("family-primary") !default;
+$body-overflow-x:  hidden !default;
+$body-overflow-y:  auto !default;
 
-$code-family:     vs.getVar("family-code") !default;
+$body-text-color:  vs.getVar("text-color");
+$body-font-size:   1em !default;
+$body-weight:      normal !default;
+$body-line-height: 1.5 !default;
 
-:root{
-  --#{vi.$prefix}family-primary:   #{vd.$family-primary};
-  --#{vi.$prefix}family-secondary: #{vd.$family-secondary};
-  --#{vi.$prefix}family-code:      #{vd.$family-code};
+$code-family:      vs.getVar("family-code") !default;
+$code-weight:      normal !default;
+$code-size:        0.875em !default;
+$code-padding:     0.25em 0.5em 0.25em !default;
+
+:root {
+  @include vs.register-vars((
+    "body-bg-color": #{$body-bg-color},
+    "body-size": #{$body-size},
+    "body-min-width": #{$body-min-width},
+    "body-rendering": #{$body-rendering},
+    "body-family": #{$body-family},
+    "body-overflow-x": #{$body-overflow-x},
+    "body-overflow-y": #{$body-overflow-y},
+    "body-text-color": #{$body-text-color},
+    "body-font-size": #{$body-font-size},
+    "body-weight": #{$body-weight},
+    "body-line-height": #{$body-line-height},
+    "code-family": #{$code-family},
+    "code-weight": #{$code-weight},
+    "code-size": #{$code-size},
+    "code-padding": #{$code-padding}
+  ));
 }
 
 html {
-  background-color: $body-bg-color;
-
-  text-rendering:   $body-rendering;
+  background-color: vs.getVar("body-bg-color");
+  font-size:        vs.getVar("body-size");
+  min-width:        vs.getVar("body-min-width");
+  overflow-x:       vs.getVar("body-overflow-x");
+  overflow-y:       vs.getVar("body-overflow-y");
+  text-rendering:   vs.getVar("body-rendering");
+  text-size-adjust: 100%;
 }
 
 article,
@@ -49,7 +77,7 @@ pre {
 }
 
 body {
-  color:       $body-text-color;
+  color: $body-text-color;
   //font-size:   cv.getVar("body-font-size");
   //font-weight: cv.getVar("body-weight");
   //line-height: cv.getVar("body-line-height");
