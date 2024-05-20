@@ -6,6 +6,11 @@
 
 @use "setup";
 
+// The main lightness of the theme
+$scheme-main-l: 90%;
+
+// The main scheme color, used to make calculations
+$scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
 
 @mixin light-theme {
   @include vs.register-vars((
@@ -22,6 +27,11 @@
 
     "bg-color": vd.$bg-color-light,
     "text-color": vd.$text-color-light,
+
+    // Light only
+    "scheme-brightness": "light",
+    "scheme-main-l": $scheme-main-l,
+    "background-l": 96%,
 
     // Typography
     "family-primary": vd.$family-primary,
