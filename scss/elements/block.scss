@@ -1,0 +1,6 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+
+.#{vi.$prefix}block {
+  @extend %block;
+}

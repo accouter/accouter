@@ -1,0 +1,8 @@
+@use "variables-init" as vi;
+@use "variables-scss" as vs;
+
+@mixin block($spacing: vs.getVar("block-spacing")) {
+  &:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+}
