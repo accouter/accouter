@@ -26,6 +26,12 @@
   }
 }
 
+@mixin register-hsl($name, $value) {
+  @include register-var($name, round(hue($value)), "", "-h");
+  @include register-var($name, round(saturation($value)), "", "-s");
+  @include register-var($name, round(lightness($value)), "", "-l");
+}
+
 @mixin accouter-theme($name) {
   [data-#{vi.$prefix}theme="#{$name}"],
   .#{vi.$prefix}theme-#{$name} {
