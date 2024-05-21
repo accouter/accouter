@@ -3,11 +3,14 @@
 @use "../configs/variables-derived" as vd;
 @use "../configs/variables-init" as vi;
 @use "../configs/variables-scss" as vs;
+@use "../configs/mixins" as mx;
+@use "../configs/functions" as fn;
 
 @use "setup";
 
 // The main lightness of the theme
 $scheme-main-l: 90%;
+$scheme-main:   vi.$scheme-h;
 
 // The main scheme color, used to make calculations
 $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
@@ -24,20 +27,15 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "soft-invert-l": vi.$dark-l,
     "bold-l": vi.$dark-l,
     "bold-invert-l": vi.$light-l,
-
     // Deltas
     "hover-background-l-delta": -5%,
     "active-background-l-delta": -10%,
-
     "hover-border-l-delta": -10%,
     "active-border-l-delta": -20%,
-
     "hover-color-l-delta": -5%,
     "active-color-l-delta": -10%,
-
     "hover-shadow-a-delta": -0.05,
     "active-shadow-a-delta": -0.1,
-
     // Light only
     "scheme-brightness": "light",
     "scheme-main-l": $scheme-main-l,
@@ -53,22 +51,28 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "scheme-invert-ter-l": 14%,
     "scheme-invert-bis-l": 7%,
     "scheme-invert-l": 4%,
-
     // Typography
-    "family-primary": vd.$family-primary,
+    "family-primary":   vd.$family-primary,
     "family-secondary": vd.$family-secondary,
-    "family-code": vd.$family-code,
-    "size-small": vd.$size-small,
-    "size-normal": vd.$size-normal,
-    "size-large": vd.$size-large,
-    "weight-light": vi.$weight-light,
-    "weight-normal": vi.$weight-normal,
-    "weight-medium": vi.$weight-medium,
-    "weight-semibold": vi.$weight-semibold,
-    "weight-bold": vi.$weight-bold,
+    "family-code":      vd.$family-code,
+    "size-small":       vd.$size-small,
+    "size-normal":      vd.$size-normal,
+    "size-large":       vd.$size-large,
+    "weight-light":     vi.$weight-light,
+    "weight-normal":    vi.$weight-normal,
+    "weight-medium":    vi.$weight-medium,
+    "weight-semibold":  vi.$weight-semibold,
+    "weight-bold":      vi.$weight-bold,
     "weight-extrabold": vi.$weight-extrabold,
-
     // Other
     "block-spacing": vi.$block-spacing,
+    "duration": 300ms,
+    "easing": vi.$easing,
+    "radius-small": vi.$radius-small,
+    "radius": vi.$radius,
+    "radius-medium": vi.$radius-medium,
+    "radius-large": vi.$radius-large,
+    "radius-rounded": vi.$radius-rounded,
+    "speed": vi.$speed,
   ));
 }
