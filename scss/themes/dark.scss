@@ -1,0 +1,41 @@
+@use "sass:list";
+
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+
+@use "setup";
+
+// The main lightness of the theme
+$scheme-main-l: 9%;
+$background-l:  14%;
+$text-l:        71%;
+
+// The main scheme color, used to make calculations
+$scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
+$background:    hsl(vi.$scheme-h, vi.$scheme-s, $background-l);
+$text:          hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
+
+@mixin dark-theme {
+  @include vs.register-vars((
+    "scheme-brightness": "dark",
+    "scheme-main-l": $scheme-main-l,
+    "soft-l": vi.$dark-l,
+    "soft-invert-l": vi.$light-l,
+    "bold-l": vi.$light-l,
+    "bold-invert-l": vi.$dark-l,
+    "background-l": $background-l,
+    "border-weak-l": 21%,
+    "border-l": 24%,
+    "text-weak-l": 53%,
+    "text-l": $text-l,
+    "text-strong-l": 93%,
+    "text-title-l": 100%,
+    "hover-background-l-delta": 5%,
+    "active-background-l-delta": 10%,
+    "hover-border-l-delta": 10%,
+    "active-border-l-delta": 20%,
+    "hover-color-l-delta": 5%,
+    "active-color-l-delta": 10%,
+  ));
+}

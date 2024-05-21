@@ -1,0 +1,213 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/mixins" as mx;
+
+$body-background-color: vs.getVar("scheme-main");
+$body-size:             1em !default;
+$body-min-width:        300px !default;
+$body-rendering:        optimizeLegibility !default;
+$body-family:           vs.getVar("family-primary") !default;
+$body-overflow-x:       hidden !default;
+$body-overflow-y:       auto !default;
+
+$body-text-color:       vs.getVar("text-color");
+$body-font-size:        1em !default;
+$body-weight:           normal !default;
+$body-line-height:      1.5 !default;
+
+$code-family:           vs.getVar("family-code") !default;
+$code-weight:           normal !default;
+$code-size:             0.875em !default;
+$code-padding:          0.25em 0.5em 0.25em !default;
+
+$small-font-size:       0.875em !default;
+
+:root {
+  @include vs.register-vars((
+    "body-background-color": #{$body-background-color},
+    "body-size": #{$body-size},
+    "body-min-width": #{$body-min-width},
+    "body-rendering": #{$body-rendering},
+    "body-family": #{$body-family},
+    "body-overflow-x": #{$body-overflow-x},
+    "body-overflow-y": #{$body-overflow-y},
+    "body-text-color": #{$body-text-color},
+    "body-font-size": #{$body-font-size},
+    "body-weight": #{$body-weight},
+    "body-line-height": #{$body-line-height},
+    "code-family": #{$code-family},
+    "code-weight": #{$code-weight},
+    "code-size": #{$code-size},
+    "code-padding": #{$code-padding}
+  ));
+}
+
+html {
+  background-color:        vs.getVar("body-background-color");
+  font-size:               vs.getVar("body-font-size");
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing:  antialiased;
+  min-width:               vs.getVar("body-min-width");
+  overflow-x:              vs.getVar("body-overflow-x");
+  overflow-y:              vs.getVar("body-overflow-y");
+  text-rendering:          vs.getVar("body-rendering");
+  text-size-adjust:        100%;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: vs.getVar("body-family");
+}
+
+code,
+pre {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing:  auto;
+  font-family:             vs.getVar("code-family");
+}
+
+body {
+  color:       vs.getVar("body-text-color");
+  font-size:   vs.getVar("body-font-size");
+  font-weight: vs.getVar("body-weight");
+  line-height: vs.getVar("body-line-height");
+}
+
+a,
+button {
+  cursor: pointer;
+
+  &:focus-visible {
+    outline-color:  hsl(vs.getVar("focus-h"), vs.getVar("focus-s"), vs.getVar("focus-l"));
+    outline-offset: vs.getVar("focus-offset");
+    outline-style:  vs.getVar("focus-style");
+    outline-width:  vs.getVar("focus-width");
+
+    &:active {
+      outline-width: 1px;
+    }
+  }
+
+  &:active {
+    outline-width: 1px;
+  }
+}
+
+a {
+  color:               vs.getVar("link-text");
+  cursor:              pointer;
+  text-decoration:     none;
+  transition-duration: vs.getVar("duration");
+  transition-property: background-color, border-color, color;
+
+  strong {
+    color: currentColor;
+  }
+}
+
+button {
+  @include mx.reset;
+  transition-duration: vs.getVar("duration");
+  transition-property: background-color, border-color, color;
+}
+
+code {
+  background-color: vs.getVar("code-background");
+  border-radius:    0.5em;
+  color:            vs.getVar("code");
+  font-size:        vs.getVar("code-size");
+  font-weight:      vs.getVar("code-weight");
+  padding:          vs.getVar("code-padding");
+}
+
+hr {
+  background-color: vs.getVar("hr-background-color");
+  border:           none;
+  display:          block;
+  height:           vs.getVar("hr-height");
+  margin:           vs.getVar("hr-margin");
+}
+
+img {
+  height:    auto;
+  max-width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  vertical-align: baseline;
+}
+
+small {
+  font-size: vs.getVar("small-font-size");
+}
+
+span {
+  font-style:  inherit;
+  font-weight: inherit;
+}
+
+strong {
+  color:       vs.getVar("strong-color");
+  font-weight: vs.getVar("strong-weight");
+}
+
+svg {
+  height: auto;
+  width:  auto;
+}
+
+// Block
+
+fieldset {
+  border: none;
+}
+
+pre {
+  @include mx.overflow-touch;
+
+  background-color: vs.getVar("pre-background");
+  color:            vs.getVar("pre");
+  font-size:        vs.getVar("pre-font-size");
+  overflow-x:       auto;
+  padding:          vs.getVar("pre-padding");
+  white-space:      pre;
+  word-wrap:        normal;
+
+  code {
+    background-color: transparent;
+    color:            currentColor;
+    font-size:        vs.getVar("pre-code-font-size");
+    padding:          0;
+  }
+}
+
+table {
+  td,
+  th {
+    vertical-align: top;
+
+    &:not([align]) {
+      text-align: inherit;
+    }
+  }
+
+  th {
+    color: vs.getVar("text-strong");
+  }
+}

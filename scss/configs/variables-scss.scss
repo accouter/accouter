@@ -1,0 +1,77 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+
+@use "variables-init" as vi;
+@use "functions" as fn;
+
+@function buildVar($name, $prefix:"", $suffix: "") {
+  @return --#{vi.$prefix}#{$prefix}#{$name}#{$suffix};
+}
+
+@function buildHsla($name, $l, $a: 1) {
+  $lightness: getVar($name, "", "-l");
+  @if ($l) {
+    $lightness: $l;
+  }
+  @return hsla(#{getVar($name, "", "-h")}, #{getVar($name, "", "-s")}, #{$lightness}, #{$a});
+}
+
+@function getVar($name, $prefix: "", $suffix: "") {
+  $varName: buildVar($name, $prefix, $suffix);
+  @return var($varName);
+}
+
+@mixin register-var($name, $value, $prefix: "", $suffix: "") {
+  $varName:    buildVar($name);
+  #{$varName}: #{$value};
+}
+
+@mixin register-vars($vars, $prefix: "", $suffix: "") {
+  @each $name, $value in $vars {
+    @include register-var($name, $value, $prefix, $suffix);
+  }
+}
+
+@mixin register-rgb($name, $value) {
+  @include register-var($name, (red($value), green($value), blue($value)), "", "-rgb");
+}
+
+@mixin register-hsl($name, $value) {
+  @include register-var($name, round(hue($value)), "", "-h");
+  @include register-var($name, round(saturation($value)), "", "-s");
+  @include register-var($name, round(lightness($value)), "", "-l");
+}
+
+@mixin register-base-color($name, $base){
+  $hsla: buildHsla($name, getVar($name, "", "-l"));
+  @include register-var($name, $hsla);
+  @include register-var($name, $hsla, "", "-base");
+  @include register-rgb($name, $base);
+  @include register-hsl($name, $base);
+}
+
+@mixin generate-basic-palette($name, $base, $invert: null) {
+  @include register-base-color($name, $base);
+
+  @if $invert {
+    @include register-var($name, lightness($invert), "", "-invert-l");
+    @include register-var(#{$name}-invert, $invert);
+  }
+}
+
+@mixin accouter-theme($name) {
+  [data-#{vi.$prefix}theme="#{$name}"],
+  .#{vi.$prefix}theme-#{$name} {
+    @content;
+  }
+}
+
+@mixin system-theme($name) {
+  @media (prefers-color-scheme: #{$name}) {
+    :root {
+      @content;
+    }
+  }
+}
