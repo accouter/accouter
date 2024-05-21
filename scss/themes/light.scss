@@ -88,4 +88,14 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
 
   // Colors
   $no-palette: ("white", "black", "light", "dark");
+/*
+  @each $name, $color in vd.$colors {
+    $base: $color;
+
+    @if type-of($color == "list") {
+      $base: list.nth($color, 1);
+    }
+
+    @include vs.generate-on-scheme-colors($name, $base, $scheme-main);
+  }*/
 }
