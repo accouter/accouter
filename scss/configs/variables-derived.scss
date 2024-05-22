@@ -57,13 +57,19 @@ $size-large:        vi.$size-4 !default;
 $shadow-color:      vi.$black !default;
 
 // Lists
+$custom-colors:     null !default;
+$custom-shades:     null !default;
 
-$colors:            (
-                      "text": $text-color,
-                      "primary": $primary,
-                      "link": $link,
-                      "info": $info,
-                      "success": $success,
-                      "warning": $warning,
-                      "danger": $danger,
-                    ) !default;
+$colors:            fn.mergeColorMaps((
+  "white":(vi.$white, vi.$black),
+  "black":(vi.$black, vi.$white),
+  "light":($light, $dark),
+  "dark":($dark, $light),
+  "text": $text-color,
+  "primary": $primary,
+  "link": $link,
+  "info": $info,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+), $custom-colors) !default;

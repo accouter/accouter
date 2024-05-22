@@ -1,6 +1,61 @@
 @use "sass:list";
 @use "sass:math";
 
+@function mergeColorMaps($colors, $custom) {
+  // Return at least hard-coded colors
+  $color-merged: $colors;
+
+  @if (type-of($custom) == "map") {
+    @each $name, $components in $custom {
+      @if type-of($name) == "string" and
+      (type-of($components) == "list" or type-of($components) == "color") and
+      length($components) >= 1 {
+        $color-base: null;
+        $color-invert: null;
+        $color-light: null;
+        $color-dark: null;
+        $value: null;
+
+        @if type-of($components) == "color" {
+          $color-base: $components;
+          $color-invert: findColorInvert($color-base);
+          $color-light: findLightColor($color-base);
+          $color-dark: findDarkColor($color-base);
+        } @else if type-of($components) == "list" {
+          $color-base: list.nth($components, 1);
+
+          // If invert, light and dark are provided
+          @if length($components) > 3 {
+            $color-invert: list.nth($components, 2);
+            $color-light: list.nth($components, 3);
+            $color-dark: list.nth($components, 4);
+
+            // If only invert and light are provided
+          } @else if length($components) > 2 {
+            $color-invert: list.nth($components, 2);
+            $color-light: list.nth($components, 3);
+            $color-dark: findDarkColor($color-base);
+
+            // If only invert is provided
+          } @else {
+            $color-invert: list.nth($components, 2);
+            $color-light: findLightColor($color-base);
+            $color-dark: findDarkColor($color-base);
+          }
+        }
+
+        $value: $color-base, $color-invert, $color-light, $color-dark;
+
+        @if type-of($color-base) == "color" {
+          $merged: map-merge($color-merged, ($name: $value));
+        }
+      }
+    }
+  }
+
+  @return $color-merged;
+}
+
 @function colorLuminance($color) {
   @if (type-of($color) != "color") {
     @return 0.55;
@@ -24,10 +79,10 @@
     }
 
     $color-rgb: map-merge(
-      $color-rgb,
-      (
-        $name: $value,
-      )
+        $color-rgb,
+        (
+          $name: $value,
+        )
     );
   }
 
@@ -40,4 +95,39 @@
   } @else {
     @return #ffffff;
   }
+}
+
+@function findLightColor($color, $l: 95%) {
+  @if type-of($color) == "color" {
+    $l: 95%;
+
+    @if lightness($color)> 95% {
+      $l: lightness($color);
+    }
+    @return change-color($color, $lightness: $l);
+  }
+  @return $background;
+}
+
+@function findDarkColor($color, $base-l: 28%) {
+  @if type-of($color) == "color" {
+    $luminance: colorLuminance($color);
+    $delta: 0.53 - $luminance;
+    $target-l: round($base-l + $delta * 53);
+
+    @return change-color($color, $lightness: max($base-l, $target-l));
+  }
+
+  @return $text-strong;
+}
+
+@function colorBrightness($name) {
+  $color-brightness: round((red($name) * 299 + green($name) * 587 + blue($name) * 114) / 1000);
+  $light-color: round((red(#fff) * 299 + green(#fff) * 587 + blue(#fff) * 114) / 1000);
+
+  @if abs($color-brightness) < math.div($light-color, 2) {
+    @return "dark";
+  }
+
+  @return "bright";
 }
