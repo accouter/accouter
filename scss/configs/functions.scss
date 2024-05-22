@@ -120,3 +120,14 @@
 
   @return $text-strong;
 }
+
+@function colorBrightness($name) {
+  $color-brightness: round((red($name) * 299 + green($name) * 587 + blue($name) * 114) / 1000);
+  $light-color: round((red(#fff) * 299 + green(#fff) * 587 + blue(#fff) * 114) / 1000);
+
+  @if abs($color-brightness) < math.div($light-color, 2) {
+    @return "dark";
+  }
+
+  @return "bright";
+}
