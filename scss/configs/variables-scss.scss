@@ -47,7 +47,7 @@
 @mixin register-base-color($name, $base){
   $hsla: buildHsla($name, getVar($name, "", "-l"));
   @include register-var($name, $hsla);
-  @include register-var($name, $hsla, "", "-base");
+  //@include register-var($name, $hsla, "", "-base");
   @include register-rgb($name, $base);
   @include register-hsl($name, $base);
 }
