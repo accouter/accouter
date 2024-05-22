@@ -1,1 +1,26 @@
-header{}
+@mixin header-nav{}
+
+header{
+  nav{
+    .nav{}
+
+    .expand{}
+
+    .brand{}
+
+    .brand-image{}
+
+    .toggler{}
+
+    .toggler-icon{}
+
+    .transparent{}
+
+    .nav{}
+
+    .side{}
+
+    .overlap{}
+  }
+}
+
