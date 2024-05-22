@@ -3,20 +3,20 @@
 <div class="hidden-sm col-md-2" role="complementary">
   <div class="sideaffix">
     {{^_disableContribution}}
-    <div class="contribution">
-      <ul class="nav">
-        {{#docurl}}
-        <li>
-          <a href="{{docurl}}" class="contribution-link">{{__global.improveThisDoc}}</a>
-        </li>
-        {{/docurl}}
-        {{#sourceurl}}
-        <li>
-          <a href="{{sourceurl}}" class="contribution-link">{{__global.viewSource}}</a>
-        </li>
-        {{/sourceurl}}
-      </ul>
-    </div>
+      <div class="contribution">
+        <ul class="nav">
+          {{#docurl}}
+            <li>
+              <a href="{{docurl}}" class="contribution-link">{{__global.improveThisDoc}}</a>
+            </li>
+          {{/docurl}}
+          {{#sourceurl}}
+            <li>
+              <a href="{{sourceurl}}" class="contribution-link">{{__global.viewSource}}</a>
+            </li>
+          {{/sourceurl}}
+        </ul>
+      </div>
     {{/_disableContribution}}
     <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
       <h5>{{__global.inThisArticle}}</h5>

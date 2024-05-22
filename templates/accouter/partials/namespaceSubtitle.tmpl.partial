@@ -1,29 +1,29 @@
 {{!Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this file to you under the MIT license.}}
 
 {{#inNamespace}}
-{{__global.namespacesInSubtitle}}
+  {{__global.namespacesInSubtitle}}
 {{/inNamespace}}
 {{#inClass}}
-{{__global.classesInSubtitle}}
+  {{__global.classesInSubtitle}}
 {{/inClass}}
 {{#inStruct}}
-{{__global.structsInSubtitle}}
+  {{__global.structsInSubtitle}}
 {{/inStruct}}
 {{#inInterface}}
-{{__global.interfacesInSubtitle}}
+  {{__global.interfacesInSubtitle}}
 {{/inInterface}}
 {{#inEnum}}
-{{__global.enumsInSubtitle}}
+  {{__global.enumsInSubtitle}}
 {{/inEnum}}
 {{#inDelegate}}
-{{__global.delegatesInSubtitle}}
+  {{__global.delegatesInSubtitle}}
 {{/inDelegate}}
 {{#inFunction}}
-{{__global.functionsInSubtitle}}
+  {{__global.functionsInSubtitle}}
 {{/inFunction}}
 {{#inVariable}}
-{{__global.variablesInSubtitle}}
+  {{__global.variablesInSubtitle}}
 {{/inVariable}}
 {{#inTypeAlias}}
-{{__global.typeAliasesInSubtitle}}
+  {{__global.typeAliasesInSubtitle}}
 {{/inTypeAlias}}
