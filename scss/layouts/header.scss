@@ -1,3 +1,7 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+
 @mixin header-nav{}
 
 header{
