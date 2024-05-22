@@ -55,23 +55,6 @@ $green:                #0d812f !default;
 $teal:                 #11baa6 !default;
 $cyan:                 #0d94cd !default;
 
-$colors:               (
-                         "blue": $blue,
-                         "indigo": $indigo,
-                         "purple": $purple,
-                         "pink": $pink,
-                         "red": $red,
-                         "orange": $orange,
-                         "yellow": $yellow,
-                         "green": $green,
-                         "teal": $teal,
-                         "cyan": $cyan,
-                         "black": $black,
-                         "white": $white,
-                         "gray": $gray-600,
-                         "gray-dark": $gray-800
-                       ) !default;
-
 $contrast-min-ratio:   4.5 !default;
 $contrast-color-dark:  $black !default;
 $contrast-color-light: $black !default;

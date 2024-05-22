@@ -88,14 +88,25 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
 
   // Colors
   $no-palette: ("white", "black", "light", "dark");
-/*
+
   @each $name, $color in vd.$colors {
-    $base: $color;
+    $base:   $color;
+    $invert: null;
+    $light:  null;
+    $dark:   null;
 
     @if type-of($color == "list") {
       $base: list.nth($color, 1);
+
+      @if list.length($color) > 3 {
+        $invert: list.nth($color, 2);
+        $light:  list.nth($color, 3);
+        $dark:   list.nth($color, 4);
+      } @else if list.length($color) > 1 {
+        $invert: list.nth($color, 2);
+      }
     }
 
-    @include vs.generate-on-scheme-colors($name, $base, $scheme-main);
-  }*/
+    @include vs.generate-basic-palette($name, $base, $invert);
+  }
 }

@@ -58,4 +58,12 @@ $shadow-color:      vi.$black !default;
 
 // Lists
 
-//$colors: fn.mergeColorMaps()
+$colors:            (
+                      "text": $text-color,
+                      "primary": $primary,
+                      "link": $link,
+                      "info": $info,
+                      "success": $success,
+                      "warning": $warning,
+                      "danger": $danger,
+                    ) !default;
