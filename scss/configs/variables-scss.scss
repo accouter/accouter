@@ -24,7 +24,7 @@
 }
 
 @mixin register-var($name, $value, $prefix: "", $suffix: "") {
-  $varName:    buildVar($name);
+  $varName:    buildVar($name, $prefix, $suffix);
   #{$varName}: #{$value};
 }
 
@@ -44,7 +44,7 @@
   @include register-var($name, round(lightness($value)), "", "-l");
 }
 
-@mixin register-base-color($name, $base){
+@mixin register-base-color($name, $base) {
   $hsla: buildHsla($name, getVar($name, "", "-l"));
   @include register-var($name, $hsla);
   //@include register-var($name, $hsla, "", "-base");
@@ -59,6 +59,26 @@
     @include register-var($name, lightness($invert), "", "-invert-l");
     @include register-var(#{$name}-invert, $invert);
   }
+}
+
+@mixin generate-color-palette($name, $base, $scheme-main-l:100%, $invert:null, $light:null, $dark:null) {
+  $h:              round(hue($base)); // Hue
+  $s:              round(saturation($base)); // Saturation
+  $l:              round(lightness($base)); // Lightness
+  $base-luminance: fn.colorLuminance($base); // Luminance
+  $l-base:         round($l % 10); // Get lightness second digit: 53% -> 3$
+  $l-0:            0%; // 5% or less
+  $l-5:            5%; // 5% or more
+  $a:              1; // Alpha
+  $base-digits:    "00";
+
+  $scheme-l-0: 0%;
+  $scheme-l-base: round($scheme-main-l % 10);
+  $closest-5: math.round(math.div($scheme-main-l, 5)) * 5;
+  $pct-to-int: math.div($closest-5, 100%) * 100;
+  $scheme-main-digits: #{$pct-to-int};
+
+  @include register-base-color($name, $base);
 }
 
 @mixin accouter-theme($name) {
