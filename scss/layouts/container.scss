@@ -1,1 +1,47 @@
-.container{}
+@use "../configs/variables-init" as vi;
+@use "../configs/mixins" as mx;
+
+$container-offset:    2 * vi.$gap !default;
+$container-max-width: vi.$fullhd !default;
+
+.#{vi.$prefix}container {
+  flex-grow: 1;
+  margin:    0 auto;
+  position:  relative;
+  width:     100%;
+
+  &.#{vi.$prefix}is-fluid {
+    max-width:     none !important;
+    padding-left:  vi.$gap;
+    padding-right: vi.$gap;
+    width:         100%;
+  }
+
+  @include mx.desktop {
+    max-width: vi.$desktop - $container-offset;
+  }
+
+  @include mx.until-widescreen {
+    &.#{vi.$prefix}is-widescreen:not(.#{vi.$prefix}is-max-desktop) {
+      max-width: min($widescreen, $container-max-width) - $container-offset;
+    }
+  }
+
+  @include mx.until-fullhd {
+    &.#{vi.$prefix}is-fullhd:not(.#{vi.$prefix}is-max-desktop):not(.#{vi.$prefix}is-max-widescreen) {
+      max-width: min($fullhd, $container-max-width) - $container-offset;
+    }
+  }
+
+  @include mx.widescreen {
+    &:not(.#{vi.$prefix}is-max-desktop) {
+      max-width: min($widescreen, $container-max-width) - $container-offset;
+    }
+  }
+
+  @include mx.fullhd {
+    &:not(.#{vi.$prefix}is-max-desktop):not(.#{vi.$prefix}is-max-widescreen) {
+      max-width: min($fullhd, $container-max-width) - $container-offset;
+    }
+  }
+}
