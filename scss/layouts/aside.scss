@@ -45,7 +45,12 @@ aside {
 
     .expand {}
 
-    .brand {}
+    .brand {
+      display:     inline-flex;
+      align-items: center;
+      margin:      0;
+      line-height: 1;
+    }
 
     .brand-image {}
 
