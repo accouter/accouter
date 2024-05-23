@@ -23,25 +23,25 @@ $container-max-width: vi.$fullhd !default;
 
   @include mx.until-widescreen {
     &.#{vi.$prefix}is-widescreen:not(.#{vi.$prefix}is-max-desktop) {
-      max-width: min(vi.$widescreen, $container-max-width) - $container-offset;
+      max-width: min($widescreen, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.until-fullhd {
     &.#{vi.$prefix}is-fullhd:not(.#{vi.$prefix}is-max-desktop):not(.#{vi.$prefix}is-max-widescreen) {
-      max-width: min(vi.$fullhd, $container-max-width) - $container-offset;
+      max-width: min($fullhd, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.widescreen {
     &:not(.#{vi.$prefix}is-max-desktop) {
-      max-width: min(vi.$widescreen, $container-max-width) - $container-offset;
+      max-width: min($widescreen, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.fullhd {
     &:not(.#{vi.$prefix}is-max-desktop):not(.#{vi.$prefix}is-max-widescreen) {
-      max-width: min(vi.$fullhd, $container-max-width) - $container-offset;
+      max-width: min($fullhd, $container-max-width) - $container-offset;
     }
   }
 }
