@@ -138,8 +138,8 @@
     // if $l-base = 3%, then we get 8%, 18%, 28% etc
     $color-l-5: $l-5 + $i * 10;
 
-    $shades: map.set($shades, $i, #{$i}0, $color-l-0);
-    $shades: map.set($shades, $i, #{$i}5, $color-l-5);
+    $shades:    map.set($shades, $i, #{$i}0, $color-l-0);
+    $shades:    map.set($shades, $i, #{$i}5, $color-l-5);
 
     @include register-var($name, $color-l-0, "", "-#{$i}0-l");
     @include register-var($name, $color-l-5, "", "-#{$i}5-l");
@@ -151,9 +151,11 @@
     }
   }
 
-  $shades: map.set($shades, "100", 100%);
+  $shades:             map.set($shades, "100", 100%);
   @include register-var($name, 100%, "", "-100-l");
 }
+
+
 
 @mixin accouter-theme($name) {
   [data-#{vi.$prefix}theme="#{$name}"],

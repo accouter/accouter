@@ -25,6 +25,7 @@ $text:          hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
     "bold-l": vi.$light-l,
     "bold-invert-l": vi.$dark-l,
     "background-l": $background-l,
+    "schollbar-l": 10%,
     "border-weak-l": 21%,
     "border-l": 24%,
     "text-weak-l": 53%,
@@ -37,6 +38,5 @@ $text:          hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
     "active-border-l-delta": 20%,
     "hover-color-l-delta": 5%,
     "active-color-l-delta": 10%,
-    "schollbar-color": #{vs.getVar("background")},
   ));
 }

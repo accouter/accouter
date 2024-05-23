@@ -42,6 +42,7 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "scheme-main-bis-l": 98%,
     "scheme-main-ter-l": 96%,
     "background-l": 96%,
+    "schollbar-l": 90%,
     "border-weak-l": 93%,
     "border-l": 86%,
     "text-weak-l": 48%,
@@ -83,7 +84,6 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "burger-gap": 5px,
     "burger-height": 2px,
     "burger-width": 24px,
-    "schollbar-color": #{vs.getVar("background")},
   ));
 
   // Colors
