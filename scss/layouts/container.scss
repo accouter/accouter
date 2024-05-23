@@ -1,1 +1,19 @@
-.container{}
+@use "../configs/variables-init" as vi;
+@use "../configs/mixins" as mx;
+
+$container-offset:    2 * vi.$gap !default;
+$container-max-width: vi.$fullhd !default;
+
+.#{vi.$prefix}container {
+  flex-grow: 1;
+  margin:    0 auto;
+  position:  relative;
+  width:     100%;
+
+  &.#{vi.$prefix}-fluid {
+    max-width:     none !important;
+    padding-left:  vi.$gap;
+    padding-right: vi.$gap;
+    width:         100%;
+  }
+}
