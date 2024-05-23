@@ -29,3 +29,111 @@
   margin:      0;
   padding:     0;
 }
+
+@mixin selection($current-selector: false) {
+  @if $current-selector {
+    &::-moz-selection { @content; }
+    &::selection { @content; }
+  } @else {
+    ::-moz-selection { @content; }
+    ::selection { @content; }
+  }
+}
+
+// Responsiveness
+
+@mixin from($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+
+@mixin until($device) {
+  @media screen and (max-width: ($device - 1px)) {
+    @content;
+  }
+}
+
+@mixin between($from, $until) {
+  @media screen and (min-width: $from) and (max-width: ($until - 1px)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: (vi.$tablet - 1px)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: vi.$tablet), print {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (min-width: vi.$tablet) and (max-width: vi.$desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: vi.$desktop) {
+    @content;
+  }
+}
+
+@mixin until-widescreen{
+  @if vi.$widescreen-enabled {
+    @media screen and (max-width: vi.$widescreen - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin desktop-only {
+  @if vi.$widescreen-enabled {
+    @media screen and (min-width: vi.$desktop) and (max-width: vi.$widescreen - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin widescreen {
+  @if vi.$widescreen-enabled {
+    @media screen and (min-width: vi.$widescreen) {
+      @content;
+    }
+  }
+}
+
+@mixin widescreen-only {
+  @if vi.$widescreen-enabled and vi.$fullhd-enabled {
+    @media screen and (min-width: vi.$widescreen) and (max-width: vi.$fullhd - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin until-fullhd{
+  @if vi.$fullhd-enabled {
+    @media screen and (max-width: vi.$fullhd - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin fullhd {
+  @if vi.$fullhd-enabled {
+    @media screen and (min-width: vi.$fullhd) {
+      @content;
+    }
+  }
+}
+
+@mixin touch {
+  @media screen and (max-width: vi.$desktop - 1px) {
+    @content;
+  }
+}

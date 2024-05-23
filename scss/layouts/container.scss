@@ -10,10 +10,14 @@ $container-max-width: vi.$fullhd !default;
   position:  relative;
   width:     100%;
 
-  &.#{vi.$prefix}-fluid {
+  &.#{vi.$prefix}is-fluid {
     max-width:     none !important;
     padding-left:  vi.$gap;
     padding-right: vi.$gap;
     width:         100%;
+  }
+
+  @include mx.desktop {
+    max-width: vi.$desktop - $container-offset;
   }
 }
