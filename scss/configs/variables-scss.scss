@@ -115,7 +115,10 @@
   $pct-to-int:         math.div($closest-5, 100%) * 100;
   $scheme-main-digits: #{$pct-to-int};
 
+  // Register base color
   @include register-base-color($name, $base);
+
+  // Generate 20 shades of color
 }
 
 @mixin accouter-theme($name) {
