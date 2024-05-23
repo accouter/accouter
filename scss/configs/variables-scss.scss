@@ -76,9 +76,9 @@
     }
   }
 
-  $on-scheme-lightness: lightness($on-scheme-color);
+  $on-scheme-lightness:    lightness($on-scheme-color);
   @include register-var($name, $on-scheme-lightness, "", "-on-scheme-l");
-  $on-scheme-l: getVar($name, "", "-on-scheme-l");
+  $on-scheme-l:            getVar($name, "", "-on-scheme-l");
   @include register-var(#{$name}-on-scheme, buildHsla($name, $on-scheme-l));
 }
 
@@ -115,7 +115,41 @@
   $pct-to-int:         math.div($closest-5, 100%) * 100;
   $scheme-main-digits: #{$pct-to-int};
 
+  // Register base color
   @include register-base-color($name, $base);
+
+  // Generate 20 shades of color
+  @if ($l-base < 3%) {
+    $l-0: $l-base;
+    $l-5: $l-base + 5%;
+  } @else if ($l-base < 8%) {
+    $l-0: $l-base - 5%;
+    $l-5: $l-base;
+  } @else {
+    $l-0: $l-base - 10%;
+    $l-5: $l-base - 5%;
+  }
+
+  $shades:             ();
+
+  @for $i from 0 through 9 {
+    // if $l-base = 3%, then we get 3%, 13%, 23% etc
+    $color-l-0: math.max($l-0 + $i * 10, 0%);
+    // if $l-base = 3%, then we get 8%, 18%, 28% etc
+    $color-l-5: $l-5 + $i * 10;
+
+    $shades: map.set($shades, $i, #{$i}0, $color-l-0);
+    $shades: map.set($shades, $i, #{$i}5, $color-l-5);
+
+    @include register-var($name, $color-l-0, "", "-#{$i}0-l");
+    @include register-var($name, $color-l-5, "", "-#{$i}5-l");
+
+    @if $color-l-0 == $l {
+      $base-digits: #{$i}0;
+    } @else if $color-l-5 == $l {
+      $base-digits: #{$i}5;
+    }
+  }
 }
 
 @mixin accouter-theme($name) {

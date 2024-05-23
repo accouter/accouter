@@ -53,6 +53,8 @@ $size-normal:       vi.$size-6 !default;
 $size-medium:       vi.$size-5 !default;
 $size-large:        vi.$size-4 !default;
 
+$sizes:             vi.$size-1 vi.$size-2 vi.$size-3 vi.$size-4 vi.$size-5 vi.$size-6 vi.$size-7 !default;
+
 // Effects
 $shadow-color:      vi.$black !default;
 
@@ -73,3 +75,16 @@ $colors:            fn.mergeColorMaps((
   "warning": $warning,
   "danger": $danger,
 ), $custom-colors) !default;
+
+$shades:            fn.mergeColorMaps((
+  "black-bis": vi.$black-bis,
+  "black-ter": vi.$black-ter,
+  "gray-darker": vi.$gray-darker,
+  "gray-dark": vi.$gray-dark,
+  "gray": vi.$gray,
+  "gray-light": vi.$gray-light,
+  "gray-lighter": vi.$gray-lighter,
+  "gray-lightest": vi.$gray-lightest,
+  "white-ter": vi.$white-ter,
+  "white-bis": vi.$white-bis,
+), $custom-shades) !default;
