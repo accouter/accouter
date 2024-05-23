@@ -88,3 +88,7 @@ $shades:            fn.mergeColorMaps((
   "white-ter": vi.$white-ter,
   "white-bis": vi.$white-bis,
 ), $custom-shades) !default;
+
+// Navigations
+$header-height:     3.5rem !default;
+$sidebar-width:     15rem !default;

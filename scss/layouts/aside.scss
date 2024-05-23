@@ -1,29 +1,41 @@
 @use "../configs/variables-scss" as vs;
 @use "../configs/variables-derived" as vd;
 @use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
 
 @mixin aside-nav {}
 
+$sidebar-h:                vs.getVar("scheme-h");
+$sidebar-s:                vs.getVar("scheme-s");
+$sidebar-l:                vs.getVar("scheme-main-l");
+$sidebar-background-color: vs.getVar("scheme-main") !default;
+$sidebar-box-shadow-size:  0 0.125em 0 0 !default;
+$sidebar-box-shadow-color: vs.getVar("backgroud") !default;
+
+
 aside {
-  nav{
-    .nav{}
+  nav {
 
-    .expand{}
 
-    .brand{}
+    .nav {}
 
-    .brand-image{}
+    .expand {}
 
-    .toggler{}
+    .brand {}
 
-    .toggler-icon{}
+    .brand-image {}
 
-    .transparent{}
+    .toggler {}
 
-    .nav{}
+    .toggler-icon {}
 
-    .side{}
+    .transparent {}
 
-    .overlap{}
+    .nav {}
+
+    .side {}
+
+    .overlap {}
   }
 }
