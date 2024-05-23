@@ -1,5 +1,8 @@
+@use "sass:math";
+
 @use "../configs/variables-init" as vi;
 @use "../configs/mixins" as mx;
+@use "../configs/functions" as fn;
 
 $container-offset:    2 * vi.$gap !default;
 $container-max-width: vi.$fullhd !default;
@@ -23,25 +26,25 @@ $container-max-width: vi.$fullhd !default;
 
   @include mx.until-widescreen {
     &.#{vi.$prefix}is-widescreen:not(.#{vi.$prefix}is-max-desktop) {
-      max-width: min(vi.$widescreen, $container-max-width) - $container-offset;
+      max-width: fn.min(vi.$widescreen, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.until-fullhd {
     &.#{vi.$prefix}is-fullhd:not(.#{vi.$prefix}is-max-desktop):not(.#{vi.$prefix}is-max-widescreen) {
-      max-width: min(vi.$fullhd, $container-max-width) - $container-offset;
+      max-width: fn.min(vi.$fullhd, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.widescreen {
     &:not(.#{vi.$prefix}is-max-desktop) {
-      max-width: min(vi.$widescreen, $container-max-width) - $container-offset;
+      max-width: fn.min(vi.$widescreen, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.fullhd {
     &:not(.#{vi.$prefix}is-max-desktop):not(.#{vi.$prefix}is-max-widescreen) {
-      max-width: min(vi.$fullhd, $container-max-width) - $container-offset;
+      max-width: fn.min(vi.$fullhd, $container-max-width) - $container-offset;
     }
   }
 }

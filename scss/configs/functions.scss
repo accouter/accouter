@@ -131,3 +131,19 @@
 
   @return "bright";
 }
+
+@function min($value1, $value2) {
+  @if $value1 < $value2 {
+    @return $value2;
+  }
+
+  @return $value1;
+}
+
+@function max($value1, $value2) {
+  @if $value1 > $value2 {
+    @return $value2;
+  }
+
+  @return $value1;
+}
