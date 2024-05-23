@@ -8,7 +8,7 @@ $navbar-l:                  vs.getVar("scheme-main-l");
 $navbar-background-color:   vs.getVar("scheme-main");
 $navbar-box-shadow-size:    0 2px 0 0 !default;
 $navbar-box-shadow-color:   vs.getVar("background") !default;
-$navbar-height:             vd.$header-height !default;
+$navbar-height:             vd.$header-min-height !default;
 $navbar-padding-vertical:   1rem !default;
 $navbar-padding-horizontal: 2rem !default;
 $navbar-z-index:            30 !default;

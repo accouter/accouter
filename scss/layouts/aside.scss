@@ -9,10 +9,25 @@
 $sidebar-h:                vs.getVar("scheme-h");
 $sidebar-s:                vs.getVar("scheme-s");
 $sidebar-l:                vs.getVar("scheme-main-l");
+$sidebar-width:            vd.$sidebar-min-width !default;
 $sidebar-background-color: vs.getVar("scheme-main") !default;
 $sidebar-box-shadow-size:  0 0.125em 0 0 !default;
 $sidebar-box-shadow-color: vs.getVar("backgroud") !default;
 
+:root {
+  @include vs.register-vars((
+    "sidebar-width": #{$sidebar-width}
+  ));
+}
+
+.#{vi.$prefix}aside {
+  @include vs.register-vars((
+    "sidebar-h": #{$sidebar-h},
+    "sidebar-s": #{$sidebar-s},
+    "sidebar-l": #{$sidebar-l},
+    "sidebar-background-color": #{$sidebar-background-color}
+  ));
+}
 
 aside {
   nav {

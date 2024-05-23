@@ -90,5 +90,5 @@ $shades:            fn.mergeColorMaps((
 ), $custom-shades) !default;
 
 // Navigations
-$header-height:     3.5rem !default;
-$sidebar-width:     15rem !default;
+$header-min-height: 3.5rem !default;
+$sidebar-min-width: 15rem !default;
