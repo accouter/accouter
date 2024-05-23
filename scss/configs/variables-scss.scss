@@ -140,16 +140,16 @@
     // if $l-base = 3%, then we get 8%, 18%, 28% etc
     $color-l-5: $l-5 + $i * 10;
 
-    $shades:    map.set($shades, $i, #{$i}0, $color-l-0);
-    $shades:    map.set($shades, $i, #{$i}5, $color-l-5);
+    $shades:    map.set($shades, "#{$i}0", $color-l-0);
+    $shades:    map.set($shades, "#{$i}5", $color-l-5);
 
     @include register-var($name, $color-l-0, "", "-#{$i}0-l");
     @include register-var($name, $color-l-5, "", "-#{$i}5-l");
 
     @if $color-l-0 == $l {
-      $base-digits: #{$i}0;
+      $base-digits: "#{$i}0";
     } @else if $color-l-5 == $l {
-      $base-digits: #{$i}5;
+      $base-digits: "#{$i}5";
     }
   }
 
@@ -162,6 +162,7 @@
   $combos:             ();
 
   @each $digits-bg, $bg-l in $shades {
+
     $background:          hsl($h, $s, $bg-l);
     $bg-luminance:        fn.colorLuminance($background);
     $bg-is-light:         $bg-luminance > 0.55;

@@ -56,11 +56,13 @@ $text:          hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
 
   @include vs.register-hsl("shadow", white);
 
-  aside {
-    nav {
-      .brand {
-        img {
-          @include mx.autodark-image;
+  [data-theme="dark"] {
+    aside {
+      nav {
+        .brand {
+          img {
+            @include mx.autodark-image;
+          }
         }
       }
     }
