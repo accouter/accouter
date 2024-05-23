@@ -29,20 +29,20 @@ $grays:                (
                          "900": $gray-900
                        ) !default;
 
-$black:                hsl(221, 14%, 4%) !default;
-$black-bis:            hsl(221, 14%, 9%) !default;
-$black-ter:            hsl(221, 14%, 14%) !default;
+$black:                hsl($scheme-h, $scheme-s, 4%) !default;
+$black-bis:            hsl($scheme-h, $scheme-s, 9%) !default;
+$black-ter:            hsl($scheme-h, $scheme-s, 14%) !default;
 
-$gray-darker:          hsl(221, 14%, 21%) !default;
-$gray-dark:            hsl(221, 14%, 29%) !default;
-$gray:                 hsl(221, 14%, 48%) !default;
-$gray-light:           hsl(221, 14%, 71%) !default;
-$gray-lighter:         hsl(221, 14%, 86%) !default;
-$gray-lightest:        hsl(221, 14%, 93%) !default;
+$gray-darker:          hsl($scheme-h, $scheme-s, 21%) !default;
+$gray-dark:            hsl($scheme-h, $scheme-s, 29%) !default;
+$gray:                 hsl($scheme-h, $scheme-s, 48%) !default;
+$gray-light:           hsl($scheme-h, $scheme-s, 71%) !default;
+$gray-lighter:         hsl($scheme-h, $scheme-s, 86%) !default;
+$gray-lightest:        hsl($scheme-h, $scheme-s, 93%) !default;
 
-$white-ter:            hsl(221, 14%, 96%) !default;
-$white-bis:            hsl(221, 14%, 98%) !default;
-$white:                hsl(221, 14%, 100%) !default;
+$white-ter:            hsl($scheme-h, $scheme-s, 96%) !default;
+$white-bis:            hsl($scheme-h, $scheme-s, 98%) !default;
+$white:                hsl($scheme-h, $scheme-s, 100%) !default;
 
 $blue:                 #0457d2 !default;
 $indigo:               #5308cf !default;

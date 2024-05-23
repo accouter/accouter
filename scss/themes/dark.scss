@@ -8,19 +8,23 @@
 @use "setup";
 
 // The main lightness of the theme
-$scheme-main-l: 9%;
-$background-l:  14%;
-$text-l:        71%;
+$scheme-main-l:     9%;
+$scheme-main-bis-l: 2%;
+$scheme-main-ter-l: 4%;
+$background-l:      14%;
+$text-l:            71%;
 
 // The main scheme color, used to make calculations
-$scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
-$background:    hsl(vi.$scheme-h, vi.$scheme-s, $background-l);
-$text:          hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
+$scheme-main:       hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
+$background:        hsl(vi.$scheme-h, vi.$scheme-s, $background-l);
+$text:              hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
 
 @mixin dark-theme {
   @include vs.register-vars((
     "scheme-brightness": "dark",
     "scheme-main-l": $scheme-main-l,
+    "scheme-main-bis-l": $scheme-main-bis-l,
+    "scheme-main-ter-l": $scheme-main-ter-l,
     "soft-l": vi.$dark-l,
     "soft-invert-l": vi.$light-l,
     "bold-l": vi.$light-l,

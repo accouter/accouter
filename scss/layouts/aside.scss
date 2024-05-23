@@ -9,7 +9,7 @@
 $sidebar-h:                  vs.getVar("scheme-h");
 $sidebar-s:                  vs.getVar("scheme-s");
 $sidebar-l:                  vs.getVar("scheme-main-l");
-$sidebar-background-color:   vs.getVar("scheme-main") !default;
+$sidebar-background-color:   vs.getVar("scheme-main-bis") !default;
 $sidebar-box-shadow-size:    0 0.125em 0 0 !default;
 $sidebar-box-shadow-color:   vs.getVar("background") !default;
 $sidebar-width:              vd.$sidebar-min-width !default;
@@ -17,9 +17,10 @@ $sidebar-padding-vertical:   0 !default;
 $sidebar-padding-horizontal: 0 !default;
 $sidebar-z-index:            40 !default;
 $sidebar-fixed-z-index:      40 !default;
-$sidebar-brand-font-size:    vs.getVar("size-3") !default;
+$sidebar-brand-font-size:    vs.getVar("size-5") !default;
 $sidebar-brand-font-weight:  700 !default;
-$sidebar-brand-color:        vs.getVar("text-color") !default;
+$sidebar-brand-color:        vs.getVar("white-bis") !default;
+$sidebar-brand-gap:          vi.$gap !default;
 
 
 :root {
@@ -41,7 +42,9 @@ aside {
     "sidebar-padding-vertical": #{$sidebar-padding-vertical},
     "sidebar-padding-horizontal": #{$sidebar-padding-horizontal},
     "sidebar-brand-font-weight": #{$sidebar-brand-font-weight},
-    "sidebar-brand-font-size": #{$sidebar-brand-font-size}
+    "sidebar-brand-font-size": #{$sidebar-brand-font-size},
+    "sidebar-brand-color": #{$sidebar-brand-color},
+    "sidebar-brand-gap": #{$sidebar-brand-gap}
   ));
 }
 
@@ -57,23 +60,39 @@ aside {
   overflow-y:       scroll;
   padding:          vs.getVar("sidebar-padding-vertical") vs.getVar("sidebar-padding-horizontal");
 
+
   @include mx.scrollbar;
 
   nav {
-
+    display:        flex;
+    flex-direction: column;
 
     .nav {}
 
-    .expand {}
+    .expand {
+
+    }
 
     .brand {
-      display:     inline-flex;
-      align-items: center;
-      font-weight: vs.getVar("sidebar-brand-font-weight");
-      font-size:   vs.getVar("sidebar-brand-font-size");
-      color:       vs.getVar("sidebar-brand-color");
-      margin:      0;
-      line-height: 1;
+      display:         inline-flex;
+      align-items:     center;
+      font-weight:     vs.getVar("sidebar-brand-font-weight");
+      font-size:       vs.getVar("sidebar-brand-font-size");
+      color:           vs.getVar("sidebar-brand-color");
+      margin:          0;
+      line-height:     1;
+      justify-content: center;
+      white-space:     nowrap;
+      gap:             vs.getVar("sidebar-brand-gap");
+
+      img {
+        height: 2rem;
+        width:  auto;
+      }
+
+      @media (min-width: vi.$tablet) {
+        padding: .75rem 0;
+      }
     }
 
     .brand-image {}
