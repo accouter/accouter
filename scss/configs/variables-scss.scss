@@ -150,6 +150,9 @@
       $base-digits: #{$i}5;
     }
   }
+
+  $shades: map.set($shades, "100", 100%);
+  @include register-var($name, 100%, "", "-100-l");
 }
 
 @mixin accouter-theme($name) {
