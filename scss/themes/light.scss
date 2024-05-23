@@ -10,7 +10,6 @@
 
 // The main lightness of the theme
 $scheme-main-l: 100%;
-$scheme-main:   vi.$scheme-h;
 
 // The main scheme color, used to make calculations
 $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
@@ -24,8 +23,8 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "dark-l": vi.$dark-l,
     "dark-invert-l": vi.$light-l,
     "soft-l": vi.$light-l,
-    "soft-invert-l": vi.$dark-l,
     "bold-l": vi.$dark-l,
+    "soft-invert-l": vi.$dark-l,
     "bold-invert-l": vi.$light-l,
     // Deltas
     "hover-background-l-delta": -5%,
