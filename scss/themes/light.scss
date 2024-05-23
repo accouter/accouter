@@ -83,6 +83,7 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "burger-gap": 5px,
     "burger-height": 2px,
     "burger-width": 24px,
+    "schollbar-color": #{vs.getVar("background")},
   ));
 
   // Colors
@@ -126,5 +127,7 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
       $name: "size-#{$i}";
       @include vs.register-var($name, $size);
     }
+
+    @include mx.scrollbar;
   }
 }

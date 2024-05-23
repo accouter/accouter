@@ -2,67 +2,67 @@
 @use "functions" as fn;
 
 // Scheme colors
-$scheme-main:       vi.$white !default;
-$scheme-main-bis:   vi.$white-bis !default;
-$scheme-main-ter:   vi.$white-ter !default;
-$scheme-invert:     vi.$black !default;
-$scheme-invert-bis: vi.$black-bis !default;
-$scheme-invert-ter: vi.$black-ter !default;
+$scheme-main:               vi.$white !default;
+$scheme-main-bis:           vi.$white-bis !default;
+$scheme-main-ter:           vi.$white-ter !default;
+$scheme-invert:             vi.$black !default;
+$scheme-invert-bis:         vi.$black-bis !default;
+$scheme-invert-ter:         vi.$black-ter !default;
 
 // Text colors
-$text-color:        vi.$gray-900 !default;
-$text-invert:       fn.findColorInvert($text-color) !default;
-$text-weak:         vi.$gray !default;
-$text-strong:       vi.$gray-darker !default;
+$text-color:                vi.$gray-900 !default;
+$text-invert:               fn.findColorInvert($text-color) !default;
+$text-weak:                 vi.$gray !default;
+$text-strong:               vi.$gray-darker !default;
 
 // Status colors
 
-$primary:           vi.$teal !default;
-$info:              vi.$cyan !default;
-$success:           vi.$green !default;
-$warning:           vi.$yellow !default;
-$danger:            vi.$red !default;
-$light:             vi.$white-ter !default;
-$dark:              vi.$gray-darker !default;
+$primary:                   vi.$teal !default;
+$info:                      vi.$cyan !default;
+$success:                   vi.$green !default;
+$warning:                   vi.$yellow !default;
+$danger:                    vi.$red !default;
+$light:                     vi.$white-ter !default;
+$dark:                      vi.$gray-darker !default;
 
 // Link colors
-$link:              vi.$blue !default;
+$link:                      vi.$blue !default;
 
 // Decorative colors
 
-$background:        vi.$white-ter !default;
-$border:            vi.$gray-lighter !default;
-$border-weak:       vi.$gray-lightest !default;
+$background:                vi.$white-ter !default;
+$border:                    vi.$gray-lighter !default;
+$border-weak:               vi.$gray-lightest !default;
 
 // Code colors
 
-$code:              vi.$red !default;
-$code-background:   $background !default;
+$code:                      vi.$red !default;
+$code-background:           $background !default;
 
-$pre:               $text-color !default;
-$pre-background:    $background !default;
+$pre:                       $text-color !default;
+$pre-background:            $background !default;
 
 // Typography
 
-$family-primary:    vi.$family-sans-serif !default;
-$family-secondary:  vi.$family-sans-serif !default;
-$family-code:       vi.$family-monospace !default;
+$family-primary:            vi.$family-sans-serif !default;
+$family-secondary:          vi.$family-sans-serif !default;
+$family-code:               vi.$family-monospace !default;
 
-$size-small:        vi.$size-7 !default;
-$size-normal:       vi.$size-6 !default;
-$size-medium:       vi.$size-5 !default;
-$size-large:        vi.$size-4 !default;
+$size-small:                vi.$size-7 !default;
+$size-normal:               vi.$size-6 !default;
+$size-medium:               vi.$size-5 !default;
+$size-large:                vi.$size-4 !default;
 
-$sizes:             vi.$size-1 vi.$size-2 vi.$size-3 vi.$size-4 vi.$size-5 vi.$size-6 vi.$size-7 !default;
+$sizes:                     vi.$size-1 vi.$size-2 vi.$size-3 vi.$size-4 vi.$size-5 vi.$size-6 vi.$size-7 !default;
 
 // Effects
-$shadow-color:      vi.$black !default;
+$shadow-color:              vi.$black !default;
 
 // Lists
-$custom-colors:     null !default;
-$custom-shades:     null !default;
+$custom-colors:             null !default;
+$custom-shades:             null !default;
 
-$colors:            fn.mergeColorMaps((
+$colors:                    fn.mergeColorMaps((
   "white":(vi.$white, vi.$black),
   "black":(vi.$black, vi.$white),
   "light":($light, $dark),
@@ -76,7 +76,7 @@ $colors:            fn.mergeColorMaps((
   "danger": $danger,
 ), $custom-colors) !default;
 
-$shades:            fn.mergeColorMaps((
+$shades:                    fn.mergeColorMaps((
   "black-bis": vi.$black-bis,
   "black-ter": vi.$black-ter,
   "gray-darker": vi.$gray-darker,
@@ -90,5 +90,12 @@ $shades:            fn.mergeColorMaps((
 ), $custom-shades) !default;
 
 // Navigations
-$header-min-height: 3.5rem !default;
-$sidebar-min-width: 15rem !default;
+$header-min-height:         3.5rem !default;
+$sidebar-min-width:         15rem !default;
+
+// Transitions
+$transition-base:           all .2s ease-in-out !default;
+$transition-fade:           opacity .15s linear !default;
+$transition-time:           .3s !default;
+$transition-collapse:       height .35s ease !default;
+$transition-collapse-width: width .35s ease !default;

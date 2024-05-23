@@ -37,5 +37,6 @@ $text:          hsl(vi.$scheme-h, vi.$scheme-s, $text-l);
     "active-border-l-delta": 20%,
     "hover-color-l-delta": 5%,
     "active-color-l-delta": 10%,
+    "schollbar-color": #{vs.getVar("background")},
   ));
 }

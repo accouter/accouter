@@ -1,10 +1,67 @@
 @use "variables-init" as vi;
 @use "variables-scss" as vs;
+@use "variables-derived" as vd;
 
 @mixin block($spacing: vs.getVar("block-spacing")) {
   &:not(:last-child) {
     margin-bottom: $spacing;
   }
+}
+
+@mixin transition($transition...) {
+  @if length($transition) == 0 {
+    $transition: vd.$transition-base;
+  }
+
+  @if length($transition) > 1 {
+    @each $value in $transition {
+      @if $value == null or $value == none {
+        @warn "The keyword 'none' or 'null' must be used as a single argument.";
+      }
+    }
+  }
+
+  @if nth($transition, 1) != null {
+    transition: $transition;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+@mixin scrollbar {
+  #{if(&, "&", "*")} {
+    scrollbar-color: vs.getVar("background") transparent;
+  }
+
+  #{if(&, "&", "*")}::-webkit-scrollbar {
+    width:  0.5rem;
+    height: 0.5rem;
+    @include transition(vd.$transition-time)
+  }
+
+  #{if(&, "&", "*")}::-webkit-scrollbar-thumb {
+    border-radius: 0.25rem;
+    border:        0.125rem solid transparent;
+    box-shadow:    inset 0 0 0 0.25rem vs.getVar("background");
+  }
+
+  #{if(&, "&", "*")}::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #{if(&, "&", "*")}:hover::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 0.25rem vs.getVar("background");
+  }
+
+  #{if(&, "&", "*")}::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+@mixin autodark-image{
+  filter: brightness(0) invert(1);
 }
 
 @mixin clearfix {
