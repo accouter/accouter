@@ -46,8 +46,8 @@
     <meta name="loc:downloadPdf" content="{{__global.downloadPdf}}">
 
     <script>
-      const theme = localStorage.getItem('theme') || 'auto'
-      document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      // const theme = localStorage.getItem('theme') || 'auto'
+      // document.documentElement.setAttribute('data-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
     </script>
 
     {{#_googleAnalyticsTagId}}
@@ -67,13 +67,12 @@
 </head>
 
 {{^redirect_url}}
-  <body class="" data-theme="dark" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
+  <body class="" data-theme="light" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
   <aside>
     {{^_disableSidebar}}
       <nav class="expand-xl" role="navigation">
         <a class="brand autodark" href="{{_appLogoUrl}}{{^_appLogoUrl}}{{_rel}}index.html{{/_appLogoUrl}}">
-          <img id="logo" class="svg" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}">
-          {{_appName}}
+          <img class="brand-image svg" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}">
         </a>
       </nav>
     {{/_disableSidebar}}

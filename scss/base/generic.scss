@@ -9,7 +9,7 @@ $body-min-width:        300px !default;
 $body-rendering:        optimizeLegibility !default;
 $body-family:           vs.getVar("family-primary") !default;
 $body-overflow-x:       hidden !default;
-$body-overflow-y:       auto !default;
+$body-overflow-y:       scroll !default;
 
 $body-text-color:       vs.getVar("text-color");
 $body-font-size:        1em !default;
