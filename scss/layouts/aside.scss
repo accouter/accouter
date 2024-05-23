@@ -6,13 +6,17 @@
 
 @mixin aside-nav {}
 
-$sidebar-h:                vs.getVar("scheme-h");
-$sidebar-s:                vs.getVar("scheme-s");
-$sidebar-l:                vs.getVar("scheme-main-l");
-$sidebar-width:            vd.$sidebar-min-width !default;
-$sidebar-background-color: vs.getVar("scheme-main") !default;
-$sidebar-box-shadow-size:  0 0.125em 0 0 !default;
-$sidebar-box-shadow-color: vs.getVar("backgroud") !default;
+$sidebar-h:                  vs.getVar("scheme-h");
+$sidebar-s:                  vs.getVar("scheme-s");
+$sidebar-l:                  vs.getVar("scheme-main-l");
+$sidebar-background-color:   vs.getVar("scheme-main") !default;
+$sidebar-box-shadow-size:    0 0.125em 0 0 !default;
+$sidebar-box-shadow-color:   vs.getVar("background") !default;
+$sidebar-width:              vd.$sidebar-min-width !default;
+$sidebar-padding-vertical:   2rem !default;
+$sidebar-padding-horizontal: 1.5rem !default;
+$sidebar-z-index:            40 !default;
+$sidebar-fixed-z-index:      40 !default;
 
 :root {
   @include vs.register-vars((
@@ -20,12 +24,16 @@ $sidebar-box-shadow-color: vs.getVar("backgroud") !default;
   ));
 }
 
-.#{vi.$prefix}aside {
+aside {
   @include vs.register-vars((
     "sidebar-h": #{$sidebar-h},
     "sidebar-s": #{$sidebar-s},
     "sidebar-l": #{$sidebar-l},
-    "sidebar-background-color": #{$sidebar-background-color}
+    "sidebar-background-color": #{$sidebar-background-color},
+    "sidebar-box-shadow-size": #{$sidebar-box-shadow-size},
+    "sidebar-box-shadow-color": #{$sidebar-box-shadow-color},
+    "sidebar-z-index": #{$sidebar-z-index},
+    "sidebar-fixed-z-index": #{$sidebar-fixed-z-index}
   ));
 }
 
