@@ -84,7 +84,7 @@
   }
 }
 
-@mixin until-widescreen{
+@mixin until-widescreen {
   @if vi.$widescreen-enabled {
     @media screen and (max-width: vi.$widescreen - 1px) {
       @content;
@@ -116,7 +116,7 @@
   }
 }
 
-@mixin until-fullhd{
+@mixin until-fullhd {
   @if vi.$fullhd-enabled {
     @media screen and (max-width: vi.$fullhd - 1px) {
       @content;
@@ -134,6 +134,41 @@
 
 @mixin touch {
   @media screen and (max-width: vi.$desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin breakpoint($name) {
+  $breakpoint: map-get(vi.$breakpoints, $name);
+
+  @if $breakpoint {
+    $from:  map-get($breakpoint, "from");
+    $until: map-get($breakpoint, "until");
+
+    @if $from and $until {
+      @include between($from, $until) {
+        @content;
+      }
+    } @else if $from {
+      @include from($from) {
+        @content;
+      }
+    } @else if $until {
+      @include until($until) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin container-from($name, $width) {
+  @container #{$name} (min-width: #{$width}) {
+    @content;
+  }
+}
+
+@mixin container-until($name, $width) {
+  @container #{$name} (max-width: #{$width - 1px}) {
     @content;
   }
 }
