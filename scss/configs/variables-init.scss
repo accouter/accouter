@@ -148,5 +148,8 @@ $speed:                90ms !default;
 $variable-columns:     true !default;
 $rtl:                  false !default;
 
+// Prefixes
 
 $prefix:               "" !default; //""ar-" !default;
+$prefix-is:            "is-" !default;
+$prefix-has:           "has-" !default;
