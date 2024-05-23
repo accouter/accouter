@@ -34,16 +34,16 @@
         #{vs.getVar("scheme-s")},
         calc(#{vs.getVar("background-l")} + #{vs.getVar("active-background-l-delta")})
     ),
-    "schollbar": hsla(
+    "scrollbar": hsla(
         #{vs.getVar("scheme-h")},
         #{vs.getVar("scheme-s")},
-        calc(#{vs.getVar("background-l")} + #{vs.getVar("active-background-l-delta")})
+        #{vs.getVar("scrollbar-l")}
         0.16
     ),
-    "schollbar-hover": hsla(
+    "scrollbar-hover": hsla(
         #{vs.getVar("scheme-h")},
         #{vs.getVar("scheme-s")},
-        calc(#{vs.getVar("background-l")} + #{vs.getVar("active-background-l-delta")})
+        calc(#{vs.getVar("scrollbar-l")} + #{vs.getVar("active-background-l-delta")})
         0.32
     ),
     "border-weak":hsl(

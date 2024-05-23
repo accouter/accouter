@@ -17,6 +17,9 @@ $sidebar-padding-vertical:   0 !default;
 $sidebar-padding-horizontal: 0 !default;
 $sidebar-z-index:            40 !default;
 $sidebar-fixed-z-index:      40 !default;
+$sidebar-brand-font-size:    vs.getVar("size-3") !default;
+$sidebar-brand-font-weight:  700 !default;
+$sidebar-brand-color:        vs.getVar("text-color") !default;
 
 
 :root {
@@ -36,7 +39,9 @@ aside {
     "sidebar-z-index": #{$sidebar-z-index},
     "sidebar-fixed-z-index": #{$sidebar-fixed-z-index},
     "sidebar-padding-vertical": #{$sidebar-padding-vertical},
-    "sidebar-padding-horizontal": #{$sidebar-padding-horizontal}
+    "sidebar-padding-horizontal": #{$sidebar-padding-horizontal},
+    "sidebar-brand-font-weight": #{$sidebar-brand-font-weight},
+    "sidebar-brand-font-size": #{$sidebar-brand-font-size}
   ));
 }
 
@@ -50,8 +55,9 @@ aside {
   z-index:          vs.getVar("sidebar-z-index");
   align-items:      flex-start;
   overflow-y:       scroll;
-  scrollbar-color:  vs.getVar("schollbar");
   padding:          vs.getVar("sidebar-padding-vertical") vs.getVar("sidebar-padding-horizontal");
+
+  @include mx.scrollbar;
 
   nav {
 
@@ -63,6 +69,9 @@ aside {
     .brand {
       display:     inline-flex;
       align-items: center;
+      font-weight: vs.getVar("sidebar-brand-font-weight");
+      font-size:   vs.getVar("sidebar-brand-font-size");
+      color:       vs.getVar("sidebar-brand-color");
       margin:      0;
       line-height: 1;
     }

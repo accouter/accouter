@@ -32,7 +32,7 @@
 
 @mixin scrollbar {
   #{if(&, "&", "*")} {
-    scrollbar-color: vs.getVar("schollbar") transparent;
+    scrollbar-color: vs.getVar("scrollbar") transparent;
   }
 
   #{if(&, "&", "*")}::-webkit-scrollbar {
@@ -44,7 +44,7 @@
   #{if(&, "&", "*")}::-webkit-scrollbar-thumb {
     border-radius: 0.25rem;
     border:        0.125rem solid transparent;
-    box-shadow:    inset 0 0 0 0.25rem vs.getVar("schollbar") ;
+    box-shadow:    inset 0 0 0 0.25rem vs.getVar("scrollbar") ;
   }
 
   #{if(&, "&", "*")}::-webkit-scrollbar-track {
@@ -52,7 +52,7 @@
   }
 
   #{if(&, "&", "*")}:hover::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 0 0.25rem vs.getVar("schollbar-hover") ;
+    box-shadow: inset 0 0 0 0.25rem vs.getVar("scrollbar-hover") ;
   }
 
   #{if(&, "&", "*")}::-webkit-scrollbar-corner {
