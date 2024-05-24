@@ -1,30 +1,46 @@
 @use "../configs/variables-scss" as vs;
 @use "../configs/variables-derived" as vd;
 @use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
 
-@mixin header-nav{}
+@mixin header-nav {}
 
-header{
-  nav{
-    .nav{}
+$header-h:                vs.getVar("scheme-h");
+$header-s:                vs.getVar("scheme-s");
+$header-l:                vs.getVar("scheme-main-l");
+$header-background-color: vs.getVar("scheme-main-ter") !default;
+$header-box-shadow-size:  0 0.125em 0 0 !default;
+$header-box-shadow-color: vs.getVar("gray") !default;
+$header-height:           vd.$header-min-height !default;
 
-    .expand{}
+:root {
+  @include vs.register-vars((
+    "header-height": #{$header-height}
+  ))
+}
 
-    .brand{}
+header {
+  nav {
+    .nav {}
 
-    .brand-image{}
+    .expand {}
 
-    .toggler{}
+    .brand {}
 
-    .toggler-icon{}
+    .brand-image {}
 
-    .transparent{}
+    .toggler {}
 
-    .nav{}
+    .toggler-icon {}
 
-    .side{}
+    .transparent {}
 
-    .overlap{}
+    .nav {}
+
+    .side {}
+
+    .overlap {}
   }
 }
 
