@@ -1,30 +1,65 @@
 @use "../configs/variables-scss" as vs;
 @use "../configs/variables-derived" as vd;
 @use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
 
-@mixin header-nav{}
+@mixin header-nav {}
 
-header{
-  nav{
-    .nav{}
+$header-h:                vs.getVar("scheme-h");
+$header-s:                vs.getVar("scheme-s");
+$header-l:                vs.getVar("scheme-main-l");
+$header-background-color: vs.getVar("scheme-main-ter") !default;
+$header-box-shadow-size:  0 0.125em 0 0 !default;
+$header-box-shadow-color: vs.getVar("gray") !default;
+$header-height:           vd.$header-min-height !default;
 
-    .expand{}
+:root {
+  @include vs.register-vars((
+    "header-height": #{$header-height}
+  ))
+}
 
-    .brand{}
+header {
+  @include vs.register-vars((
+    "header-h": #{$header-h},
+    "header-s": #{$header-s},
+    "header-l": #{$header-l},
+    "header-background-color": #{$header-background-color},
+    "header-box-shadow-size": #{$header-box-shadow-size},
+    "header-box-shadow-color": #{$header-box-shadow-color}
+  ));
+}
 
-    .brand-image{}
+header {
+  background-color: vs.getVar("header-background-color");
+  height:           vs.getVar("header-height");
+  position:         fixed;
 
-    .toggler{}
+  @include mx.desktop {
+    margin-left: vs.getVar("sidebar-width");
+  }
 
-    .toggler-icon{}
+  nav {
+    .nav {}
 
-    .transparent{}
+    .expand {}
 
-    .nav{}
+    .brand {}
 
-    .side{}
+    .brand-image {}
 
-    .overlap{}
+    .toggler {}
+
+    .toggler-icon {}
+
+    .transparent {}
+
+    .nav {}
+
+    .side {}
+
+    .overlap {}
   }
 }
 
