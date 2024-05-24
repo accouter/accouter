@@ -2,9 +2,35 @@
 @use "variables-scss" as vs;
 @use "variables-derived" as vd;
 
+@mixin arrow($color: #{vs.getVar("arrow-color")}) {
+  border:              0.125em solid $color;
+  border-right:        0;
+  border-top:          0;
+  content:             " ";
+  display:             block;
+  height:              0.625em;
+  margin-top:          -0.4375em;
+  pointer-events:      none;
+  position:            absolute;
+  top:                 50%;
+  transform:           rotate(-45deg);
+  transform-origin:    center;
+  transition-duration: vs.getVar("duration");
+  transition-property: border-color;
+  width:               0.625em;
+}
+
 @mixin block($spacing: vs.getVar("block-spacing")) {
   &:not(:last-child) {
     margin-bottom: $spacing;
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    clear:   both;
+    content: " ";
+    display: table;
   }
 }
 
@@ -44,7 +70,7 @@
   #{if(&, "&", "*")}::-webkit-scrollbar-thumb {
     border-radius: 0.25rem;
     border:        0.125rem solid transparent;
-    box-shadow:    inset 0 0 0 0.25rem vs.getVar("scrollbar") ;
+    box-shadow:    inset 0 0 0 0.25rem vs.getVar("scrollbar");
   }
 
   #{if(&, "&", "*")}::-webkit-scrollbar-track {
@@ -52,7 +78,7 @@
   }
 
   #{if(&, "&", "*")}:hover::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 0 0.25rem vs.getVar("scrollbar-hover") ;
+    box-shadow: inset 0 0 0 0.25rem vs.getVar("scrollbar-hover");
   }
 
   #{if(&, "&", "*")}::-webkit-scrollbar-corner {
@@ -64,16 +90,18 @@
   filter: brightness(0) invert(1);
 }
 
-@mixin clearfix {
-  &::after {
-    clear:   both;
-    content: " ";
-    display: table;
-  }
-}
-
 @mixin overflow-touch {
   -webkit-overflow-scrolling: touch;
+}
+
+@mixin placeholder {
+  $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
+
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
 }
 
 @mixin reset {

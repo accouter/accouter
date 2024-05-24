@@ -1,3 +1,84 @@
 @use "variables-scss" as vs;
 @use "variables-derived" as vd;
 @use "variables-init" as vi;
+
+$control-radius:             vs.getVar("radius") !default;
+$control-radius-small:       vs.getVar("radius-small") !default;
+
+$control-border-width:       1px !default;
+$control-size:               vs.getVar("size-normal") !default;
+
+$control-height:             2.5em !default;
+$control-line-height:        1.5 !default;
+
+$control-padding-vertical:   calc(0.5em - #{$control-border-width}) !default;
+$control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default;
+
+$control-focus-shadow-l:     50% !default;
+
+:root {
+  @include vs.register-vars(
+      (
+        "control-radius": #{$control-radius},
+        "control-radius-small": #{$control-radius-small},
+        "control-border-width": #{$control-border-width},
+        "control-height": #{$control-height},
+        "control-line-height": #{$control-line-height},
+        "control-padding-vertical": #{$control-padding-vertical},
+        "control-padding-horizontal": #{$control-padding-horizontal},
+        "control-size": #{$control-size},
+        "control-focus-shadow-l": #{$control-focus-shadow-l},
+      )
+  );
+}
+
+@mixin control {
+  align-items:         center;
+  appearance:          none;
+  border-color:        transparent;
+  border-style:        solid;
+  border-width:        vs.getVar("control-border-width");
+  border-radius:       vs.getVar("control-radius");
+  box-shadow:          none;
+  display:             inline-flex;
+  font-size:           vs.getVar("control-size");
+  height:              vs.getVar("control-height");
+  justify-content:     flex-start;
+  line-height:         vs.getVar("control-line-height");
+  padding-bottom:      vs.getVar("control-padding-vertical");
+  padding-left:        vs.getVar("control-padding-horizontal");
+  padding-right:       vs.getVar("control-padding-horizontal");
+  padding-top:         vs.getVar("control-padding-vertical");
+  position:            relative;
+  transition-duration: vs.getVar("duration");
+  transition-property: background-color, border-color, box-shadow, color;
+  vertical-align:      top;
+
+  // States
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &.#{vi.$prefix}is-focused,
+  &:active
+  &.#{vi.$prefix}is-active {
+    outline: none;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+
+@mixin control-small {
+  border-radius: $control-radius-small;
+  font-size:     vs.getVar("size-small");
+}
+
+@mixin control-medium {
+  font-size: vs.getVar("size-medium");
+}
+
+@mixin control-large {
+  font-size: vs.getVar("size-large");
+}

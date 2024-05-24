@@ -1,0 +1,123 @@
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$form-colors:                      vd.$colors !default;
+
+$input-h:                          #{vs.getVar("scheme-h")} !default;
+$input-s:                          #{vs.getVar("scheme-s")} !default;
+$input-l:                          #{vs.getVar("scheme-main-l")} !default;
+$input-border-l:                   vs.getVar("border-l") !default;
+$input-border-l-delta:             0% !default;
+$input-hover-border-l-delta:       #{vs.getVar("hover-border-l-delta")} !default;
+$input-active-border-l-delta:      #{vs.getVar("active-border-l-delta")} !default;
+$input-color-l:                    vs.getVar("text-strong-l") !default;
+$input-background-l:               vs.getVar("scheme-main-l") !default;
+$input-background-l-delta:         0% !default;
+$input-height:                     vs.getVar("control-height") !default;
+$input-shadow:                     inset 0 0.0625em 0.125em hsla(#{vs.getVar("scheme-h")}, #{vs.getVar("scheme-s")}, #{vs.getVar("scheme-invert-l")}, 0.05) !default;
+$input-placeholder-color:          hsla(#{vs.getVar("text-h")}, #{vs.getVar("text-s")}, #{vs.getVar("text-strong-l")}, 0.3) !default;
+
+$input-focus-h:                    vs.getVar("focus-h") !default;
+$input-focus-s:                    vs.getVar("focus-s") !default;
+$input-focus-l:                    vs.getVar("focus-l") !default;
+$input-focus-shadow-size:          vs.getVar("focus-shadow-size") !default;
+$input-focus-shadow-alpha:         vs.getVar("focus-shadow-alpha") !default;
+
+$input-disabled-color:             vs.getVar("text-weak") !default;
+$input-disabled-background-color:  vs.getVar("background") !default;
+$input-disabled-border-color:      vs.getVar("background") !default;
+$input-disabled-placeholder-color: hsla(#{vs.getVar("text-h")}, #{vs.getVar("text-s")}, #{vs.getVar("text-weak-l")}, 0.3) !default;
+
+$input-arrow:                      vs.getVar("link") !default;
+
+$input-icon-color:                 vs.getVar("text-light") !default;
+$input-icon-hover-color:           vs.getVar("text-weak") !default;
+$input-icon-focus-color:           vs.getVar("link") !default;
+
+$input-radius:                     vs.getVar("radius") !default;
+
+.#{vi.$prefix}control,
+.#{vi.$prefix}input,
+.#{vi.$prefix}textarea,
+.#{vi.$prefix}select {
+  @include vs.register-vars((
+    "input-h": #{$input-h},
+    "input-s": #{$input-s},
+    "input-l": #{$input-l},
+    "input-border-l": #{$input-border-l},
+    "input-border-l-delta": #{$input-border-l-delta},
+    "input-hover-border-l-delta": #{$input-hover-border-l-delta},
+    "input-active-border-l-delta": #{$input-active-border-l-delta},
+    "input-color-l": #{$input-color-l},
+    "input-background-l": #{$input-background-l},
+    "input-background-l-delta": #{$input-background-l-delta},
+    "input-height": #{$input-height},
+    "input-shadow": #{$input-shadow},
+    "input-placeholder-color": #{$input-placeholder-color},
+    "input-focus-h": #{$input-focus-h},
+    "input-focus-s": #{$input-focus-s},
+    "input-focus-l": #{$input-focus-l},
+    "input-focus-shadow-size": #{$input-focus-shadow-size},
+    "input-focus-shadow-alpha": #{$input-focus-shadow-alpha},
+    "input-disabled-color": #{$input-disabled-color},
+    "input-disabled-background-color": #{$input-disabled-background-color},
+    "input-disabled-border-color": #{$input-disabled-border-color},
+    "input-disabled-placeholder-color": #{$input-disabled-placeholder-color},
+    "input-arrow": #{$input-arrow},
+    "input-icon-color": #{$input-icon-color},
+    "input-icon-hover-color": #{$input-icon-hover-color},
+    "input-icon-focus-color": #{$input-icon-focus-color},
+    "input-radius": #{$input-radius}
+  ))
+}
+
+@mixin input {
+  @extend %control;
+  background-color: hsl(#{vs.getVar("input-h")}, #{vs.getVar("input-s")}, calc(#{vs.getVar("input-background-l")} + #{vs.getVar("input-background-l-delta")}));
+  border-color:     hsl(#{vs.getVar("input-h")}, #{vs.getVar("input-s")}, calc(#{vs.getVar("input-border-l")} + #{vs.getVar("input-border-l-delta")}));
+  border-radius:    vs.getVar("input-radius");
+  color:            hsl(#{vs.getVar("input-h")}, #{vs.getVar("input-s")}, #{vs.getVar("input-color-l")});
+
+  @include mx.placeholder {
+    color: vs.getVar("input-placeholder-color");
+  }
+
+  &:hover,
+  &.#{vi.$prefix}is-hovered {
+    @include vs.register-vars((
+      "input-border-l-delta": vs.getVar("input-hover-border-l-delta"),
+    ));
+  }
+  &:active,
+  &.#{vi.$prefix}is-active {
+    @include vs.register-vars((
+      "input-border-l-delta": vs.getVar("input-active-border-l-delta"),
+    ));
+  }
+
+  &:focus,
+  &:focus-within,
+  &.#{vi.$prefix}is-focused {
+    border-color: hsl(vs.getVar("input-focus-h"), vs.getVar("input-focus-s"), vs.getVar("input-focus-l"));
+    box-shadow:   vs.getVar("input-focus-shadow-size") hsla(vs.getVar("input-focus-h"), vs.getVar("input-focus-s"), vs.getVar("input-focus-l"), vs.getVar("input-focus-shadow-alpha"));
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: vs.getVar("input-disabled-background-color");
+    border-color:     vs.getVar("input-disabled-border-color");
+    color:            vs.getVar("input-disabled-color");
+    box-shadow:       none;
+
+    @include mx.placeholder {
+      color: vs.getVar("input-disabled-placeholder-color");
+    }
+  }
+}
+
+%input {
+  @include input;
+}

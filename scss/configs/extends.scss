@@ -1,5 +1,18 @@
+@use "controls";
 @use "mixins";
 
-%block{
+%arrow {
+  @include mixins.arrow;
+}
+
+%block {
   @include mixins.block;
+}
+
+%control {
+  @include controls.control;
+}
+
+%reset {
+  @include mixins.reset;
 }
