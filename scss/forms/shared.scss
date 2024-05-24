@@ -76,4 +76,48 @@ $input-radius:                     vs.getVar("radius") !default;
 
 @mixin input {
   @extend %control;
+  background-color: hsl(#{vs.getVar("input-h")}, #{vs.getVar("input-s")}, calc(#{vs.getVar("input-background-l")} + #{vs.getVar("input-background-l-delta")}));
+  border-color:     hsl(#{vs.getVar("input-h")}, #{vs.getVar("input-s")}, calc(#{vs.getVar("input-border-l")} + #{vs.getVar("input-border-l-delta")}));
+  border-radius:    vs.getVar("input-radius");
+  color:            hsl(#{vs.getVar("input-h")}, #{vs.getVar("input-s")}, #{vs.getVar("input-color-l")});
+
+  @include mx.placeholder {
+    color: vs.getVar("input-placeholder-color");
+  }
+
+  &:hover,
+  &.#{vi.$prefix}is-hovered {
+    @include vs.register-vars((
+      "input-border-l-delta": vs.getVar("input-hover-border-l-delta"),
+    ));
+  }
+  &:active,
+  &.#{vi.$prefix}is-active {
+    @include vs.register-vars((
+      "input-border-l-delta": vs.getVar("input-active-border-l-delta"),
+    ));
+  }
+
+  &:focus,
+  &:focus-within,
+  &.#{vi.$prefix}is-focused {
+    border-color: hsl(vs.getVar("input-focus-h"), vs.getVar("input-focus-s"), vs.getVar("input-focus-l"));
+    box-shadow:   vs.getVar("input-focus-shadow-size") hsla(vs.getVar("input-focus-h"), vs.getVar("input-focus-s"), vs.getVar("input-focus-l"), vs.getVar("input-focus-shadow-alpha"));
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: vs.getVar("input-disabled-background-color");
+    border-color:     vs.getVar("input-disabled-border-color");
+    color:            vs.getVar("input-disabled-color");
+    box-shadow:       none;
+
+    @include mx.placeholder {
+      color: vs.getVar("input-disabled-placeholder-color");
+    }
+  }
+}
+
+%input {
+  @include input;
 }
