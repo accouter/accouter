@@ -3,7 +3,7 @@
 {{!include(favicon.ico)}}
 {{!include(logo.svg)}}
 <!DOCTYPE html>
-<html {{#_lang}}lang="{{_lang}}"{{/_lang}}>
+<html {{#_lang}}lang="{{_lang}}"{{/_lang}} data-theme="dark">
 <head>
   <meta charset="utf-8">
   {{#redirect_url}}
@@ -46,8 +46,8 @@
     <meta name="loc:downloadPdf" content="{{__global.downloadPdf}}">
 
     <script>
-      const theme = localStorage.getItem('theme') || 'auto'
-      document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      // const theme = localStorage.getItem('theme') || 'auto'
+      // document.documentElement.setAttribute('data-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
     </script>
 
     {{#_googleAnalyticsTagId}}
@@ -68,108 +68,89 @@
 
 {{^redirect_url}}
   <body class="" data-theme="dark" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
-    <aside>
-      {{^_disableSidebar}}
-        <nav class="navbar navbar-expanded-md" role="navigation">
-
-        </nav>
-      {{/_disableSidebar}}
-    </aside>
-    <header class="header header-expanded-md">
-      {{^_disableNavbar}}
-        <nav class="navbar navbar-expand-md" role="navigation">
-          <div class="container-xxl flex-nowrap">
-            <a class="navbar-brand" href="{{_appLogoUrl}}{{^_appLogoUrl}}{{_rel}}index.html{{/_appLogoUrl}}">
-              <img id="logo" class="svg" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}">
-              {{_appName}}
-            </a>
-            <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="bi bi-three-dots"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navpanel">
-              <div id="navbar">
-                {{#_enableSearch}}
-                  <form class="search" role="search" id="search">
-                    <i class="bi bi-search"></i>
-                    <input class="form-control" id="search-query" type="search" disabled placeholder="{{__global.search}}" autocomplete="off" aria-label="Search">
-                  </form>
-                {{/_enableSearch}}
-              </div>
-            </div>
+  <aside>
+    {{^_disableSidebar}}
+      <nav class="expand-xl" role="navigation">
+        <a class="brand autodark" href="{{_appLogoUrl}}{{^_appLogoUrl}}{{_rel}}index.html{{/_appLogoUrl}}">
+          <img class="brand-image svg" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}">
+        </a>
+      </nav>
+    {{/_disableSidebar}}
+  </aside>
+  <header>
+    {{^_disableNavbar}}
+      <!--       {{>partials/header}}-->
+    {{/_disableNavbar}}
+  </header>
+  <main class="container-fluid">
+    {{^_disableToc}}
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </nav>
-      {{/_disableNavbar}}
-    </header>
-
-    <main class="container-fluid">
-      {{^_disableToc}}
-        <div class="toc-offcanvas">
-          <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <nav class="toc" id="toc"></nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
-        </div>
-      {{/_disableToc}}
-
-      <div class="content">
-        <div class="actionbar">
-          {{^_disableToc}}
-            <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em"
-                    type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas"
-                    aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-              <i class="bi bi-list"></i>
-            </button>
-          {{/_disableToc}}
-
-          {{^_disableBreadcrumb}}
-            <nav id="breadcrumb"></nav>
-          {{/_disableBreadcrumb}}
-        </div>
-
-        <article data-uid="{{uid}}">
-          {{!body}}
-        </article>
-
-        {{^_disableContribution}}
-          <div class="contribution d-print-none">
-            {{#sourceurl}}
-              <a href="{{sourceurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
-            {{/sourceurl}}
-            {{^sourceurl}}{{#docurl}}
-              <a href="{{docurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
-            {{/docurl}}{{/sourceurl}}
-          </div>
-        {{/_disableContribution}}
-
-        {{^_disableNextArticle}}
-          <div class="next-article d-print-none border-top" id="nextArticle"></div>
-        {{/_disableNextArticle}}
-
-      </div>
-
-      {{^_disableAffix}}
-        <div class="affix">
-          <nav id="affix"></nav>
-        </div>
-      {{/_disableAffix}}
-    </main>
-
-    {{#_enableSearch}}
-      <div class="container-xxl search-results" id="search-results"></div>
-    {{/_enableSearch}}
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          {{{_appFooter}}}{{^_appFooter}}<span>Made with Accouter</span>{{/_appFooter}}
         </div>
       </div>
-    </footer>
+    {{/_disableToc}}
+
+    <div class="content">
+      <div class="actionbar">
+        {{^_disableToc}}
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em"
+                  type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas"
+                  aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+        {{/_disableToc}}
+
+        {{^_disableBreadcrumb}}
+          <nav id="breadcrumb"></nav>
+        {{/_disableBreadcrumb}}
+      </div>
+
+      <article data-uid="{{uid}}">
+        {{!body}}
+      </article>
+
+      {{^_disableContribution}}
+        <div class="contribution d-print-none">
+          {{#sourceurl}}
+            <a href="{{sourceurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
+          {{/sourceurl}}
+          {{^sourceurl}}{{#docurl}}
+            <a href="{{docurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
+          {{/docurl}}{{/sourceurl}}
+        </div>
+      {{/_disableContribution}}
+
+      {{^_disableNextArticle}}
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+      {{/_disableNextArticle}}
+
+    </div>
+
+    {{^_disableAffix}}
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    {{/_disableAffix}}
+  </main>
+
+  {{#_enableSearch}}
+    <div class="container-xxl search-results" id="search-results"></div>
+  {{/_enableSearch}}
+
+  <footer class="border-top text-secondary">
+    <div class="container-xxl">
+      <div class="flex-fill">
+        {{{_appFooter}}}{{^_appFooter}}<span>Made with Accouter</span>{{/_appFooter}}
+      </div>
+    </div>
+  </footer>
   </body>
 {{/redirect_url}}
 </html>

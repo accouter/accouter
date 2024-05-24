@@ -9,8 +9,7 @@
 @use "setup";
 
 // The main lightness of the theme
-$scheme-main-l: 90%;
-$scheme-main:   vi.$scheme-h;
+$scheme-main-l: 100%;
 
 // The main scheme color, used to make calculations
 $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
@@ -24,8 +23,8 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "dark-l": vi.$dark-l,
     "dark-invert-l": vi.$light-l,
     "soft-l": vi.$light-l,
-    "soft-invert-l": vi.$dark-l,
     "bold-l": vi.$dark-l,
+    "soft-invert-l": vi.$dark-l,
     "bold-invert-l": vi.$light-l,
     // Deltas
     "hover-background-l-delta": -5%,
@@ -42,6 +41,7 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "scheme-main-bis-l": 98%,
     "scheme-main-ter-l": 96%,
     "background-l": 96%,
+    "scrollbar-l": 90%,
     "border-weak-l": 93%,
     "border-l": 86%,
     "text-weak-l": 48%,
@@ -126,5 +126,7 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
       $name: "size-#{$i}";
       @include vs.register-var($name, $size);
     }
+
+    @include mx.scrollbar;
   }
 }

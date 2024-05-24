@@ -115,9 +115,11 @@
   $pct-to-int:         math.div($closest-5, 100%) * 100;
   $scheme-main-digits: #{$pct-to-int};
 
+  // === Step 1 ===
   // Register base color
   @include register-base-color($name, $base);
 
+  // === Step 2 ===
   // Generate 20 shades of color
   @if ($l-base < 3%) {
     $l-0: $l-base;
@@ -138,22 +140,91 @@
     // if $l-base = 3%, then we get 8%, 18%, 28% etc
     $color-l-5: $l-5 + $i * 10;
 
-    $shades: map.set($shades, $i, #{$i}0, $color-l-0);
-    $shades: map.set($shades, $i, #{$i}5, $color-l-5);
+    $shades:    map.set($shades, "#{$i}0", $color-l-0);
+    $shades:    map.set($shades, "#{$i}5", $color-l-5);
 
     @include register-var($name, $color-l-0, "", "-#{$i}0-l");
     @include register-var($name, $color-l-5, "", "-#{$i}5-l");
 
     @if $color-l-0 == $l {
-      $base-digits: #{$i}0;
+      $base-digits: "#{$i}0";
     } @else if $color-l-5 == $l {
-      $base-digits: #{$i}5;
+      $base-digits: "#{$i}5";
     }
   }
 
-  $shades: map.set($shades, "100", 100%);
+  $shades:             map.set($shades, "100", 100%);
   @include register-var($name, 100%, "", "-100-l");
+
+  // === Step 3 ===
+  // Find accessible color combinations
+
+  $combos:             ();
+
+  @each $digits-bg, $bg-l in $shades {
+
+    $background:          hsl($h, $s, $bg-l);
+    $bg-luminance:        fn.colorLuminance($background);
+    $bg-is-light:         $bg-luminance > 0.55;
+    $candidates:          ();
+    $found:               false;
+
+    @if $bg-l == $l {
+      $base-digits: $digits-bg;
+
+      @if $bg-is-light {
+        $combos: map.set($combos, $base-digits, "10")
+      } @else {
+        $combos: map.set($combos, $base-digits, "100")
+      }
+    }
+
+    $current-best-digits: "00";
+    $current-best-ratio:  0;
+
+    @each $digits-fg, $fg-l in $shades {
+      $foreground:   hsl($h, $s, $fg-l);
+      $ratio:        0;
+      $is-light-fg:  false;
+
+      $fg-luminance: fn.colorLuminance($foreground);
+
+      @if (lightness($foreground) > lightness($background)) {
+        $is-light-fg: true;
+        $ratio:       math.div(($fg-luminance + 0.05), ($bg-luminance + 0.05));
+      } @else {
+        $ratio:       math.div(($bg-luminance + 0.05), ($fg-luminance + 0.05));
+      }
+
+      @if $ratio > 7 {
+        $candidates: list.append($candidates, fn.stringToNumber($digits-fg));
+
+        @if ($is-light-fg) {
+          @if (not $found) {
+            $combos:              map.set($combos, $digits-bg, $digits-fg);
+            $current-best-digits: $digits-fg;
+            $current-best-ratio:  $ratio;
+            $found:               true;
+          } @else {
+            $combos:              map.set($combos, $digits-bg, $digits-fg);
+            $current-best-digits: $digits-fg;
+            $current-best-ratio:  $ratio;
+          }
+        }
+      }
+    }
+    @each $digits-fg, $fg-l in $shades {
+      @if (map.has-key($combos, $digits-bg) == false) {
+        @if ($bg-is-light) {
+          $combos: map.set($combos, $digits-bg, "00");
+        } @else {
+          $combos: map.set($combos, $digits-bg, "100");
+        }
+      }
+    }
+  }
 }
+
 
 @mixin accouter-theme($name) {
   [data-#{vi.$prefix}theme="#{$name}"],
