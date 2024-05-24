@@ -10,8 +10,8 @@ $sidebar-h:                  vs.getVar("scheme-h");
 $sidebar-s:                  vs.getVar("scheme-s");
 $sidebar-l:                  vs.getVar("scheme-main-l");
 $sidebar-background-color:   vs.getVar("scheme-main-bis") !default;
-$sidebar-box-shadow-size:    0 0.125em 0 0 !default;
-$sidebar-box-shadow-color:   vs.getVar("gray") !default;
+$sidebar-box-shadow-size:    0 0 0.125em 0 !default;
+$sidebar-box-shadow-color:   vs.getVar("gray-light") !default;
 $sidebar-width:              vd.$sidebar-min-width !default;
 $sidebar-padding-vertical:   0 !default;
 $sidebar-padding-horizontal: 0 !default;
@@ -59,6 +59,7 @@ aside {
   align-items:      flex-start;
   overflow-y:       scroll;
   padding:          vs.getVar("sidebar-padding-vertical") vs.getVar("sidebar-padding-horizontal");
+  box-shadow:       vs.getVar("sidebar-box-shadow-size") vs.getVar("sidebar-box-shadow-color");
 
 
   @include mx.scrollbar;
@@ -88,6 +89,10 @@ aside {
       img {
         height: 2rem;
         width:  auto;
+
+        @include vs.system-theme($name: "dark") {
+          @include mx.autodark-image;
+        }
       }
 
       @media (min-width: vi.$tablet) {
@@ -108,5 +113,17 @@ aside {
     .side {}
 
     .overlap {}
+  }
+}
+
+[data-theme="dark"] {
+  aside {
+    nav {
+      .brand {
+        img {
+          @include mx.autodark-image;
+        }
+      }
+    }
   }
 }
