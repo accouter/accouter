@@ -73,3 +73,7 @@ $input-radius:                     vs.getVar("radius") !default;
     "input-radius": #{$input-radius}
   ))
 }
+
+@mixin input {
+  @extend %control;
+}
