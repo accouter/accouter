@@ -69,3 +69,16 @@ $control-focus-shadow-l:     50% !default;
     cursor: not-allowed;
   }
 }
+
+@mixin control-small {
+  border-radius: $control-radius-small;
+  font-size:     vs.getVar("size-small");
+}
+
+@mixin control-medium {
+  font-size: vs.getVar("size-medium");
+}
+
+@mixin control-large {
+  font-size: vs.getVar("size-large");
+}
