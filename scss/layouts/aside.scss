@@ -88,6 +88,10 @@ aside {
       img {
         height: 2rem;
         width:  auto;
+
+        @include vs.system-theme($name: "dark") {
+          @include mx.autodark-image;
+        }
       }
 
       @media (min-width: vi.$tablet) {
@@ -108,5 +112,17 @@ aside {
     .side {}
 
     .overlap {}
+  }
+}
+
+[data-theme="dark"] {
+  aside {
+    nav {
+      .brand {
+        img {
+          @include mx.autodark-image;
+        }
+      }
+    }
   }
 }
