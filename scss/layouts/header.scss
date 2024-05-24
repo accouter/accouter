@@ -21,6 +21,25 @@ $header-height:           vd.$header-min-height !default;
 }
 
 header {
+  @include vs.register-vars((
+    "header-h": #{$header-h},
+    "header-s": #{$header-s},
+    "header-l": #{$header-l},
+    "header-background-color": #{$header-background-color},
+    "header-box-shadow-size": #{$header-box-shadow-size},
+    "header-box-shadow-color": #{$header-box-shadow-color}
+  ));
+}
+
+header {
+  background-color: vs.getVar("header-background-color");
+  height:           vs.getVar("header-height");
+  position:         fixed;
+
+  @include mx.desktop {
+    margin-left: vs.getVar("sidebar-width");
+  }
+
   nav {
     .nav {}
 
