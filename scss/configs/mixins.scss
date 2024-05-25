@@ -46,6 +46,79 @@
   }
 }
 
+@mixin delete {
+  @include vs.register-vars((
+    "delete-dimensions": 1.25rem,
+    "delete-background-l": 0%,
+    "delete-background-alpha": 0.5,
+    "delete-color": vs.getVar("white"),
+  ));
+
+  appearance:       none;
+  cursor:           pointer;
+  pointer-events:   auto;
+  background-color: hsla(vs.getVar("scheme-h"), vs.getVar("scheme-s"), vs.getVar("delete-background-l"), vs.getVar("delete-background-alpha"));
+  border:           none;
+  outline:          none;
+  border-radius:    vs.getVar("radius-rounded");
+  display:          inline-flex;
+  position:         relative;
+  vertical-align:   top;
+  flex-grow:        0;
+  flex-shrink:      0;
+  font-size:        1em;
+  height:           vs.getVar("delete-dimensions");
+  max-width:        vs.getVar("delete-dimensions");
+  max-height:       vs.getVar("delete-dimensions");
+  min-height:       vs.getVar("delete-dimensions");
+  min-width:        vs.getVar("delete-dimensions");
+  width:            vs.getVar("delete-dimensions");
+
+  &::before,
+  &::after {
+    background-color: vs.getVar("delete-color");
+    content:          "";
+    display:          block;
+    position:         absolute;
+    left:             50%;
+    top:              50%;
+    transform:        translateX(-50%) translateY(-50%) rotate(45deg);
+    transform-origin: center center;
+  }
+
+  &::before{
+    height: 2px;
+    width:  50%;
+  }
+
+  &::after{
+    height: 50%;
+    width:  2px;
+  }
+
+  &::hover,
+  &::focus{
+    @include vs.register-var("delete-background-alpha", 0.4);
+  }
+
+  &:active{
+    @include vs.register-var("delete-background-alpha", 0.5);
+  }
+
+  // Sizes
+  &.#{vi.$prefix}is-small {
+    @include vs.register-var("delete-dimensions", 1rem);
+  }
+
+  &.#{vi.$prefix}is-medium {
+    @include vs.register-var("delete-dimensions", 1.5rem);
+  }
+
+  &.#{vi.$prefix}is-large {
+    @include vs.register-var("delete-dimensions", 2rem);
+  }
+}
+
 @mixin transition($transition...) {
   @if length($transition) == 0 {
     $transition: vd.$transition-base;
