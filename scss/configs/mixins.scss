@@ -280,7 +280,7 @@
   user-select:           none;
 }
 
-@mixin Loader {
+@mixin loader {
   animation:          spinAround 500ms infinite linear;
   border:             2px solid vs.getVar("loading-color");
   border-radius:      vs.getVar("radius-rounded");
