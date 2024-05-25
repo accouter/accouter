@@ -13,6 +13,18 @@
   @include controls.control;
 }
 
+%loader{
+  @include mixins.loader;
+}
+
+%overlay{
+  @include mixins.overlay;
+}
+
 %reset {
   @include mixins.reset;
+}
+
+%unselectable {
+  @include mixins.unselectable;
 }
