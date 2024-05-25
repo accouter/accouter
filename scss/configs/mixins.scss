@@ -281,6 +281,14 @@
   position:           relative;
 }
 
+@mixin overlay($offset: 0) {
+  position: absolute;
+  bottom:   $offset;
+  left:     $offset;
+  right:    $offset;
+  top:      $offset;
+}
+
 
 
 
