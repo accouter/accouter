@@ -269,9 +269,16 @@
 }
 
 @mixin Loader {
-  animation:     spinAround 500ms infinite linear;
-  border:        2px solid vs.getVar("loading-color");
-  border-radius: vs.getVar("radius-rounded");
+  animation:          spinAround 500ms infinite linear;
+  border:             2px solid vs.getVar("loading-color");
+  border-radius:      vs.getVar("radius-rounded");
+  border-right-color: transparent;
+  border-top-color:   transparent;
+  content:            "";
+  display:            block;
+  height:             1em;
+  width:              1em;
+  position:           relative;
 }
 
 
