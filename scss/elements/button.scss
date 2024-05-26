@@ -241,5 +241,10 @@ $no-palette:                               ("white", "black", "light", "dark");
         "button-outer-shadow-a": 0,
       ));
     }
+
+    &:focus-visible,
+    &.#{vi.$prefix}is-focused{
+      @include vs.register-var("button-border-width", 1px);
+    }
   }
 }
