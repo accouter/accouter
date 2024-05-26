@@ -226,4 +226,20 @@ $no-palette:                               ("white", "black", "light", "dark");
     box-shadow:       vs.getVar("button-disabled-shadow");
     opacity:          vs.getVar("button-disabled-opacity");
   }
+
+  // colors
+  @each $name, $pair in $button-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "button-h": #{vs.getVar($name, "", "-h")},
+        "button-s": #{vs.getVar($name, "", "-s")},
+        "button-l": #{vs.getVar($name, "", "-l")},
+        "button-background-l": #{vs.getVar($name, "", "-l")},
+        "button-color-l": #{vs.getVar($name, "", "-l")},
+        "button-border-l": #{vs.getVar($name, "", "-l")},
+        "button-border-width": 0px,
+        "button-outer-shadow-a": 0,
+      ));
+    }
+  }
 }
