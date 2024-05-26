@@ -192,4 +192,13 @@ $no-palette:                               ("white", "black", "light", "dark");
       margin-inline-end:   calc(-0.5 * #{vs.getVar("button-padding-horizontal")});
     }
   }
+
+  // states
+  &:hover,
+  &.#{vi.$prefix}is-hovered {
+    @include vs.register-vars((
+      "button-background-l-delta": calc(#{vs.getVar("button-hover-background-l-delta")}),
+      "button-border-l-delta": calc(#{vs.getVar("button-hover-border-l-delta")}),
+    ));
+  }
 }
