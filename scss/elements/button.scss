@@ -226,4 +226,61 @@ $no-palette:                               ("white", "black", "light", "dark");
     box-shadow:       vs.getVar("button-disabled-shadow");
     opacity:          vs.getVar("button-disabled-opacity");
   }
+
+  // colors
+  @each $name, $pair in $button-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "button-h": #{vs.getVar($name, "", "-h")},
+        "button-s": #{vs.getVar($name, "", "-s")},
+        "button-l": #{vs.getVar($name, "", "-l")},
+        "button-background-l": #{vs.getVar($name, "", "-l")},
+        "button-color-l": #{vs.getVar($name, "", "-l")},
+        "button-border-l": #{vs.getVar($name, "", "-l")},
+        "button-border-width": 0px,
+        "button-outer-shadow-a": 0,
+      ));
+    }
+
+    &:focus-visible,
+    &.#{vi.$prefix}is-focused {
+      @include vs.register-var("button-border-width", 1px);
+    }
+
+    &.#{vi.$prefix}is-soft {
+      @include vs.register-vars((
+        "button-background-l": #{vs.getVar("soft-l")},
+        "button-border-l": #{vs.getVar("soft-invert-l")},
+      ));
+    }
+
+    &.#{vi.$prefix}is-bold {
+      @include vs.register-vars((
+        "button-background-l": #{vs.getVar("bold-l")},
+        "button-border-l": #{vs.getVar("bold-invert-l")},
+      ));
+    }
+
+    @if not list.index($no-palette, $name) {
+      &.#{vi.$prefix}is-light {
+        @include vs.register-vars((
+          "button-background-l": #{vs.getVar("light-l")},
+          "button-color-l": #{vs.getVar($name, "", "-light-invert-l")},
+        ));
+      }
+      &.#{vi.$prefix}is-dark {
+        @include vs.register-vars((
+          "button-background-l": #{vs.getVar("dark-l")},
+          "button-color-l": #{vs.getVar($name, "", "-dark-invert-l")},
+        ));
+      }
+    }
+
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: vs.getVar($name);
+      border-color:     vs.getVar($name);
+      box-shadow:       none;
+    }
+  }
 }
