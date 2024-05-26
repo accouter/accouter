@@ -201,4 +201,13 @@ $no-palette:                               ("white", "black", "light", "dark");
       "button-border-l-delta": calc(#{vs.getVar("button-hover-border-l-delta")}),
     ));
   }
+
+  &:active,
+  &.#{vi.$prefix}is-active {
+    @include vs.register-vars((
+      "button-background-l-delta": calc(#{vs.getVar("button-active-background-l-delta")}),
+      "button-border-l-delta": calc(#{vs.getVar("button-active-border-l-delta")}),
+      "button-outer-shadow-a": 0,
+    ));
+  }
 }
