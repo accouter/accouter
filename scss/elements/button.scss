@@ -275,5 +275,12 @@ $no-palette:                               ("white", "black", "light", "dark");
         ));
       }
     }
+
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: vs.getVar($name);
+      border-color:     vs.getVar($name);
+      box-shadow:       none;
+    }
   }
 }
