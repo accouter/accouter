@@ -262,8 +262,18 @@ $no-palette:                               ("white", "black", "light", "dark");
     }
 
     @if not list.index($no-palette, $name) {
-      &.#{vi.$prefix}is-light {}
-      &.#{vi.$prefix}is-dark {}
+      &.#{vi.$prefix}is-light {
+        @include vs.register-vars((
+          "button-background-l": #{vs.getVar("light-l")},
+          "button-color-l": #{vs.getVar($name, "", "-light-invert-l")},
+        ));
+      }
+      &.#{vi.$prefix}is-dark {
+        @include vs.register-vars((
+          "button-background-l": #{vs.getVar("dark-l")},
+          "button-color-l": #{vs.getVar($name, "", "-dark-invert-l")},
+        ));
+      }
     }
   }
 }
