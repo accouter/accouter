@@ -176,5 +176,20 @@ $no-palette:                               ("white", "black", "light", "dark");
       width:  1.5em;
       height: 1.5em;
     }
+
+    &:first-child:not(:last-child) {
+      margin-inline-start: calc(-0.5 * #{vs.getVar("button-padding-horizontal")});
+      margin-inline-end:   calc(#{vs.getVar("button-padding-horizontal")} * 0.25);
+    }
+
+    &:last-child:not(:first-child) {
+      margin-inline-start: calc(#{vs.getVar("button-padding-horizontal")} * 0.25);
+      margin-inline-end:   calc(-0.5 * #{vs.getVar("button-padding-horizontal")});
+    }
+
+    &:first-child:last-child {
+      margin-inline-start: calc(-0.5 * #{vs.getVar("button-padding-horizontal")});
+      margin-inline-end:   calc(-0.5 * #{vs.getVar("button-padding-horizontal")});
+    }
   }
 }
