@@ -218,4 +218,12 @@ $no-palette:                               ("white", "black", "light", "dark");
     border-color: hsl(#{vs.getVar("focus-h")}, #{vs.getVar("focus-s")}, #{vs.getVar("focus-l")});
     box-shadow:   vs.getVar("focus-shadow-size") hsla(#{vs.getVar("focus-h")}, #{vs.getVar("focus-s")}, #{vs.getVar("focus-l")}, #{vs.getVar("fovus-shadow-alpha")});
   }
+
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: vs.getVar("button-disabled-background-color");
+    border-color:     vs.getVar("button-disabled-border-color");
+    box-shadow:       vs.getVar("button-disabled-shadow");
+    opacity:          vs.getVar("button-disabled-opacity");
+  }
 }
