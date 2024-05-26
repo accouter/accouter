@@ -293,5 +293,12 @@ $no-palette:                               ("white", "black", "light", "dark");
     background-color: transparent;
     border-color:     hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, #{vs.getVar("button-l")});
     color:            hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, #{vs.getVar("button-l")});
+
+    &:hover {
+      @include vs.register-vars((
+        "button-border-width": max(1px, 0.125em),
+        "button-outer-shadow-alpha": 1,
+      ));
+    }
   }
 }
