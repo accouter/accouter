@@ -201,4 +201,29 @@ $no-palette:                               ("white", "black", "light", "dark");
       "button-border-l-delta": calc(#{vs.getVar("button-hover-border-l-delta")}),
     ));
   }
+
+  &:active,
+  &.#{vi.$prefix}is-active {
+    @include vs.register-vars((
+      "button-background-l-delta": calc(#{vs.getVar("button-active-background-l-delta")}),
+      "button-border-l-delta": calc(#{vs.getVar("button-active-border-l-delta")}),
+      "button-outer-shadow-a": 0,
+    ));
+  }
+
+  &:focus-visible,
+  &.#{vi.$prefix}is-focused {
+    @include vs.register-var("button-border-width", 1px);
+
+    border-color: hsl(#{vs.getVar("focus-h")}, #{vs.getVar("focus-s")}, #{vs.getVar("focus-l")});
+    box-shadow:   vs.getVar("focus-shadow-size") hsla(#{vs.getVar("focus-h")}, #{vs.getVar("focus-s")}, #{vs.getVar("focus-l")}, #{vs.getVar("fovus-shadow-alpha")});
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: vs.getVar("button-disabled-background-color");
+    border-color:     vs.getVar("button-disabled-border-color");
+    box-shadow:       vs.getVar("button-disabled-shadow");
+    opacity:          vs.getVar("button-disabled-opacity");
+  }
 }
