@@ -144,4 +144,37 @@ $no-palette:                               ("white", "black", "light", "dark");
   border-color:     hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, calc(#{vs.getVar("button-border-l")} + #{vs.getVar("button-border-l-delta")}));
   border-style:     vs.getVar("button-border-style");
   border-width:     vs.getVar("button-border-width");
+  box-shadow:       0 0.0625em 0.125em hsla(vs.getVar("button-outer-shadow-h"), vs.getVar("button-outer-shadow-s"), vs.getVar("button-outer-shadow-l"), vs.getVar("button-outer-shadow-a")),
+                    0 0.125em 0.25em hsla(vs.getVar("button-outer-shadow-h"), vs.getVar("button-outer-shadow-s"), vs.getVar("button-outer-shadow-l"), vs.getVar("button-outer-shadow-a"));
+  color:            hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, vs.getVar("button-color-l"));
+  cursor:           pointer;
+  height:           auto;
+  justify-content:  center;
+
+  text-align:       center;
+  white-space:      nowrap;
+  Font-weight:      vs.getVar("button-weight");
+
+  padding-bottom:   calc(#{vs.getVar("button-padding-vertical")} - #{vs.getVar("control-border-width")});
+  padding-left:     calc(#{vs.getVar("button-padding-horizontal")} - #{vs.getVar("control-border-width")});
+  padding-right:    calc(#{vs.getVar("button-padding-horizontal")} - #{vs.getVar("control-border-width")});
+  padding-top:      calc(#{vs.getVar("button-padding-vertical")} - #{vs.getVar("control-border-width")});
+
+  @if $button-family {
+    font-family: #{$button-family};
+  }
+
+  strong {
+    color: inherit;
+  }
+
+  .#{vi.$prefix}icon {
+    &,
+    &.#{vi.$prefix}is-small,
+    &.#{vi.$prefix}is-medium,
+    &.#{vi.$prefix}is-large {
+      width:  1.5em;
+      height: 1.5em;
+    }
+  }
 }
