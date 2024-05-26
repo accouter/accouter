@@ -260,5 +260,10 @@ $no-palette:                               ("white", "black", "light", "dark");
         "button-border-l": #{vs.getVar("bold-invert-l")},
       ));
     }
+
+    @if not list.index($no-palette, $name) {
+      &.#{vi.$prefix}is-light {}
+      &.#{vi.$prefix}is-dark {}
+    }
   }
 }
