@@ -243,8 +243,22 @@ $no-palette:                               ("white", "black", "light", "dark");
     }
 
     &:focus-visible,
-    &.#{vi.$prefix}is-focused{
+    &.#{vi.$prefix}is-focused {
       @include vs.register-var("button-border-width", 1px);
+    }
+
+    &.#{vi.$prefix}is-soft {
+      @include vs.register-vars((
+        "button-background-l": #{vs.getVar("soft-l")},
+        "button-border-l": #{vs.getVar("soft-invert-l")},
+      ));
+    }
+
+    &.#{vi.$prefix}is-bold {
+      @include vs.register-vars((
+        "button-background-l": #{vs.getVar("bold-l")},
+        "button-border-l": #{vs.getVar("bold-invert-l")},
+      ));
     }
   }
 }
