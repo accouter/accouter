@@ -296,9 +296,17 @@ $no-palette:                               ("white", "black", "light", "dark");
 
     &:hover {
       @include vs.register-vars((
-        "button-border-width": max(1px, 0.125em),
+        "button-border-width": max(2px, 0.125em),
         "button-outer-shadow-alpha": 1,
       ));
     }
+
+    &:active {
+      @include vs.register-vars((
+        "button-border-width": max(2px, 0.125em),
+        "button-outer-shadow-alpha": .8,
+      ));
+    }
+
   }
 }
