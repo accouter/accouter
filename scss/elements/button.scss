@@ -357,11 +357,31 @@ $no-palette:                               ("white", "black", "light", "dark");
   }
 
   // sizes
-  &.#{vi.$prefix}is-small {}
+  &.#{vi.$prefix}is-small {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-small")},
+      "control-radius": #{vs.getVar("radius-small")},
+    ));
+  }
 
-  &.#{vi.$prefix}is-normal {}
+  &.#{vi.$prefix}is-normal {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-normal")},
+      "control-radius": #{vs.getVar("radius")},
+    ));
+  }
 
-  &.#{vi.$prefix}is-medium {}
+  &.#{vi.$prefix}is-medium {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-medium")},
+      "control-radius": #{vs.getVar("radius-medium")},
+    ));
+  }
 
-  &.#{vi.$prefix}is-large {}
+  &.#{vi.$prefix}is-large {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-large")},
+      "control-radius": #{vs.getVar("radius-large")},
+    ));
+  }
 }
