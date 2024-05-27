@@ -384,4 +384,37 @@ $no-palette:                               ("white", "black", "light", "dark");
       "control-radius": #{vs.getVar("radius-large")},
     ));
   }
+
+  // modifiers
+  &.#{vi.$prefix}is-fullwidth {
+    display: flex;
+    width:   100%;
+  }
+
+  &.#{vi.$prefix}is-loading {
+    color:          transparent !important;
+    box-shadow:     none;
+    pointer-events: none;
+
+    &::after {
+      @extend %loader;
+      @include mx.center(1em);
+      position: absolute !important;
+    }
+  }
+
+  &.#{vi.$prefix}is-static {
+
+    background-color: vs.getVar("button-static-background-color");
+    border-color:     vs.getVar("button-static-border-color");
+    color:            vs.getVar("button-static-color");
+    pointer-events:   none;
+    box-shadow:       none;
+  }
+
+  &.#{vi.$prefix}is-rounded {
+    border-radius: vs.getVar("radius-rounded");
+    padding-left: calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
+    padding-right: calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
+  }
 }
