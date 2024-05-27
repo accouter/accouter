@@ -412,5 +412,9 @@ $no-palette:                               ("white", "black", "light", "dark");
     box-shadow:       none;
   }
 
-  &.#{vi.$prefix}is-rounded {}
+  &.#{vi.$prefix}is-rounded {
+    border-radius: vs.getVar("radius-rounded");
+    padding-left: calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
+    padding-right: calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
+  }
 }
