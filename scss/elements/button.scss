@@ -386,5 +386,14 @@ $no-palette:                               ("white", "black", "light", "dark");
   }
 
   // modifiers
-  &.#{vi.$prefix}is-fullwidth {}
+  &.#{vi.$prefix}is-fullwidth {
+    display: flex;
+    width:   100%;
+  }
+
+  &.#{vi.$prefix}is-loading{}
+
+  &.#{vi.$prefix}is-static{}
+
+  &.#{vi.$prefix}is-rounded{}
 }
