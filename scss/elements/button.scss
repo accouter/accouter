@@ -5,6 +5,7 @@
 @use "../configs/variables-init" as vi;
 @use "../configs/extends";
 @use "../configs/mixins" as mx;
+@use "../configs/functions" as fn;
 
 $button-h:                                 #{vs.getVar("scheme-h")};
 $button-s:                                 #{vs.getVar("scheme-s")};
@@ -281,6 +282,77 @@ $no-palette:                               ("white", "black", "light", "dark");
       background-color: vs.getVar($name);
       border-color:     vs.getVar($name);
       box-shadow:       none;
+    }
+  }
+
+  // styles
+  &.#{vi.$prefix}is-outlined {
+    @include vs.register-vars((
+      "button-border-width": max(1px, 0.0625em),
+    ));
+
+    background-color: transparent;
+    border-color:     hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, #{vs.getVar("button-l")});
+    color:            hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, #{vs.getVar("button-l")});
+
+    &:hover {
+      @include vs.register-vars((
+        "button-border-width": max(2px, 0.125em),
+        "button-outer-shadow-alpha": 1,
+      ));
+    }
+
+    &:active {
+      @include vs.register-vars((
+        "button-border-width": max(2px, 0.125em),
+        "button-outer-shadow-alpha": .8,
+      ));
+    }
+
+  }
+
+  &.#{vi.$prefix}is-inverted {
+    background-color: hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, calc(#{vs.getVar("button-color-l")} + #{vs.getVar("button-background-l-delta")}));
+    color:            hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, #{vs.getVar("button-background-l")});
+  }
+
+  &.#{vi.$prefix}is-text {
+    background-color: transparent;
+    border-color:     transparent;
+    color:            vs.getVar("button-text-color");
+    text-decoration:  vs.getVar("button-text-decoration");
+
+    &:hover,
+    &.#{vi.$prefix}is-hovered {
+      background-color: vs.getVar("button-text-hover-background-color");
+      color:            vs.getVar("button-text-hover-color");
+    }
+
+    &:active,
+    &.#{vi.$prefix}is-active {
+      background-color: fn.colorDarken($button-text-hover-background-color, 5%);
+      color:            vs.getVar("button-active-color");
+    }
+
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: transparent;
+      border-color:     transparent;
+      box-shadow:       none;
+    }
+  }
+
+  &.#{vi.$prefix}is-ghost {
+    background:      vs.getVar("button-ghost-background");
+    border-color:    vs.getVar("button-ghost-border-color");
+    color:           vs.getVar("button-ghost-color");
+    text-decoration: vs.getVar("button-ghost-decoration");
+    box-shadow:      none;
+
+    &:hover,
+    &.#{vi.$prefix}is-hovered {
+      color:           vs.getVar("button-ghost-hover-color");
+      text-decoration: vs.getVar("button-ghost-hover-decoration");
     }
   }
 }
