@@ -355,4 +355,13 @@ $no-palette:                               ("white", "black", "light", "dark");
       text-decoration: vs.getVar("button-ghost-hover-decoration");
     }
   }
+
+  // sizes
+  &.#{vi.$prefix}is-small {}
+
+  &.#{vi.$prefix}is-normal {}
+
+  &.#{vi.$prefix}is-medium {}
+
+  &.#{vi.$prefix}is-large {}
 }
