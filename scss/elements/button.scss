@@ -5,6 +5,7 @@
 @use "../configs/variables-init" as vi;
 @use "../configs/extends";
 @use "../configs/mixins" as mx;
+@use "../configs/functions" as fn;
 
 $button-h:                                 #{vs.getVar("scheme-h")};
 $button-s:                                 #{vs.getVar("scheme-s")};
@@ -325,6 +326,12 @@ $no-palette:                               ("white", "black", "light", "dark");
     &.#{vi.$prefix}is-hovered {
       background-color: vs.getVar("button-text-hover-background-color");
       color:            vs.getVar("button-text-hover-color");
+    }
+
+    &:active,
+    &.#{vi.$prefix}is-active {
+      background-color: fn.colorDarken($button-text-hover-background-color, 5%);
+      color: vs.getVar("button-active-color");
     }
   }
 
