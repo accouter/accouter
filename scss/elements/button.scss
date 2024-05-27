@@ -331,9 +331,18 @@ $no-palette:                               ("white", "black", "light", "dark");
     &:active,
     &.#{vi.$prefix}is-active {
       background-color: fn.colorDarken($button-text-hover-background-color, 5%);
-      color: vs.getVar("button-active-color");
+      color:            vs.getVar("button-active-color");
+    }
+
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: transparent;
+      border-color:     transparent;
+      box-shadow:       none;
     }
   }
 
-  &.#{vi.$prefix}is-ghost {}
+  &.#{vi.$prefix}is-ghost {
+
+  }
 }
