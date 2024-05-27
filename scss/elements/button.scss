@@ -391,9 +391,19 @@ $no-palette:                               ("white", "black", "light", "dark");
     width:   100%;
   }
 
-  &.#{vi.$prefix}is-loading{}
+  &.#{vi.$prefix}is-loading {
+    color:          transparent !important;
+    box-shadow:     none;
+    pointer-events: none;
 
-  &.#{vi.$prefix}is-static{}
+    &::after {
+      @extend %loader;
+      @include mx.center(1em);
+      position: absolute !important;
+    }
+  }
 
-  &.#{vi.$prefix}is-rounded{}
+  &.#{vi.$prefix}is-static {}
+
+  &.#{vi.$prefix}is-rounded {}
 }
