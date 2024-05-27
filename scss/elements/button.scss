@@ -310,12 +310,23 @@ $no-palette:                               ("white", "black", "light", "dark");
 
   }
 
-  &.#{vi.$prefix}is-inverted{
+  &.#{vi.$prefix}is-inverted {
     background-color: hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, calc(#{vs.getVar("button-color-l")} + #{vs.getVar("button-background-l-delta")}));
     color:            hsl(#{vs.getVar("button-h")}, #{vs.getVar("button-s")}, #{vs.getVar("button-background-l")});
   }
 
-  &.#{vi.$prefix}is-text{}
+  &.#{vi.$prefix}is-text {
+    background-color: transparent;
+    border-color:     transparent;
+    color:            vs.getVar("button-text-color");
+    text-decoration:  vs.getVar("button-text-decoration");
 
-  &.#{vi.$prefix}is-ghost{}
+    &:hover,
+    &.#{vi.$prefix}is-hovered {
+      background-color: vs.getVar("button-text-hover-background-color");
+      color:            vs.getVar("button-text-hover-color");
+    }
+  }
+
+  &.#{vi.$prefix}is-ghost {}
 }
