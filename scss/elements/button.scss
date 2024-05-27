@@ -403,7 +403,14 @@ $no-palette:                               ("white", "black", "light", "dark");
     }
   }
 
-  &.#{vi.$prefix}is-static {}
+  &.#{vi.$prefix}is-static {
+
+    background-color: vs.getVar("button-static-background-color");
+    border-color:     vs.getVar("button-static-border-color");
+    color:            vs.getVar("button-static-color");
+    pointer-events:   none;
+    box-shadow:       none;
+  }
 
   &.#{vi.$prefix}is-rounded {}
 }
