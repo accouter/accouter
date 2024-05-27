@@ -384,4 +384,7 @@ $no-palette:                               ("white", "black", "light", "dark");
       "control-radius": #{vs.getVar("radius-large")},
     ));
   }
+
+  // modifiers
+  &.#{vi.$prefix}is-fullwidth {}
 }
