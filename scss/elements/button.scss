@@ -343,6 +343,16 @@ $no-palette:                               ("white", "black", "light", "dark");
   }
 
   &.#{vi.$prefix}is-ghost {
+    background:      vs.getVar("button-ghost-background");
+    border-color:    vs.getVar("button-ghost-border-color");
+    color:           vs.getVar("button-ghost-color");
+    text-decoration: vs.getVar("button-ghost-decoration");
+    box-shadow:      none;
 
+    &:hover,
+    &.#{vi.$prefix}is-hovered {
+      color:           vs.getVar("button-ghost-hover-color");
+      text-decoration: vs.getVar("button-ghost-hover-decoration");
+    }
   }
 }
