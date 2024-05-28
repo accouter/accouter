@@ -414,7 +414,80 @@ $no-palette:                               ("white", "black", "light", "dark");
 
   &.#{vi.$prefix}is-rounded {
     border-radius: vs.getVar("radius-rounded");
-    padding-left: calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
+    padding-left:  calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
     padding-right: calc(#{vs.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} - #{vs.getVar("button-border-width")});
+  }
+}
+
+.#{vi.$prefix}buttons {
+  @extend %block;
+  align-items:     center;
+  display:         flex;
+  flex-wrap:       wrap;
+  gap:             0.75rem;
+  justify-content: flex-start;
+
+  // sizes
+  &.#{vi.$prefix}are-small {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-small")},
+      "control-radius": #{vs.getVar("radius-small")},
+    ));
+  }
+
+  &.#{vi.$prefix}are-medium {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-medium")},
+      "control-radius": #{vs.getVar("radius-medium")},
+    ));
+  }
+
+  &.#{vi.$prefix}are-large {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-large")},
+      "control-radius": #{vs.getVar("radius-large")},
+    ));
+  }
+
+  &.#{vi.$prefix}has-addons {
+    gap: 0;
+
+    .#{vi.$prefix}button {
+      &:not(:first-child) {
+        border-end-start-radius:   0;
+        border-start-start-radius: 0;
+      }
+
+      &:not(:last-child) {
+        border-end-end-radius:   0;
+        border-start-end-radius: 0;
+        margin-inline-end:       -1px;
+      }
+
+      &:hover,
+      &.#{vi.$prefix}is-hovered {
+        z-index: 2;
+      }
+
+      &:focus,
+      &.#{vi.$prefix}is-focused,
+      &:active,
+      &.#{vi.$prefix}is-active,
+      &.#{vi.$prefix}is-selected {
+        z-index: 3;
+
+        &:hover {
+          z-index: 4;
+        }
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-centered {
+    justify-content: center;
+  }
+
+  &.#{vi.$prefix}is-right {
+    justify-content: flex-end;
   }
 }
