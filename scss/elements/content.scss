@@ -47,3 +47,12 @@ $content-table-foot-cell-color:                        #{vs.getVar("text-strong"
     "content-table-foot-cell-color": #{$content-table-foot-cell-color},
   ));
 }
+
+.#{vi.$prefix}content {
+  @extend %block;
+
+  // inline
+  li + li {
+    margin-top: 0.25em;
+  }
+}
