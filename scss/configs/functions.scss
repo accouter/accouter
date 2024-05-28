@@ -121,6 +121,27 @@
   @return $text-strong;
 }
 
+@function colorRgba($color, $alpha) {
+  @if type-of($color) != "color" {
+    @return $color;
+  }
+  @return rgba($color, $alpha);
+}
+
+@function colorDarken($color, $amount) {
+  @if type-of($color) != "color" {
+    @return $color;
+  }
+  @return darken($color, $amount);
+}
+
+@function colorLighten($color, $amount) {
+  @if type-of($color) != "color" {
+    @return $color;
+  }
+  @return lighten($color, $amount);
+}
+
 @function colorBrightness($name) {
   $color-brightness: round((red($name) * 299 + green($name) * 587 + blue($name) * 114) / 1000);
   $light-color: round((red(#fff) * 299 + green(#fff) * 587 + blue(#fff) * 114) / 1000);
