@@ -55,4 +55,62 @@ $content-table-foot-cell-color:                        #{vs.getVar("text-strong"
   li + li {
     margin-top: 0.25em;
   }
+
+  // block
+  p,
+  dl,
+  ol,
+  ul,
+  blockquote,
+  pre,
+  table {}
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {}
+
+  h1 {}
+
+  h2 {}
+
+  h3 {}
+
+  h4 {}
+
+  h5 {}
+
+  h6 {}
+
+  blockquote {}
+
+  ol {}
+
+  ul {}
+
+  dd {}
+
+  figure:not([class]) {}
+
+  pre {}
+
+  sup,
+  sub {
+
+  }
+
+  table {}
+
+  .#{vi.$prefix}tabs {}
+
+  // sizes
+  &.#{vi.$prefix}is-small {}
+
+  &.#{vi.$prefix}is-normal {}
+
+  &.#{vi.$prefix}is-medium {}
+
+  &.#{vi.$prefix}is-large {}
 }
