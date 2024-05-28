@@ -209,7 +209,50 @@ $content-table-foot-cell-color:                        #{vs.getVar("text-strong"
     font-size: 75%;
   }
 
-  table {}
+  table {
+    td,
+    th {
+      border:         vs.getVar("content-table-cell-border");
+      border-width:   vs.getVar("content-table-cell-border-width");
+      padding:        vs.getVar("content-table-cell-padding");
+      vertical-align: top;
+    }
+
+    th {
+      color: vs.getVar("content-table-cell-heading-color");
+
+      &:not([align]) {
+        text-align: inherit;
+      }
+    }
+
+    thead {
+      td,
+      th {
+        border-width: vs.getVar("content-table-head-cell-border-width");
+        color:        vs.getVar("content-table-head-cell-color");
+      }
+    }
+
+    tfoot {
+      td,
+      th {
+        border-width: vs.getVar("content-table-foot-cell-border-width");
+        color:        vs.getVar("content-table-foot-cell-color");
+      }
+    }
+
+    tbody {
+      tr {
+        &:last-child {
+          td,
+          th {
+            border-bottom-width: vs.getVar("content-table-body-last-row-cell-border-bottom-width");
+          }
+        }
+      }
+    }
+  }
 
   .#{vi.$prefix}tabs {
     li + li {
@@ -218,11 +261,19 @@ $content-table-foot-cell-color:                        #{vs.getVar("text-strong"
   }
 
   // sizes
-  &.#{vi.$prefix}is-small {}
+  &.#{vi.$prefix}is-small {
+    font-size: vs.getVar("size-small");
+  }
 
-  &.#{vi.$prefix}is-normal {}
+  &.#{vi.$prefix}is-normal {
+    font-size: vs.getVar("size-normal");
+  }
 
-  &.#{vi.$prefix}is-medium {}
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-medium");
+  }
 
-  &.#{vi.$prefix}is-large {}
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-large");
+  }
 }
