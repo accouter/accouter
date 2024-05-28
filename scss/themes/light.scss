@@ -57,6 +57,7 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
     "family-code": vd.$family-code,
     "size-small": vd.$size-small,
     "size-normal": vd.$size-normal,
+    "size-medium": vd.$size-medium,
     "size-large": vd.$size-large,
     "weight-light": vi.$weight-light,
     "weight-normal": vi.$weight-normal,
@@ -108,21 +109,21 @@ $scheme-main:   hsl(vi.$scheme-h, vi.$scheme-s, $scheme-main-l);
 
     @if list.index($no-palette, $name) {
       @include vs.generate-basic-palette($name, $base, $invert);
-    } @else{
+    } @else {
       @include vs.generate-color-palette($name, $base, $scheme-main-l, $invert, $light, $dark);
     }
 
     @include vs.generate-on-scheme-colors($name, $base, $scheme-main);
 
     // Shades
-    @each $name, $shade in vd.$shades{
+    @each $name, $shade in vd.$shades {
       @include vs.register-var($name, $shade);
     }
 
     @include vs.register-hsl("shadow", vd.$shadow-color);
 
-    @each $size in vd.$sizes{
-      $i: index(vd.$sizes, $size);
+    @each $size in vd.$sizes {
+      $i:    index(vd.$sizes, $size);
       $name: "size-#{$i}";
       @include vs.register-var($name, $size);
     }
