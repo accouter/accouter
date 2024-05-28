@@ -4,6 +4,46 @@
 @use "../configs/extends";
 @use "../configs/mixins" as mx;
 
-$content-heading-color:       #{vs.getVar("text-strong")} !default;
-$content-heading-weight:      #{vs.getVar("weight-extrabold")} !default;
-$content-heading-line-height: 1.125 !default;
+$content-heading-color:                                #{vs.getVar("text-strong")} !default;
+$content-heading-weight:                               #{vs.getVar("weight-extrabold")} !default;
+$content-heading-line-height:                          1.125 !default;
+
+$content-block-margin-bottom:                          1em !default;
+
+$content-blockquote-background-color:                  #{vs.getVar("background")} !default;
+$content-blockquote-border-left:                       5px solid #{vs.getVar("border")} !default;
+$content-blockquote-padding:                           1.25em 1.5em !default;
+
+$content-pre-padding:                                  1.25em 1.5em !default;
+
+$content-table-cell-border:                            1px solid #{vs.getVar("border")} !default;
+$content-table-cell-border-width:                      0 0 1px !default;
+$content-table-cell-padding:                           0.5em 0.75em !default;
+$content-table-cell-heading-color:                     #{vs.getVar("text-strong")} !default;
+$content-table-head-cell-border-width:                 0 0 2px !default;
+$content-table-head-cell-color:                        #{vs.getVar("text-strong")} !default;
+$content-table-body-last-row-cell-border-bottom-width: 0 !default;
+$content-table-foot-cell-border-width:                 2px 0 0 !default;
+$content-table-foot-cell-color:                        #{vs.getVar("text-strong")} !default;
+
+.#{vi.$prefix}content {
+  @include vs.register-vars((
+    "content-heading-color": #{$content-heading-color},
+    "content-heading-weight": #{$content-heading-weight},
+    "content-heading-line-height": #{$content-heading-line-height},
+    "content-block-margin-bottom": #{$content-block-margin-bottom},
+    "content-blockquote-background-color": #{$content-blockquote-background-color},
+    "content-blockquote-border-left": #{$content-blockquote-border-left},
+    "content-blockquote-padding": #{$content-blockquote-padding},
+    "content-pre-padding": #{$content-pre-padding},
+    "content-table-cell-border": #{$content-table-cell-border},
+    "content-table-cell-border-width": #{$content-table-cell-border-width},
+    "content-table-cell-padding": #{$content-table-cell-padding},
+    "content-table-cell-heading-color": #{$content-table-cell-heading-color},
+    "content-table-head-cell-border-width": #{$content-table-head-cell-border-width},
+    "content-table-head-cell-color": #{$content-table-head-cell-color},
+    "content-table-body-last-row-cell-border-bottom-width": #{$content-table-body-last-row-cell-border-bottom-width},
+    "content-table-foot-cell-border-width": #{$content-table-foot-cell-border-width},
+    "content-table-foot-cell-color": #{$content-table-foot-cell-color},
+  ));
+}
