@@ -491,3 +491,20 @@ $no-palette:                               ("white", "black", "light", "dark");
     justify-content: flex-end;
   }
 }
+
+@each $bp-name, $bp-sizes in $button-responsive-sizes {
+  @include mx.breakpoint($bp-name) {
+    @each $size, $value in $bp-sizes {
+      @if $size != "normal" {
+        .#{vi.$prefix}button.#{vi.$prefix}is-responsive.#{vi.$prefix}is-#{$size} {
+          font-size: $value;
+        }
+      } @else {
+        .#{vi.$prefix}button.#{vi.$prefix}is-responsive,
+        .#{vi.$prefix}button.#{vi.$prefix}is-responsive.#{vi.$prefix}is-normal{
+          font-size: $value;
+        }
+      }
+    }
+  }
+}
