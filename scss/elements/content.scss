@@ -196,16 +196,26 @@ $content-table-foot-cell-color:                        #{vs.getVar("text-strong"
     }
   }
 
-  pre {}
+  pre {
+    @include mx.overflow-touch;
+    overflow-x:  auto;
+    padding:     vs.getVar("content-pre-padding");
+    white-space: pre;
+    word-wrap:   normal;
+  }
 
   sup,
   sub {
-
+    font-size: 75%;
   }
 
   table {}
 
-  .#{vi.$prefix}tabs {}
+  .#{vi.$prefix}tabs {
+    li + li {
+      margin-top: 0;
+    }
+  }
 
   // sizes
   &.#{vi.$prefix}is-small {}
