@@ -453,6 +453,18 @@ $no-palette:                               ("white", "black", "light", "dark");
       &.#{vi.$prefix}is-hovered {
         z-index: 2;
       }
+
+      &:focus,
+      &.#{vi.$prefix}is-focused,
+      &:active,
+      &.#{vi.$prefix}is-active,
+      &.#{vi.$prefix}is-selected {
+        z-index: 3;
+
+        &:hover {
+          z-index: 4;
+        }
+      }
     }
   }
 
