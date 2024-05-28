@@ -428,11 +428,26 @@ $no-palette:                               ("white", "black", "light", "dark");
   justify-content: flex-start;
 
   // sizes
-  &.#{vi.$prefix}are-small {}
+  &.#{vi.$prefix}are-small {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-small")},
+      "control-radius": #{vs.getVar("radius-small")},
+    ));
+  }
 
-  &.#{vi.$prefix}are-medium {}
+  &.#{vi.$prefix}are-medium {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-medium")},
+      "control-radius": #{vs.getVar("radius-medium")},
+    ));
+  }
 
-  &.#{vi.$prefix}are-large {}
+  &.#{vi.$prefix}are-large {
+    @include vs.register-vars((
+      "control-size": #{vs.getVar("size-large")},
+      "control-radius": #{vs.getVar("radius-large")},
+    ));
+  }
 
   &.#{vi.$prefix}has-addons {
     gap: 0;
