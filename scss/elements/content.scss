@@ -128,7 +128,9 @@ $content-table-foot-cell-color:                        #{vs.getVar("text-strong"
     padding:          vs.getVar("content-blockquote-padding");
   }
 
-  ol {}
+  ol {
+    list-style-position: outside;
+  }
 
   ul {}
 
