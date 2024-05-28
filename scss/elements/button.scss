@@ -421,4 +421,9 @@ $no-palette:                               ("white", "black", "light", "dark");
 
 .#{vi.$prefix}buttons {
   @extend %block;
+  align-items:     center;
+  display:         flex;
+  flex-wrap:       wrap;
+  gap:             0.75rem;
+  justify-content: flex-start;
 }
