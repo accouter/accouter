@@ -1,0 +1,279 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$content-heading-color:                                #{vs.getVar("text-strong")} !default;
+$content-heading-weight:                               #{vs.getVar("weight-extrabold")} !default;
+$content-heading-line-height:                          1.125 !default;
+
+$content-block-margin-bottom:                          1em !default;
+
+$content-blockquote-background-color:                  #{vs.getVar("background")} !default;
+$content-blockquote-border-left:                       5px solid #{vs.getVar("border")} !default;
+$content-blockquote-padding:                           1.25em 1.5em !default;
+
+$content-pre-padding:                                  1.25em 1.5em !default;
+
+$content-table-cell-border:                            1px solid #{vs.getVar("border")} !default;
+$content-table-cell-border-width:                      0 0 1px !default;
+$content-table-cell-padding:                           0.5em 0.75em !default;
+$content-table-cell-heading-color:                     #{vs.getVar("text-strong")} !default;
+$content-table-head-cell-border-width:                 0 0 2px !default;
+$content-table-head-cell-color:                        #{vs.getVar("text-strong")} !default;
+$content-table-body-last-row-cell-border-bottom-width: 0 !default;
+$content-table-foot-cell-border-width:                 2px 0 0 !default;
+$content-table-foot-cell-color:                        #{vs.getVar("text-strong")} !default;
+
+.#{vi.$prefix}content {
+  @include vs.register-vars((
+    "content-heading-color": #{$content-heading-color},
+    "content-heading-weight": #{$content-heading-weight},
+    "content-heading-line-height": #{$content-heading-line-height},
+    "content-block-margin-bottom": #{$content-block-margin-bottom},
+    "content-blockquote-background-color": #{$content-blockquote-background-color},
+    "content-blockquote-border-left": #{$content-blockquote-border-left},
+    "content-blockquote-padding": #{$content-blockquote-padding},
+    "content-pre-padding": #{$content-pre-padding},
+    "content-table-cell-border": #{$content-table-cell-border},
+    "content-table-cell-border-width": #{$content-table-cell-border-width},
+    "content-table-cell-padding": #{$content-table-cell-padding},
+    "content-table-cell-heading-color": #{$content-table-cell-heading-color},
+    "content-table-head-cell-border-width": #{$content-table-head-cell-border-width},
+    "content-table-head-cell-color": #{$content-table-head-cell-color},
+    "content-table-body-last-row-cell-border-bottom-width": #{$content-table-body-last-row-cell-border-bottom-width},
+    "content-table-foot-cell-border-width": #{$content-table-foot-cell-border-width},
+    "content-table-foot-cell-color": #{$content-table-foot-cell-color},
+  ));
+}
+
+.#{vi.$prefix}content {
+  @extend %block;
+
+  // inline
+  li + li {
+    margin-top: 0.25em;
+  }
+
+  // block
+  p,
+  dl,
+  ol,
+  ul,
+  blockquote,
+  pre,
+  table {
+    &:not(:last-child) {
+      margin-bottom: vs.getVar("content-block-margin-bottom");
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color:       vs.getVar("content-heading-color");
+    font-weight: vs.getVar("content-heading-weight");
+    line-height: vs.getVar("content-heading-line-height");
+  }
+
+  h1 {
+    font-size:     2em;
+    margin-bottom: 0.5em;
+
+    &:not(:first-child) {
+      margin-top: 1em;
+    }
+  }
+
+  h2 {
+    font-size:     1.75em;
+    margin-bottom: 0.5714em;
+
+    &:not(:first-child) {
+      margin-top: 1.1429em;
+    }
+  }
+
+  h3 {
+    font-size:     1.5em;
+    margin-bottom: 0.6667em;
+
+    &:not(:first-child) {
+      margin-top: 1.3333em;
+    }
+  }
+
+  h4 {
+    font-size:     1.25em;
+    margin-bottom: 0.8em;
+  }
+
+  h5 {
+    font-size:     1.125em;
+    margin-bottom: 0.8888em;
+  }
+
+  h6 {
+    font-size:     1em;
+    margin-bottom: 1em;
+  }
+
+  blockquote {
+    background-color: vs.getVar("content-blockquote-background-color");
+    border-left:      vs.getVar("content-blockquote-border-left");
+    padding:          vs.getVar("content-blockquote-padding");
+  }
+
+  ol {
+    list-style-position: outside;
+    margin-inline-start: 2em;
+    margin-top:          1em;
+
+    &:not([type]) {
+      list-style-type: decimal;
+
+      &.#{vi.$prefix}is-lower-alpha {
+        list-style-type: lower-alpha;
+      }
+
+      &.#{vi.$prefix}is-lower-roman {
+        list-style-type: lower-roman;
+      }
+
+      &.#{vi.$prefix}is-upper-alpha {
+        list-style-type: upper-alpha;
+      }
+
+      &.#{vi.$prefix}is-upper-roman {
+        list-style-type: upper-roman;
+      }
+    }
+  }
+
+  ul {
+    list-style:          disc outside;
+    margin-inline-start: 2em;
+    margin-top:          1em;
+
+    ul {
+      list-style-type: circle;
+      margin-bottom:   0.25em;
+      margin-top:      0.25em;
+
+      ul {
+        list-style-type: square;
+      }
+    }
+  }
+
+  dd {
+    margin-inline-start: 2em;
+  }
+
+  figure:not([class]) {
+    margin-left:  2em;
+    margin-right: 2em;
+    text-align:   center;
+
+    &:not(:first-child) {
+      margin-top: 1em;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+
+    img {
+      display: inline-block;
+    }
+
+    figcaption {
+      font-style: italic;
+    }
+  }
+
+  pre {
+    @include mx.overflow-touch;
+    overflow-x:  auto;
+    padding:     vs.getVar("content-pre-padding");
+    white-space: pre;
+    word-wrap:   normal;
+  }
+
+  sup,
+  sub {
+    font-size: 75%;
+  }
+
+  table {
+    td,
+    th {
+      border:         vs.getVar("content-table-cell-border");
+      border-width:   vs.getVar("content-table-cell-border-width");
+      padding:        vs.getVar("content-table-cell-padding");
+      vertical-align: top;
+    }
+
+    th {
+      color: vs.getVar("content-table-cell-heading-color");
+
+      &:not([align]) {
+        text-align: inherit;
+      }
+    }
+
+    thead {
+      td,
+      th {
+        border-width: vs.getVar("content-table-head-cell-border-width");
+        color:        vs.getVar("content-table-head-cell-color");
+      }
+    }
+
+    tfoot {
+      td,
+      th {
+        border-width: vs.getVar("content-table-foot-cell-border-width");
+        color:        vs.getVar("content-table-foot-cell-color");
+      }
+    }
+
+    tbody {
+      tr {
+        &:last-child {
+          td,
+          th {
+            border-bottom-width: vs.getVar("content-table-body-last-row-cell-border-bottom-width");
+          }
+        }
+      }
+    }
+  }
+
+  .#{vi.$prefix}tabs {
+    li + li {
+      margin-top: 0;
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-normal {
+    font-size: vs.getVar("size-normal");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-medium");
+  }
+
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-large");
+  }
+}
