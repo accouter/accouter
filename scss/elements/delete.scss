@@ -1,0 +1,6 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/mixins" as mx;
+
+.#{vi.$prefix}delete {
+  @include mx.delete;
+}
