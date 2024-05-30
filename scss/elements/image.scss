@@ -1,0 +1,20 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/mixins" as mx;
+
+$dimensions: 16 24 32 48 64 96 128 256 512 !default;
+
+.#{vi.$prefix}image {
+  display:  block;
+  position: relative;
+
+  img {
+    display: block;
+    height:  auto;
+    width:   100%;
+
+    &.#{vi.$prefix}is-rounded {
+      border-radius: vs.getVar("radius-rounded");
+    }
+  }
+}
