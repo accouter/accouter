@@ -27,4 +27,21 @@ $icon-text-spacing:      0.25em !default;
   width:               vs.getVar("icon-dimensions");
   transition-duration: vs.getVar("duration");
   transition-property: color;
+
+  // sizes
+
+  &.#{vi.$prefix}is-small {
+    height: vs.getVar("icon-dimensions-small");
+    width:  vs.getVar("icon-dimensions-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    height: vs.getVar("icon-dimensions-medium");
+    width:  vs.getVar("icon-dimensions-medium");
+  }
+
+  &.#{vi.$prefix}is-large {
+    height: vs.getVar("icon-dimensions-large");
+    width:  vs.getVar("icon-dimensions-large");
+  }
 }
