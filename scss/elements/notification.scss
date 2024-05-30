@@ -7,7 +7,8 @@
 $notification-code-background-color: vs.getVar("scheme-main") !default;
 $notification-radius:                vs.getVar("radius") !default;
 $notification-padding:               1.375em 1.5em !default;
-$notification-color:                 vd.$colors !default;
+
+$notification-colors:                vd.$colors !default;
 
 .#{vi.$prefix}notification {
   @include vs.register-vars((
@@ -50,7 +51,54 @@ $notification-color:                 vd.$colors !default;
 
   & > .#{vi.$prefix}delete {
     position:         absolute;
-    inset-inline-end: 1rem;
     top:              1rem;
+    inset-inline-end: 1rem;
+  }
+
+  .#{vi.$prefix}title,
+  .#{vi.$prefix}subtitle,
+  .#{vi.$prefix}content {
+    color: currentColor;
+  }
+
+  // colors
+
+  @each $name, $pair in $notification-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "notification-h": #{vs.getVar($name, "", "-h")},
+        "notification-s": #{vs.getVar($name, "", "-s")},
+        "notification-background-l": #{vs.getVar($name, "", "-l")},
+        "notification-color-l": #{vs.getVar($name, "", "-invert-l")}
+      ));
+
+      &.#{vi.$prefix}is-light {
+        @include vs.register-vars((
+          "notification-background-l" : 90%,
+          "notification-color-l": #{vs.getVar($name, "", "-light-invert-l")}
+        ));
+      }
+
+      &.#{vi.$prefix}is-dark {
+        @include vs.register-vars((
+          "notification-background-l": 20%,
+          "notification-color-l": #{vs.getVar($name, "", "-dark-invert-l")}
+        ));
+      }
+    }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
