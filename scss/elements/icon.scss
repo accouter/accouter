@@ -45,3 +45,22 @@ $icon-text-spacing:      0.25em !default;
     width:  vs.getVar("icon-dimensions-large");
   }
 }
+
+.#{vi.$prefix}icon-text {
+  display:        inline-flex;
+  flex-wrap:      wrap;
+  align-items:    flex-start;
+  vertical-align: top;
+  line-height:    vs.getVar("icon-dimensions");
+  gap:            vs.getVar("icon-text-spacing");
+  color:          inherit;
+
+  .#{vi.$prefix}icon {
+    flex-grow:   0;
+    flex-shrink: 0;
+  }
+}
+
+div.#{vi.$prefix}icon-text {
+  display: flex;
+}
