@@ -1,0 +1,62 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/mixins" as mx;
+
+$dimensions: 16 24 32 48 64 96 128 256 512 !default;
+
+.#{vi.$prefix}image {
+  display:  block;
+  position: relative;
+
+  img {
+    display: block;
+    height:  auto;
+    width:   100%;
+
+    &.#{vi.$prefix}is-rounded {
+      border-radius: vs.getVar("radius-rounded");
+    }
+  }
+
+  &.#{vi.$prefix}is-fullwidth {
+    width: 100%;
+  }
+
+  // ratio
+  &.#{vi.$prefix}is-square {
+    img,
+    .#{vi.$prefix}has-ratio {
+      @include mx.overlay;
+      height: 100%;
+      width:  100%;
+    }
+  }
+
+  &.#{vi.$prefix}is-square {
+    aspect-ratio: 1;
+  }
+
+  @each $pair in vi.$aspect-ratios {
+    $w: nth($pair, 1);
+    $h: nth($pair, 2);
+
+    &.#{vi.$prefix}is-#{$w}by#{$h} {
+      aspect-ratio: #{$w} / #{$h};
+
+      img,
+      .#{vi.$prefix}has-ratio {
+        @include mx.overlay;
+        height: 100%;
+        width:  100%;
+      }
+    }
+  }
+
+  // sizes
+  @each $dimension in $dimensions {
+    &.#{vi.$prefix}is-#{$dimension}x#{$dimension} {
+      height: $dimension * 1px;
+      width:  $dimension * 1px;
+    }
+  }
+}
