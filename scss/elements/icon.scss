@@ -17,3 +17,14 @@ $icon-text-spacing:      0.25em !default;
     "icon-text-spacing": #{$icon-text-spacing},
   ));
 }
+
+.#{vi.$prefix}icon {
+  display:             inline-flex;
+  align-items:         center;
+  justify-content:     center;
+  flex-shrink:         0;
+  height:              vs.getVar("icon-dimensions");
+  width:               vs.getVar("icon-dimensions");
+  transition-duration: vs.getVar("duration");
+  transition-property: color;
+}
