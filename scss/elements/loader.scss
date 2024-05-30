@@ -1,0 +1,15 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-init" as vi;
+
+.#{vi.$prefix}loader {
+  display:  block;
+  position: relative;
+  width:    1em;
+  height:   1em;
+  content: "";
+  border: 2px solid vs.getVar("border");
+  border-radius: vs.getVar("radius-rounded");
+  border-right-color: transparent;
+  border-top-color: transparent;
+  animation: spinAround 500ms infinite linear;
+}
