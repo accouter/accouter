@@ -1,0 +1,19 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+
+$icon-dimensions:        1.5rem !default;
+$icon-dimensions-small:  1rem !default;
+$icon-dimensions-medium: 2rem !default;
+$icon-dimensions-large:  3rem !default;
+$icon-text-spacing:      0.25em !default;
+
+.#{vi.$prefix}icon,
+.#{vi.$prefix}icon-text {
+  @include vs.register-vars((
+    "icon-dimensions": #{$icon-dimensions},
+    "icon-dimensions-small": #{$icon-dimensions-small},
+    "icon-dimensions-medium": #{$icon-dimensions-medium},
+    "icon-dimensions-large": #{$icon-dimensions-large},
+    "icon-text-spacing": #{$icon-text-spacing},
+  ));
+}
