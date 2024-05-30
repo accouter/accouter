@@ -1,0 +1,66 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+
+$icon-dimensions:        1.5rem !default;
+$icon-dimensions-small:  1rem !default;
+$icon-dimensions-medium: 2rem !default;
+$icon-dimensions-large:  3rem !default;
+$icon-text-spacing:      0.25em !default;
+
+.#{vi.$prefix}icon,
+.#{vi.$prefix}icon-text {
+  @include vs.register-vars((
+    "icon-dimensions": #{$icon-dimensions},
+    "icon-dimensions-small": #{$icon-dimensions-small},
+    "icon-dimensions-medium": #{$icon-dimensions-medium},
+    "icon-dimensions-large": #{$icon-dimensions-large},
+    "icon-text-spacing": #{$icon-text-spacing},
+  ));
+}
+
+.#{vi.$prefix}icon {
+  display:             inline-flex;
+  align-items:         center;
+  justify-content:     center;
+  flex-shrink:         0;
+  height:              vs.getVar("icon-dimensions");
+  width:               vs.getVar("icon-dimensions");
+  transition-duration: vs.getVar("duration");
+  transition-property: color;
+
+  // sizes
+
+  &.#{vi.$prefix}is-small {
+    height: vs.getVar("icon-dimensions-small");
+    width:  vs.getVar("icon-dimensions-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    height: vs.getVar("icon-dimensions-medium");
+    width:  vs.getVar("icon-dimensions-medium");
+  }
+
+  &.#{vi.$prefix}is-large {
+    height: vs.getVar("icon-dimensions-large");
+    width:  vs.getVar("icon-dimensions-large");
+  }
+}
+
+.#{vi.$prefix}icon-text {
+  display:        inline-flex;
+  flex-wrap:      wrap;
+  align-items:    flex-start;
+  vertical-align: top;
+  line-height:    vs.getVar("icon-dimensions");
+  gap:            vs.getVar("icon-text-spacing");
+  color:          inherit;
+
+  .#{vi.$prefix}icon {
+    flex-grow:   0;
+    flex-shrink: 0;
+  }
+}
+
+div.#{vi.$prefix}icon-text {
+  display: flex;
+}
