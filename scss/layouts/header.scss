@@ -9,9 +9,9 @@
 $header-h:                  vs.getVar("scheme-h");
 $header-s:                  vs.getVar("scheme-s");
 $header-l:                  vs.getVar("scheme-main-l");
-$header-background-color:   vs.getVar("scheme-main-ter") !default;
+$header-background-color:   vs.getVar("scheme-main-bis") !default;
 $header-box-shadow-size:    0 0.125em 0 0 !default;
-$header-box-shadow-color:   vs.getVar("gray") !default;
+$header-box-shadow-color:   vs.getVar("gray-darkest") !default;
 $header-height:             vd.$header-min-height !default;
 $header-padding-vertical:   0 !default;
 $header-padding-horizontal: 0 !default;

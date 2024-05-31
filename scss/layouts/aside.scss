@@ -11,7 +11,7 @@ $sidebar-s:                  vs.getVar("scheme-s");
 $sidebar-l:                  vs.getVar("scheme-main-l");
 $sidebar-background-color:   vs.getVar("scheme-main-bis") !default;
 $sidebar-box-shadow-size:    0 0 0.125em 0 !default;
-$sidebar-box-shadow-color:   vs.getVar("gray-light") !default;
+$sidebar-box-shadow-color:   vs.getVar("gray-dark") !default;
 $sidebar-width:              vd.$sidebar-min-width !default;
 $sidebar-padding-vertical:   0 !default;
 $sidebar-padding-horizontal: 0 !default;
