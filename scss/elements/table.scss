@@ -75,15 +75,66 @@ $table-colors:                                  vd.$colors !default;
   tbody {}
 
   // modifiers
-  &.#{vi.$prefix}is-bordered {}
+  &.#{vi.$prefix}is-bordered {
+    td,
+    th {
+      border-width: 1px;
+    }
 
-  &.#{vi.$prefix}is-fullwidth {}
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 1px;
+        }
+      }
+    }
+  }
 
-  &.#{vi.$prefix}is-hoverable {}
+  &.#{vi.$prefix}is-fullwidth {
+    width: 100%;
+  }
 
-  &.#{vi.$prefix}is-narrow {}
+  &.#{vi.$prefix}is-hoverable {
+    tbody {
+      tr:not(.#{vi.$prefix}is-selected) {
+        &:hover {
+          background-color: vs.getVar("table-row-hover-background-color");
+        }
+      }
+    }
 
-  &.#{vi.$prefix}is-striped {}
+    &.#{vi.$prefix}is-striped {
+      tbody {
+        tr:not(.#{vi.$prefix}is-selected) {
+          &:hover {
+            background-color: vs.getVar("table-row-hover-background-color");
+
+            &:nth-child(even) {
+              background-color: vs.getVar("table-striped-row-even-hover-background-color");
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-narrow {
+    td,
+    th {
+      white-space: nowrap;
+    }
+  }
+
+  &.#{vi.$prefix}is-striped {
+    tbody {
+      tr:not(.#{vi.$prefix}is-selected) {
+        &:nth-child(even) {
+          background-color: vs.getVar("table-striped-row-even-background-color");
+        }
+      }
+    }
+  }
 }
 
 .#{vi.$prefix}table-container {
