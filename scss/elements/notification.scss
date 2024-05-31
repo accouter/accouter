@@ -1,0 +1,104 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$notification-code-background-color: vs.getVar("scheme-main") !default;
+$notification-radius:                vs.getVar("radius") !default;
+$notification-padding:               1.375em 1.5em !default;
+
+$notification-colors:                vd.$colors !default;
+
+.#{vi.$prefix}notification {
+  @include vs.register-vars((
+    "notification-h": #{vs.getVar("scheme-h")},
+    "notification-s": #{vs.getVar("scheme-s")},
+    "notification-background-l": #{vs.getVar("background-l")},
+    "notification-color-l": #{vs.getVar("text-strong-l")},
+    "notification-code-background-color": #{$notification-code-background-color},
+    "notification-radius": #{$notification-radius},
+    "notification-padding": #{$notification-padding}
+  ));
+}
+
+.#{vi.$prefix}notification {
+  @extend %block;
+
+  position:         relative;
+  background-color: hsl(vs.getVar("notification-h"), vs.getVar("notification-s"), vs.getVar("notification-background-l"));
+  color:            hsl(vs.getVar("notification-h"), vs.getVar("notification-s"), vs.getVar("notification-color-l"));
+  padding:          vs.getVar("notification-padding");
+  border-radius:    vs.getVar("notification-radius");
+
+  a:not(.#{vi.$prefix}button):not(.#{vi.$prefix}dropdown-item) {
+    color:           currentColor;
+    text-decoration: underline;
+  }
+
+  strong {
+    color: currentColor;
+  }
+
+  code,
+  pre {
+    background: vs.getVar("notification-code-background-color");
+  }
+
+  pre code {
+    background: transparent;
+  }
+
+  & > .#{vi.$prefix}delete {
+    position:         absolute;
+    top:              1rem;
+    inset-inline-end: 1rem;
+  }
+
+  .#{vi.$prefix}title,
+  .#{vi.$prefix}subtitle,
+  .#{vi.$prefix}content {
+    color: currentColor;
+  }
+
+  // colors
+
+  @each $name, $pair in $notification-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "notification-h": #{vs.getVar($name, "", "-h")},
+        "notification-s": #{vs.getVar($name, "", "-s")},
+        "notification-background-l": #{vs.getVar($name, "", "-l")},
+        "notification-color-l": #{vs.getVar($name, "", "-invert-l")}
+      ));
+
+      &.#{vi.$prefix}is-light {
+        @include vs.register-vars((
+          "notification-background-l" : 90%,
+          "notification-color-l": #{vs.getVar($name, "", "-light-invert-l")}
+        ));
+      }
+
+      &.#{vi.$prefix}is-dark {
+        @include vs.register-vars((
+          "notification-background-l": 20%,
+          "notification-color-l": #{vs.getVar($name, "", "-dark-invert-l")}
+        ));
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
