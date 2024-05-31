@@ -1,0 +1,226 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$table-color:                                   vs.getVar("text-strong") !default;
+$table-background-color:                        vs.getVar("scheme-main") !default;
+
+$table-cell-border-color:                       vs.getVar("border") !default;
+$table-cell-border-style:                       solid !default;
+$table-cell-border-width:                       0 0 1px !default;
+$table-cell-padding:                            0.5em 0.75em !default;
+$table-cell-heading-color:                      vs.getVar("text-strong") !default;
+$table-cell-text-align:                         left !default;
+
+$table-head-cell-border-width:                  0 0 2px !default;
+$table-head-cell-color:                         vs.getVar("text-strong") !default;
+$table-foot-cell-border-width:                  2px 0 0 !default;
+$table-foot-cell-color:                         vs.getVar("text-strong") !default;
+
+$table-head-background-color:                   transparent !default;
+$table-body-background-color:                   transparent !default;
+$table-foot-background-color:                   transparent !default;
+
+$table-row-hover-background-color:              vs.getVar("scheme-main-bis") !default;
+
+$table-row-active-background-color:             vs.getVar("primary") !default;
+$table-row-active-color:                        vs.getVar("primary-invert") !default;
+
+$table-striped-row-even-background-color:       vs.getVar("scheme-main-bis") !default;
+$table-striped-row-even-hover-background-color: vs.getVar("scheme-main-ter") !default;
+
+$table-colors:                                  vd.$colors !default;
+
+.#{vi.$prefix}table {
+  @include vs.register-vars((
+    "table-color": #{$table-color},
+    "table-background-color": #{$table-background-color},
+    "table-cell-border-color": #{$table-cell-border-color},
+    "table-cell-border-style": #{$table-cell-border-style},
+    "table-cell-border-width": #{$table-cell-border-width},
+    "table-cell-padding": #{$table-cell-padding},
+    "table-cell-heading-color": #{$table-cell-heading-color},
+    "table-cell-text-align": #{$table-cell-text-align},
+    "table-head-cell-border-width": #{$table-head-cell-border-width},
+    "table-head-cell-color": #{$table-head-cell-color},
+    "table-foot-cell-border-width": #{$table-foot-cell-border-width},
+    "table-foot-cell-color": #{$table-foot-cell-color},
+    "table-head-background-color": #{$table-head-background-color},
+    "table-body-background-color": #{$table-body-background-color},
+    "table-foot-background-color": #{$table-foot-background-color},
+    "table-row-hover-background-color": #{$table-row-hover-background-color},
+    "table-row-active-background-color": #{$table-row-active-background-color},
+    "table-row-active-color": #{$table-row-active-color},
+    "table-striped-row-even-background-color": #{$table-striped-row-even-background-color},
+    "table-striped-row-even-hover-background-color": #{$table-striped-row-even-hover-background-color},
+  ));
+}
+
+.#{vi.$prefix}table {
+  @extend %block;
+
+  td,
+  th {
+    background-color: vs.getVar("table-background-color");
+    border-color:     vs.getVar("table-cell-border-color");
+    border-style:     vs.getVar("table-cell-border-style");
+    border-width:     vs.getVar("table-cell-border-width");
+    color:            vs.getVar("table-color");
+    padding:          vs.getVar("table-cell-padding");
+    vertical-align:   top;
+
+    // colors
+    @each $name, $pair in $table-colors{
+      &.#{vi.$prefix}is-#{$name}{
+        @include vs.register-vars((
+          "table-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-heading-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-background-color": #{vs.getVar($name)},
+          "table-cell-border-color": #{vs.getVar($name)},
+        ));
+      }
+    }
+  }
+
+  th {
+    color: vs.getVar("table-cell-heading-color");
+
+    &:not([align]) {
+      text-align: vs.getVar("table-cell-text-align");
+    }
+  }
+
+  tr {
+    &.#{vi.$prefix}is-selected {
+      background-color: vs.getVar("table-row-active-background-color");
+      color:            vs.getVar("table-row-active-color");
+
+      a,
+      strong {
+        color: currentColor;
+      }
+
+      td,
+      th {
+        border-color: vs.getVar("table-cell-border-color");
+        color:        currentColor;
+      }
+    }
+
+    @each $name, $pair in $table-colors {
+      &.#{vi.$prefix}is-#{$name} {
+        @include vs.register-vars((
+          "table-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-heading-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-background-color": #{vs.getVar($name)},
+          "table-cell-border-color": #{vs.getVar($name)},
+        ));
+      }
+    }
+  }
+
+  thead {
+    background-color: vs.getVar("table-head-background-color");
+
+    td,
+    th {
+      border-width: vs.getVar("table-head-cell-border-width");
+      color:        vs.getVar("table-head-cell-color");
+    }
+  }
+
+  tfoot {
+    background-color: vs.getVar("table-foot-background-color");
+
+    td,
+    th {
+      border-width: vs.getVar("table-foot-cell-border-width");
+      color:        vs.getVar("table-foot-cell-color");
+    }
+  }
+
+  tbody {
+    background-color: vs.getVar("table-body-background-color");
+
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 0;
+        }
+      }
+    }
+  }
+
+  // modifiers
+  &.#{vi.$prefix}is-bordered {
+    td,
+    th {
+      border-width: 1px;
+    }
+
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 1px;
+        }
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-fullwidth {
+    width: 100%;
+  }
+
+  &.#{vi.$prefix}is-hoverable {
+    tbody {
+      tr:not(.#{vi.$prefix}is-selected) {
+        &:hover {
+          background-color: vs.getVar("table-row-hover-background-color");
+        }
+      }
+    }
+
+    &.#{vi.$prefix}is-striped {
+      tbody {
+        tr:not(.#{vi.$prefix}is-selected) {
+          &:hover {
+            background-color: vs.getVar("table-row-hover-background-color");
+
+            &:nth-child(even) {
+              background-color: vs.getVar("table-striped-row-even-hover-background-color");
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-narrow {
+    td,
+    th {
+      white-space: nowrap;
+    }
+  }
+
+  &.#{vi.$prefix}is-striped {
+    tbody {
+      tr:not(.#{vi.$prefix}is-selected) {
+        &:nth-child(even) {
+          background-color: vs.getVar("table-striped-row-even-background-color");
+        }
+      }
+    }
+  }
+}
+
+.#{vi.$prefix}table-container {
+  @extend %block;
+  @include mx.overflow-touch;
+  overflow:   auto;
+  overflow-y: hidden;
+  max-width:  100%;
+}
