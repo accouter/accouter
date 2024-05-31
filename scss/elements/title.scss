@@ -1,0 +1,46 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$title-color:            vs.getVar("text-strong") !default;
+$title-family:           false !default;
+$title-size:             vs.getVar("size-3") !default;
+$title-weight:           vs.getVar("weight-extrabold") !default;
+$title-line-height:      1.125 !default;
+$title-strong-color:     inherit !default;
+$title-strong-weight:    inherit !default;
+$title-sub-size:         0.75em !default;
+$title-sup-size:         0.75em !default;
+
+$subtitle-color:         vs.getVar("text") !default;
+$subtitle-family:        false !default;
+$subtitle-size:          vs.getVar("size-5") !default;
+$subtitle-weight:        vs.getVar("weight-normal") !default;
+$subtitle-line-height:   1.25 !default;
+$subtitle-strong-color:  vs.getVar("text-strong") !default;
+$subtitle-strong-weight: vs.getVar("weight-semibold") !default;
+
+.#{vi.$prefix}title,
+.#{vi.$prefix}subtitle {
+  @include vs.register-vars((
+    "title-color": #{$title-color},
+    "title-family": #{$title-family},
+    "title-size": #{$title-size},
+    "title-weight": #{$title-weight},
+    "title-line-height": #{$title-line-height},
+    "title-strong-color": #{$title-strong-color},
+    "title-strong-weight": #{$title-strong-weight},
+    "title-sub-size": #{$title-sub-size},
+    "title-sup-size": #{$title-sup-size},
+    "subtitle-color": #{$subtitle-color},
+    "subtitle-family": #{$subtitle-family},
+    "subtitle-size": #{$subtitle-size},
+    "subtitle-weight": #{$subtitle-weight},
+    "subtitle-line-height": #{$subtitle-line-height},
+    "subtitle-strong-color": #{$subtitle-strong-color},
+    "subtitle-strong-weight": #{$subtitle-strong-weight},
+  ));
+}
+
