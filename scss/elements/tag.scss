@@ -1,0 +1,202 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$tag-h:                         vs.getVar("scheme-h");
+$tag-s:                         vs.getVar("scheme-s");
+$tag-background-l:              vs.getVar("background-l");
+$tag-background-l-delta:        0%;
+
+$tag-hover-background-l-delta:  vs.getVar("hover-background-l-delta");
+$tag-active-background-l-delta: vs.getVar("active-background-l-delta");
+$tag-color-l:                   vs.getVar("text-l");
+$tag-radius:                    vs.getVar("radius") !default;
+$tag-delete-margin:             1px !default;
+
+$tag-colors:                    vd.$colors !default;
+
+.#{vi.$prefix}tags {
+  @extend %block;
+
+  display:         flex;
+  flex-wrap:       wrap;
+  align-items:     center;
+  justify-content: flex-start;
+  gap:             0.5rem;
+  color:           hsl(vs.getVar("tag-h"), vs.getVar("tag-s"), vs.getVar("tag-color-l"));
+
+  // sizes
+  &.#{vi.$prefix}are-medium {
+    .#{vi.$prefix}tag:not(.#{vi.$prefix}is-normal):not(.#{vi.$prefix}is-large) {
+      font-size: vs.getVar("size-normal");
+    }
+  }
+
+  &.#{vi.$prefix}are-large {
+    .#{vi.$prefix}tag:not(.#{vi.$prefix}is-normal):not(.#{vi.$prefix}is-medium) {
+      font-size: vs.getVar("size-medium");
+    }
+  }
+
+  &.#{vi.$prefix}has-addons {
+    gap: 0;
+
+    .#{vi.$prefix}tag {
+      &:not(:first-child) {
+        border-start-start-radius: 0;
+        border-end-start-radius:   0;
+      }
+
+      &:not(:last-child) {
+        border-end-end-radius:   0;
+        border-start-end-radius: 0;
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-centered {
+    gap:             0.25rem;
+    justify-content: center;
+  }
+
+  &.#{vi.$prefix}is-right {
+    justify-content: flex-end;
+  }
+}
+
+.#{vi.$prefix}tag {
+  @include vs.register-vars((
+    "tag-h": #{$tag-h},
+    "tag-s": #{$tag-s},
+    "tag-color-l": #{$tag-color-l},
+    "tag-background-l": #{$tag-background-l},
+    "tag-background-l-delta": #{$tag-background-l-delta},
+    "tag-hover-background-l-delta": #{$tag-hover-background-l-delta},
+    "tag-active-background-l-delta": #{$tag-active-background-l-delta},
+    "tag-radius": #{$tag-radius},
+    "tag-delete-margin": #{$tag-delete-margin},
+  ));
+
+  display:          inline-flex;
+  height:           2em;
+  align-items:      center;
+  justify-content:  center;
+  white-space:      nowrap;
+  padding-left:     0.75em;
+  padding-right:    0.75em;
+  font-size:        vs.getVar("size-small");
+  line-height:      1.5;
+  border-radius:    $tag-radius;
+  color:            hsl(vs.getVar("tag-h"), vs.getVar("tag-s"), vs.getVar("tag-color-l"));
+  background-color: hsl(vs.getVar("tag-h"), vs.getVar("tag-s"), calc(vs.getVar("tag-background-l") + vs.getVar("tag-background-l-delta")));
+
+  .#{vi.$prefix}delete {
+    margin-inline-start: 0.25rem;
+    margin-inline-end:   -0.375rem;
+  }
+
+  // colors
+  @each $name, $pair in $tag-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "tag-h": #{vs.getVar($name, "", "-h")},
+        "tag-s": #{vs.getVar($name, "", "-s")},
+        "tag-color-l": #{vs.getVar($name, "", "-invert-l")},
+        "tag-background-l": #{vs.getVar($name, "", "-l")},
+      ));
+
+      &.#{vi.$prefix}is-light {
+        @include vs.register-vars((
+          "tag-background-l": #{vs.getVar("light-l")},
+          "tag-color-l": #{vs.getVar($name, "", "-light-invert-l")}
+        ));
+      }
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-normal {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-normal");
+  }
+
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-medium");
+  }
+
+  &.#{vi.$prefix}icon {
+    &:first-child:not(:last-child) {
+      margin-inline-start: -0.375em;
+      margin-inline-end:   0.1875em;
+    }
+
+    &:last-child:not(:first-child) {
+      margin-inline-start: 0.1875em;
+      margin-inline-end:   -0.375em;
+    }
+
+    &:first-child:last-child {
+      margin-inline-start: -0.375em;
+      margin-inline-end:   -0.375em;
+    }
+  }
+
+  // modifiers
+
+  &.#{vi.$prefix}is-delete {
+    margin-inline-start: vs.getVar("tag-delete-margin");
+    position:            relative;
+    width:               2em;
+    padding:             0;
+
+    &::before,
+    &::after {
+      display:          block;
+      position:         absolute;
+      content:          "";
+      left:             50%;
+      top:              50%;
+      background-color: currentColor;
+      transform:        translateX(-50%) translateY(-50%) rotate(45deg);
+      transform-origin: center center;
+    }
+
+    &::before {
+      width:  1px;
+      height: 50%;
+    }
+
+    &::after {
+      width:  50%;
+      height: 1px;
+    }
+  }
+
+  &.#{vi.$prefix}is-rounded {
+    border-radius: vs.getVar("radius-rounded");
+  }
+}
+
+a.#{vi.$prefix}tag,
+button.#{vi.$prefix}tag,
+.#{vi.$prefix}tag.is-hoverable {
+  cursor: pointer;
+
+  &:hover {
+    @include vs.register-vars((
+      "tag-background-l-delta": vs.getVar("tag-hover-background-l-delta"),
+    ));
+
+  }
+
+  &:active {
+    @include vs.register-vars((
+      "tag-background-l-delta": vs.getVar("tag-active-background-l-delta"),
+    ));
+  }
+}
