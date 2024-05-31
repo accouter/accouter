@@ -44,3 +44,39 @@ $subtitle-strong-weight: vs.getVar("weight-semibold") !default;
   ));
 }
 
+.#{vi.$prefix}title,
+.#{vi.$prefix}subtitle {}
+
+.#{vi.$prefix}title,
+.#{vi.$prefix}subtitle {}
+
+.#{vi.$prefix}title {}
+
+.#{vi.$prefix}subtitle {
+  color:       vs.getVar("subtitle-color");
+  font-size:   vs.getVar("subtitle-size");
+  font-weight: vs.getVar("subtitle-weight");
+  line-height: vs.getVar("subtitle-line-height");
+
+  @if $subtitle-family {
+    font-family: vs.getVar("subtitle-family");
+  }
+
+  strong {
+    color:       vs.getVar("subtitle-strong-color");
+    font-weight: vs.getVar("subtitle-strong-weight");
+  }
+
+  &:not(.#{vi.$prefix}is-spaced):has(* .#{vi.$prefix}title) {
+    margin-bottom: 0;
+  }
+
+  // sizes
+  @each $size in vd.$sizes {
+    $i: index(vd.$sizes, $size);
+
+    &.#{vi.$prefix}is-#{$i} {
+      font-size: $size;
+    }
+  }
+}
