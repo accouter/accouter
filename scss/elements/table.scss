@@ -62,7 +62,27 @@ $table-colors:                                  vd.$colors !default;
   @extend %block;
 
   td,
-  th {}
+  th {
+    background-color: vs.getVar("table-background-color");
+    border-color:     vs.getVar("table-cell-border-color");
+    border-style:     vs.getVar("table-cell-border-style");
+    border-width:     vs.getVar("table-cell-border-width");
+    color:            vs.getVar("table-color");
+    padding:          vs.getVar("table-cell-padding");
+    vertical-align:   top;
+
+    // colors
+    @each $name, $pair in $table-colors{
+      &.#{vi.$prefix}is-#{$name}{
+        @include vs.register-vars((
+          "table-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-heading-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-background-color": #{vs.getVar($name)},
+          "table-cell-border-color": #{vs.getVar($name)},
+        ));
+      }
+    }
+  }
 
   th {
     color: vs.getVar("table-cell-heading-color");
