@@ -60,6 +60,30 @@ $table-colors:                                  vd.$colors !default;
 
 .#{vi.$prefix}table {
   @extend %block;
+
+  td,
+  th {}
+
+  th {}
+
+  tr {}
+
+  thead {}
+
+  tfoot {}
+
+  tbody {}
+
+  // modifiers
+  &.#{vi.$prefix}is-bordered {}
+
+  &.#{vi.$prefix}is-fullwidth {}
+
+  &.#{vi.$prefix}is-hoverable {}
+
+  &.#{vi.$prefix}is-narrow {}
+
+  &.#{vi.$prefix}is-striped {}
 }
 
 .#{vi.$prefix}table-container {
