@@ -2,9 +2,9 @@
 
 // Scheme Hue and Saturation
 
-$scheme-h:             122;
-$scheme-s:             80%;
-$dark-l:               20%;
+$scheme-h:             120;
+$scheme-s:             100%;
+$dark-l:               5%;
 $light-l:              90%;
 
 // Colors
@@ -35,6 +35,7 @@ $black:                hsl($scheme-h, $scheme-s, 4%) !default;
 $black-bis:            hsl($scheme-h, $scheme-s, 9%) !default;
 $black-ter:            hsl($scheme-h, $scheme-s, 14%) !default;
 
+$gray-darkest:         hsl($scheme-h, $scheme-s, 15%) !default;
 $gray-darker:          hsl($scheme-h, $scheme-s, 21%) !default;
 $gray-dark:            hsl($scheme-h, $scheme-s, 29%) !default;
 $gray:                 hsl($scheme-h, $scheme-s, 48%) !default;
