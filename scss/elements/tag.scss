@@ -147,6 +147,39 @@ $tag-colors:                    vd.$colors !default;
   }
 
   // modifiers
+
+  &.#{vi.$prefix}is-delete {
+    margin-inline-start: vs.getVar("tag-delete-margin");
+    position:            relative;
+    width:               2em;
+    padding:             0;
+
+    &::before,
+    &::after {
+      display:          block;
+      position:         absolute;
+      content:          "";
+      left:             50%;
+      top:              50%;
+      background-color: currentColor;
+      transform:        translateX(-50%) translateY(-50%) rotate(45deg);
+      transform-origin: center center;
+    }
+
+    &::before {
+      width:  1px;
+      height: 50%;
+    }
+
+    &::after {
+      width:  50%;
+      height: 1px;
+    }
+  }
+
+  &.#{vi.$prefix}is-rounded {
+    border-radius: vs.getVar("radius-rounded");
+  }
 }
 
 a.#{vi.$prefix}tag,
