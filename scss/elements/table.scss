@@ -64,7 +64,13 @@ $table-colors:                                  vd.$colors !default;
   td,
   th {}
 
-  th {}
+  th {
+    color: vs.getVar("table-cell-heading-color");
+
+    &:not([align]) {
+      text-align: vs.getVar("table-cell-text-align");
+    }
+  }
 
   tr {
     &.#{vi.$prefix}is-selected {
