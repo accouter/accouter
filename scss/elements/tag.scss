@@ -117,6 +117,34 @@ $tag-colors:                    vd.$colors !default;
   }
 
   // sizes
+  &.#{vi.$prefix}is-normal {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-normal");
+  }
+
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-medium");
+  }
+
+  &.#{vi.$prefix}icon {
+    &:first-child:not(:last-child) {
+      margin-inline-start: -0.375em;
+      margin-inline-end:   0.1875em;
+    }
+
+    &:last-child:not(:first-child) {
+      margin-inline-start: 0.1875em;
+      margin-inline-end:   -0.375em;
+    }
+
+    &:first-child:last-child {
+      margin-inline-start: -0.375em;
+      margin-inline-end:   -0.375em;
+    }
+  }
 
   // modifiers
 }
