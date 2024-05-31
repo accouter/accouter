@@ -1,0 +1,105 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$progress-border-radius:          vs.getVar("radius-rounded") !default;
+$progress-bar-background-color:   vs.getVar("border-weak") !default;
+$progress-value-background-color: vs.getVar("text") !default;
+$progress-indeterminate-duration: 1.5s !default;
+
+$progress-colors:                 vd.$colors !default;
+
+.#{vi.$prefix}progress {
+  @include vs.register-vars((
+    "progress-border-radius": #{$progress-border-radius},
+    "progress-bar-background-color": #{$progress-bar-background-color},
+    "progress-value-background-color": #{$progress-value-background-color},
+    "progress-indeterminate-duration": #{$progress-indeterminate-duration}
+  ));
+}
+
+.#{vi.$prefix}progress {
+  @extend %block;
+
+  appearance:    none;
+  display:       block;
+  width:         100%;
+  height:        vs.getVar("size-normal");
+  overflow:      hidden;
+  padding:       0;
+  border:        none;
+  border-radius: vs.getVar("progress-border-radius");
+
+  &::-webkit-progress-bar {
+    background-color: vs.getVar("progress-bar-background-color");
+  }
+
+  &::-webkit-progress-value,
+  &::-moz-progress-bar {
+    background-color: vs.getVar("progress-value-background-color");
+  }
+
+  &::-ms-fill {
+    background-color: vs.getVar("progress-value-background-color");
+    border:           none;
+  }
+
+  // colors
+  @each $name, $pair in $progress-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-var("progress-value-background-color", #{vs.getVar($name)});
+    }
+  }
+
+  &:indeterminate {
+    background-color:          vs.getVar("progress-bar-background-color");
+    background-image:          linear-gradient(to right, vs.getVar("progress-value-background-color") 30%, vs.getVar("progress-bar-background-color") 30%);
+    background-position:       top left;
+    background-repeat:         no-repeat;
+    background-size:           150% 150%;
+
+    animation-name:            moveIndeterminate;
+    animation-duration:        vs.getVar("progress-indeterminate-duration");
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    &::-webkit-progress-bar,
+    &::-moz-progress-bar {
+      background-color: transparent;
+    }
+
+    &::-ms-fill {
+      animation-name: none;
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    height: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    height: vs.getVar("size-medium");
+  }
+
+  &.#{vi.$prefix}is-large {
+    height: vs.getVar("size-large");
+  }
+}
+
+@keyframes moveIndeterminate {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+
+
+
+
+
