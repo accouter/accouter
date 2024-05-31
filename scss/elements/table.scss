@@ -66,11 +66,43 @@ $table-colors:                                  vd.$colors !default;
 
   th {}
 
-  tr {}
+  tr {
+    &.#{vi.$prefix}is-selected {
+      background-color: vs.getVar("table-row-active-background-color");
+      color:            vs.getVar("table-row-active-color");
 
-  thead {}
+      a,
+      strong {
+        color: currentColor;
+      }
 
-  tfoot {}
+      td,
+      th {
+        border-color: vs.getVar("table-cell-border-color");
+        color:        currentColor;
+      }
+    }
+  }
+
+  thead {
+    background-color: vs.getVar("table-head-background-color");
+
+    td,
+    th {
+      border-width: vs.getVar("table-head-cell-border-width");
+      color:        vs.getVar("table-head-cell-color");
+    }
+  }
+
+  tfoot {
+    background-color: vs.getVar("table-foot-background-color");
+
+    td,
+    th {
+      border-width: vs.getVar("table-foot-cell-border-width");
+      color:        vs.getVar("table-foot-cell-color");
+    }
+  }
 
   tbody {
     background-color: vs.getVar("table-body-background-color");
@@ -81,7 +113,6 @@ $table-colors:                                  vd.$colors !default;
         th {
           border-bottom-width: 0;
         }
-
       }
     }
   }
