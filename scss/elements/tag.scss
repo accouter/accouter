@@ -16,3 +16,36 @@ $tag-radius:                    vs.getVar("radius") !default;
 $tag-delete-margin:             1px !default;
 
 $tag-colors:                    vd.$colors !default;
+
+.#{vi.$prefix}tags {
+  @extend %block;
+
+  display:         flex;
+  flex-wrap:       wrap;
+  align-items:     center;
+  justify-content: flex-start;
+  gap:             0.5rem;
+  color:           hsl(vs.getVar("tag-h"), vs.getVar("tag-s"), vs.getVar("tag-color-l"));
+
+  // sizes
+  &.#{vi.$prefix}are-medium {
+    .#{vi.$prefix}tag:not(.#{vi.$prefix}is-normal):not(.#{vi.$prefix}is-large) {
+      font-size: vs.getVar("size-normal");
+    }
+  }
+
+  &.#{vi.$prefix}are-large {
+    .#{vi.$prefix}tag:not(.#{vi.$prefix}is-normal):not(.#{vi.$prefix}is-medium) {
+      font-size: vs.getVar("size-medium");
+    }
+  }
+
+  &.#{vi.$prefix}is-centered {
+    gap:             0.25rem;
+    justify-content: center;
+  }
+
+  &.#{vi.$prefix}is-right {
+    justify-content: flex-end;
+  }
+}
