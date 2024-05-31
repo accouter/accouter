@@ -33,3 +33,39 @@ $table-striped-row-even-hover-background-color: vs.getVar("scheme-main-ter") !de
 
 $table-colors:                                  vd.$colors !default;
 
+.#{vi.$prefix}table {
+  @include vs.register-vars((
+    "table-color": #{$table-color},
+    "table-background-color": #{$table-background-color},
+    "table-cell-border-color": #{$table-cell-border-color},
+    "table-cell-border-style": #{$table-cell-border-style},
+    "table-cell-border-width": #{$table-cell-border-width},
+    "table-cell-padding": #{$table-cell-padding},
+    "table-cell-heading-color": #{$table-cell-heading-color},
+    "table-cell-text-align": #{$table-cell-text-align},
+    "table-head-cell-border-width": #{$table-head-cell-border-width},
+    "table-head-cell-color": #{$table-head-cell-color},
+    "table-foot-cell-border-width": #{$table-foot-cell-border-width},
+    "table-foot-cell-color": #{$table-foot-cell-color},
+    "table-head-background-color": #{$table-head-background-color},
+    "table-body-background-color": #{$table-body-background-color},
+    "table-foot-background-color": #{$table-foot-background-color},
+    "table-row-hover-background-color": #{$table-row-hover-background-color},
+    "table-row-active-background-color": #{$table-row-active-background-color},
+    "table-row-active-color": #{$table-row-active-color},
+    "table-striped-row-even-background-color": #{$table-striped-row-even-background-color},
+    "table-striped-row-even-hover-background-color": #{$table-striped-row-even-hover-background-color},
+  ));
+}
+
+.#{vi.$prefix}table {
+  @extend %block;
+}
+
+.#{vi.$prefix}table-container {
+  @extend %block;
+  @include mx.overflow-touch;
+  overflow:   auto;
+  overflow-y: hidden;
+  max-width:  100%;
+}
