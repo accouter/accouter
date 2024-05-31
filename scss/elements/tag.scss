@@ -97,5 +97,45 @@ $tag-colors:                    vd.$colors !default;
     margin-inline-end:   -0.375rem;
   }
 
+  // colors
+  @each $name, $pair in $tag-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "tag-h": #{vs.getVar($name, "", "-h")},
+        "tag-s": #{vs.getVar($name, "", "-s")},
+        "tag-color-l": #{vs.getVar($name, "", "-invert-l")},
+        "tag-background-l": #{vs.getVar($name, "", "-l")},
+      ));
 
+      &.#{vi.$prefix}is-light {
+        @include vs.register-vars((
+          "tag-background-l": #{vs.getVar("light-l")},
+          "tag-color-l": #{vs.getVar($name, "", "-light-invert-l")}
+        ));
+      }
+    }
+  }
+
+  // sizes
+
+  // modifiers
+}
+
+a.#{vi.$prefix}tag,
+button.#{vi.$prefix}tag,
+.#{vi.$prefix}tag.is-hoverable {
+  cursor: pointer;
+
+  &:hover {
+    @include vs.register-vars((
+      "tag-background-l-delta": vs.getVar("tag-hover-background-l-delta"),
+    ));
+
+  }
+
+  &:active {
+    @include vs.register-vars((
+      "tag-background-l-delta": vs.getVar("tag-active-background-l-delta"),
+    ));
+  }
 }
