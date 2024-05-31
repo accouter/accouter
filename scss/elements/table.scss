@@ -82,6 +82,17 @@ $table-colors:                                  vd.$colors !default;
         color:        currentColor;
       }
     }
+
+    @each $name, $pair in $table-colors {
+      &.#{vi.$prefix}is-#{$name} {
+        @include vs.register-vars((
+          "table-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-heading-color": #{vs.getVar($name, "", "-invert")},
+          "table-cell-background-color": #{vs.getVar($name)},
+          "table-cell-border-color": #{vs.getVar($name)},
+        ));
+      }
+    }
   }
 
   thead {
