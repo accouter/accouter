@@ -45,12 +45,56 @@ $subtitle-strong-weight: vs.getVar("weight-semibold") !default;
 }
 
 .#{vi.$prefix}title,
-.#{vi.$prefix}subtitle {}
+.#{vi.$prefix}subtitle {
+  @extend %block;
+  word-break: break-word;
 
-.#{vi.$prefix}title,
-.#{vi.$prefix}subtitle {}
+  em,
+  span {
+    font-weight: inherit;
+  }
 
-.#{vi.$prefix}title {}
+  sub {
+    font-size: vs.getVar("title-sub-size");
+  }
+
+  sup {
+    font-size: vs.getVar("title-sup-size");
+  }
+
+  .#{vi.$prefix}tag {
+    vertical-align: middle;
+  }
+}
+
+.#{vi.$prefix}title {
+  color:       vs.getVar("title-color");
+  font-size:   vs.getVar("title-size");
+  font-weight: vs.getVar("title-weight");
+  line-height: vs.getVar("title-line-height");
+
+  @if $title-family {
+    font-family: vs.getVar("title-family");
+  }
+
+  strong {
+    color:       vs.getVar("title-strong-color");
+    font-weight: vs.getVar("title-strong-weight");
+  }
+
+  &:not(#{vi.$prefix}is-spaced):has(* .#{vi.$prefix}subtitle) {
+    margin-bottom: 0;
+  }
+
+  // sizes
+  @each $size in vd.$sizes {
+    $i: index(vd.$sizes, $size);
+
+    &.#{vi.$prefix}is-#{$i} {
+      font-size: $size;
+    }
+  }
+}
 
 .#{vi.$prefix}subtitle {
   color:       vs.getVar("subtitle-color");
