@@ -72,7 +72,19 @@ $table-colors:                                  vd.$colors !default;
 
   tfoot {}
 
-  tbody {}
+  tbody {
+    background-color: vs.getVar("table-body-background-color");
+
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 0;
+        }
+
+      }
+    }
+  }
 
   // modifiers
   &.#{vi.$prefix}is-bordered {
