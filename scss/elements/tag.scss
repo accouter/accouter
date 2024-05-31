@@ -1,0 +1,18 @@
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$tag-h:                         vs.getVar("scheme-h");
+$tag-s:                         vs.getVar("scheme-s");
+$tag-background-l:              vs.getVar("background-l");
+$tag-background-l-delta:        0%;
+
+$tag-hover-background-l-delta:  vs.getVar("hover-background-l-delta");
+$tag-active-background-l-delta: vs.getVar("active-background-l-delta");
+$tag-color-l:                   vs.getVar("text-l");
+$tag-radius:                    vs.getVar("radius") !default;
+$tag-delete-margin:             1px !default;
+
+$tag-colors:                    vd.$colors !default;
