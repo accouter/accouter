@@ -75,4 +75,32 @@ $textarea-colors:     vd.$colors !default;
 
 .#{vi.$prefix}input {}
 
-.#{vi.$prefix}textarea {}
+.#{vi.$prefix}textarea {
+  @extend %input-textarea;
+
+  @include vs.register-vars((
+    "textarea-padding": #{$textarea-padding},
+    "textarea-max-height": #{$textarea-max-height},
+    "textarea-min-height": #{$textarea-min-height}
+  ));
+
+  display:   block;
+  max-width: 100%;
+  min-width: 100%;
+  resize:    vertical;
+  padding:   vs.getVar("textarea-padding");
+
+  &:not([rows]) {
+    max-height: vs.getVar("textarea-max-height");
+    min-height: vs.getVar("textarea-min-height");
+  }
+
+  &[rows] {
+    height: inherit;
+  }
+
+  // modifiers
+  &.#{vi.$prefix}has-fixed-size {
+    resize: none;
+  }
+}
