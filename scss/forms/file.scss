@@ -1,0 +1,10 @@
+@use "shared";
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/controls";
+
+$file-radius: vs.getVar("radius") !default;
+
+$file-h:      vs.getVar("scheme-h");
+$file-s:      vs.getVar("scheme-s");
