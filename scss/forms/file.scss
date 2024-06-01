@@ -257,7 +257,16 @@ $file-colors:                    shared.$form-colors !default;
 }
 
 .#{vi.$prefix}file-cta,
-.#{vi.$prefix}file-name {}
+.#{vi.$prefix}file-name {
+  @extend %control;
+
+  border-color:  hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-border-l")} + #{vs.getVar("file-border-l-delta")}));
+  border-radius: vs.getVar("file-radius");
+  white-space:   nowrap;
+  font-size:     1em;
+  padding-left:  1em;
+  padding-right: 1em;
+}
 
 .#{vi.$prefix}file-cta {}
 
