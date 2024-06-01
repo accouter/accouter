@@ -1,0 +1,15 @@
+@use "shared";
+@use "../configs/variables-init" as vi;
+
+%checkbox-radio {
+  display:     inline-block;
+  position:    relative;
+  cursor:      pointer;
+  line-height: 1.25;
+
+  input{
+    cursor: pointer;
+  }
+
+
+}
