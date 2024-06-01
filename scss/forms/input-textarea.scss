@@ -15,7 +15,7 @@ $textarea-colors:     vd.$colors !default;
 %input-textarea {
   @extend %input;
 
-  @include vs.regiser-vars((
+  @include vs.register-vars((
     "input-h": vs.getVar("scheme-h"),
     "input-s": vs.getVar("scheme-s"),
     "input-border-style": solid,
