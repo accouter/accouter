@@ -109,11 +109,68 @@ $file-colors:                    shared.$form-colors !default;
   }
 
   // modifiers
-  &.#{vi.$prefix}has-name {}
+  &.#{vi.$prefix}has-name {
+    &.#{vi.$prefix}file-cta {}
 
-  &.#{vi.$prefix}is-boxed {}
+    &.#{vi.$prefix}file-name {}
 
-  &.#{vi.$prefix}is-centered {}
+    &.#{vi.$prefix}is-empty {
+      .#{vi.$prefix}file-cta {}
+
+      .#{vi.$prefix}file-name {}
+    }
+  }
+
+  &.#{vi.$prefix}is-boxed {
+    .#{vi.$prefix}file-label {}
+
+    .#{vi.$prefix}file-cta {}
+
+    .#{vi.$prefix}file-name {}
+
+    .#{vi.$prefix}file-icon {
+      .#{vi.$prefix}fa {}
+    }
+
+    &.#{vi.$prefix}is-small {
+      .#{vi.$prefix}file-icon .#{vi.$prefix}fa {
+        font-size: 1rem;
+      }
+    }
+
+    &.#{vi.$prefix}is-medium {
+      .#{vi.$prefix}file-icon .#{vi.$prefix}fa {
+        font-size: 2rem;
+      }
+    }
+
+    &.#{vi.$prefix}is-large {
+      .#{vi.$prefix}file-icon .#{vi.$prefix}fa {
+        font-size: 2.5rem;
+      }
+    }
+
+    &.#{vi.$prefix}has-name {
+      .#{vi.$prefix}file-cta {
+        border-end-end-radius:     0;
+        border-end-start-radius:   0;
+        border-start-end-radius:   vs.getVar("file-radius");
+        border-start-start-radius: vs.getVar("file-radius");
+      }
+
+      .#{vi.$prefix}file-name {
+        border-end-end-radius:     vs.getVar("file-radius");
+        border-end-start-radius:   vs.getVar("file-radius");
+        border-start-end-radius:   0;
+        border-start-start-radius: 0;
+        border-width:              0 1px 1px;
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-centered {
+    justify-content: center;
+  }
 
   &.#{vi.$prefix}is-fullwidth {}
 
