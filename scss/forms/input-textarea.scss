@@ -1,0 +1,12 @@
+@use "shared";
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$textarea-padding: vs.getVar("control-padding-horizontal") !default;
+$textarea-max-height: 40em !default;
+$textarea-min-height: 8em !default;
+
+$textarea-colors: vd.$colors !default;
