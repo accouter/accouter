@@ -1,0 +1,13 @@
+@use "shared";
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$label-color:  vs.getVar("text-strong") !default;
+$label-weight: vs.getVar("weight-semibold") !default;
+
+$help-size:    vs.getVar("size-small") !default;
+
+$label-colors: shared.$form-colors !default;
+
