@@ -39,4 +39,42 @@ $select-colors: shared.$form-colors !default;
       padding-inline-start: 1em;
     }
   }
+
+  select {
+    @extend %input;
+
+    display:   block;
+    max-width: 100%;
+    font-size: 1em;
+    cursor:    pointer;
+    outline:   none;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &[disabled]:hover,
+    fieldset[disabled] &:hover {
+      border-color: shared.$input-disabled-border-color;
+    }
+
+    &:not([multiple]) {
+      padding-inline-end: 2.5em;
+    }
+
+    &[multiple] {
+      height:  auto;
+      padding: 0;
+
+      option {
+        padding: 0.5em 1em;
+      }
+    }
+  }
+
+  // colors
+
+  // sizes
+
+  // modifiers
 }
