@@ -1,0 +1,122 @@
+@use "shared";
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/controls";
+@use "../configs/mixins" as mx;
+
+$textarea-padding:    vs.getVar("control-padding-horizontal") !default;
+$textarea-max-height: 40em !default;
+$textarea-min-height: 8em !default;
+
+$textarea-colors:     vd.$colors !default;
+
+%input-textarea {
+  @extend %input;
+
+  @include vs.regiser-vars((
+    "input-h": vs.getVar("scheme-h"),
+    "input-s": vs.getVar("scheme-s"),
+    "input-border-style": solid,
+    "input-border-width": 1px,
+    "input-border-l": vs.getVar("border-l")
+  ));
+
+  box-shadow: shared.$input-shadow;
+  max-width:  100%;
+  width:      100%;
+
+  &[readonly] {
+    box-shadow: none;
+  }
+
+  // colors
+  @each $name, $pair in $textarea-colors {
+    $color: nth($pair, 1);
+
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "input-h": vs.getVar($name, "", "-h"),
+        "input-s": vs.getVar($name, "", "-s"),
+        "input-l": vs.getVar($name, "", "-l"),
+        "input-focus-h": vs.getVar($name, "", "-h"),
+        "input-focus-s": vs.getVar($name, "", "-s"),
+        "input-focus-l": vs.getVar($name, "", "-l"),
+        "input-border-l": vs.getVar($name, "", "-l")
+      ));
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    @include controls.control-small;
+  }
+
+  &.#{vi.$prefix}is-medium {
+    @include controls.control-medium;
+  }
+
+  &.#{vi.$prefix}is-large {
+    @include controls.control-large;
+  }
+
+  // modifiers
+  &.#{vi.$prefix}is-fullwidth {
+    display: block;
+    width:   100%;
+  }
+
+  &.#{vi.$prefix}is-inline {
+    display: inline;
+    width:   auto;
+  }
+}
+
+.#{vi.$prefix}input {
+  @extend %input-textarea;
+
+  &.#{vi.$prefix}is-static {
+    border-color:     transparent;
+    background-color: transparent;
+    box-shadow:       none;
+    padding-left:     0;
+    padding-right:    0;
+  }
+
+  &.#{vi.$prefix}is-rounded {
+    border-radius: vs.getVar("radius-rounded");
+    padding-left:  calc(#{controls.$control-padding-horizontal} + 0.375em);
+    padding-right: calc(#{controls.$control-padding-horizontal} + 0.375em);
+  }
+}
+
+.#{vi.$prefix}textarea {
+  @extend %input-textarea;
+
+  @include vs.register-vars((
+    "textarea-padding": #{$textarea-padding},
+    "textarea-max-height": #{$textarea-max-height},
+    "textarea-min-height": #{$textarea-min-height}
+  ));
+
+  display:   block;
+  max-width: 100%;
+  min-width: 100%;
+  resize:    vertical;
+  padding:   vs.getVar("textarea-padding");
+
+  &:not([rows]) {
+    max-height: vs.getVar("textarea-max-height");
+    min-height: vs.getVar("textarea-min-height");
+  }
+
+  &[rows] {
+    height: inherit;
+  }
+
+  // modifiers
+  &.#{vi.$prefix}has-fixed-size {
+    resize: none;
+  }
+}
