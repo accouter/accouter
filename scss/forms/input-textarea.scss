@@ -84,7 +84,11 @@ $textarea-colors:     vd.$colors !default;
     padding-right:    0;
   }
 
-  &.#{vi.$prefix}is-rounded {}
+  &.#{vi.$prefix}is-rounded {
+    border-radius: vs.getVar("radius-rounded");
+    padding-left:  calc(#{controls.$control-padding-horizontal} + 0.375em);
+    padding-right: calc(#{controls.$control-padding-horizontal} + 0.375em);
+  }
 }
 
 .#{vi.$prefix}textarea {
