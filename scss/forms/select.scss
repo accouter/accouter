@@ -88,6 +88,17 @@ $select-colors: shared.$form-colors !default;
   }
 
   // sizes
+  &.#{vi.$prefix}is-small {
+    @include controls.control-small;
+  }
+
+  &.#{vi.$prefix}is-medium {
+    @include controls.control-medium;
+  }
+
+  &.#{vi.$prefix}is-large {
+    @include controls.control-large;
+  }
 
   // modifiers
 }
