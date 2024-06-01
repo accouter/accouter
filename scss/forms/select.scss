@@ -117,12 +117,26 @@ $select-colors: shared.$form-colors !default;
   }
 
   &.#{vi.$prefix}is-loading {
-    &::after {}
+    &::after {
+      @extend %loader;
 
-    &.#{vi.$prefix}is-small:after {}
+      position:         absolute;
+      top:              0.625em;
+      margin-top:       0;
+      transform:        none;
+      inset-inline-end: 0.625em;
+    }
 
-    &.#{vi.$prefix}is-medium:after {}
+    &.#{vi.$prefix}is-small:after {
+      font-size: vs.getVar("size-small");
+    }
 
-    &.#{vi.$prefix}is-large:after {}
+    &.#{vi.$prefix}is-medium:after {
+      font-size: vs.getVar("size-medium");
+    }
+
+    &.#{vi.$prefix}is-large:after {
+      font-size: vs.getVar("size-large");
+    }
   }
 }
