@@ -3,6 +3,7 @@
 @use "../configs/variables-init" as vi;
 @use "../configs/variables-scss" as vs;
 @use "../configs/extends";
+@use "../configs/controls";
 @use "../configs/mixins" as mx;
 
 $textarea-padding:    vs.getVar("control-padding-horizontal") !default;
@@ -48,11 +49,17 @@ $textarea-colors:     vd.$colors !default;
   }
 
   // sizes
-  &.#{vi.$prefix}is-small {}
+  &.#{vi.$prefix}is-small {
+    @include controls.control-small;
+  }
 
-  &.#{vi.$prefix}is-medium {}
+  &.#{vi.$prefix}is-medium {
+    @include controls.control-medium;
+  }
 
-  &.#{vi.$prefix}is-large {}
+  &.#{vi.$prefix}is-large {
+    @include controls.control-large;
+  }
 
   // modifiers
   &.#{vi.$prefix}is-fullwidth {
