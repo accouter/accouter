@@ -221,7 +221,30 @@ $file-colors:                    shared.$form-colors !default;
   }
 }
 
-.#{vi.$prefix}file-label {}
+.#{vi.$prefix}file-label {
+  display:         flex;
+  position:        relative;
+  align-items:     stretch;
+  justify-content: flex-start;
+  overflow:        hidden;
+  cursor:          pointer;
+
+  &:hover {
+    @include vs.register-vars((
+      "file-background-l-delta": #{vs.getVar("file-hover-background-l-delta")},
+      "file-border-l-delta": #{vs.getVar("file-hover-border-l-delta")},
+      "file-color-l-delta": #{vs.getVar("file-hover-color-l-delta")},
+    ));
+  }
+
+  &:active {
+    @include vs.register-vars((
+      "file-background-l-delta": #{vs.getVar("file-active-background-l-delta")},
+      "file-border-l-delta": #{vs.getVar("file-active-border-l-delta")},
+      "file-color-l-delta": #{vs.getVar("file-active-color-l-delta")},
+    ));
+  }
+}
 
 .#{vi.$prefix}file-input {}
 
