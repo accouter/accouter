@@ -132,14 +132,27 @@ $file-colors:                    shared.$form-colors !default;
   }
 
   &.#{vi.$prefix}is-boxed {
-    .#{vi.$prefix}file-label {}
+    .#{vi.$prefix}file-label {
+      flex-direction: column;
+    }
 
-    .#{vi.$prefix}file-cta {}
+    .#{vi.$prefix}file-cta {
+      flex-direction: column;
+      height:         auto;
+      padding:        1em 3em;
+    }
 
-    .#{vi.$prefix}file-name {}
+    .#{vi.$prefix}file-name {
+      border-width: 0 1px 1px;
+    }
 
     .#{vi.$prefix}file-icon {
-      .#{vi.$prefix}fa {}
+      height: 1.5em;
+      width:  1.5em;
+
+      .#{vi.$prefix}fa {
+        font-size: 1.5rem;
+      }
     }
 
     &.#{vi.$prefix}is-small {
