@@ -89,9 +89,23 @@ $file-colors:                    shared.$form-colors !default;
   }
 
   &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-medium");
+
+    .#{vi.$prefix}file-icon {
+      .#{vi.$prefix}fa {
+        font-size: 1.5rem;
+      }
+    }
   }
 
   &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-large");
+
+    .#{vi.$prefix}file-icon {
+      .#{vi.$prefix}fa {
+        font-size: 2rem;
+      }
+    }
   }
 
   // modifiers
