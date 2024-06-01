@@ -35,7 +35,17 @@ $label-colors: shared.$form-colors !default;
   }
 }
 
-.#{vi.$prefix}help {}
+.#{vi.$prefix}help {
+  display:    block;
+  margin-top: 0.25rem;
+  font-size:  $help-size;
+
+  @each $name, $pair in $label-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      color: hsl(#{vs.getVar($name, "", "-h")}, #{vs.getVar($name, "", "-s")}, #{vs.getVar($name, "", "-on-scheme-l")});
+    }
+  }
+}
 
 // containers
 
