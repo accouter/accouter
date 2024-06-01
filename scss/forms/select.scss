@@ -101,4 +101,28 @@ $select-colors: shared.$form-colors !default;
   }
 
   // modifiers
+  &.#{vi.$prefix}is-disabled {
+    &::after {
+      border-color: shared.$input-disabled-color !important;
+      opacity:      0.5;
+    }
+  }
+
+  &.#{vi.$prefix}is-fullwidth {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &.#{vi.$prefix}is-loading {
+    &::after {}
+
+    &.#{vi.$prefix}is-small:after {}
+
+    &.#{vi.$prefix}is-medium:after {}
+
+    &.#{vi.$prefix}is-large:after {}
+  }
 }
