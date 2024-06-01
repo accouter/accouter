@@ -32,3 +32,89 @@ $file-name-border-width:         1px 1px 1px 0 !default;
 $file-name-max-width:            16em !default;
 
 $file-colors:                    shared.$form-colors !default;
+
+.#{vi.$prefix}file {
+  @extend %block;
+  @extend %unselectable;
+
+  @include vs.register-vars((
+    "file-radius": #{$file-radius},
+    "file-name-border-color": #{$file-name-border-color},
+    "file-name-border-style": #{$file-name-border-style},
+    "file-name-border-width": #{$file-name-border-width},
+    "file-name-max-width": #{$file-name-max-width},
+    "file-h": #{$file-h},
+    "file-s": #{$file-s},
+    "file-background-l": #{$file-background-l},
+    "file-background-l-delta": #{$file-background-l-delta},
+    "file-hover-background-l-delta": #{$file-hover-background-l-delta},
+    "file-active-background-l-delta": #{$file-active-background-l-delta},
+    "file-border-l": #{$file-border-l},
+    "file-border-l-delta": #{$file-border-l-delta},
+    "file-hover-border-l-delta": #{$file-hover-border-l-delta},
+    "file-active-border-l-delta": #{$file-active-border-l-delta},
+    "file-cta-color-l": #{$file-cta-color-l},
+    "file-name-color-l": #{$file-name-color-l},
+    "file-color-l-delta": #{$file-color-l-delta},
+    "file-hover-color-l-delta": #{$file-hover-color-l-delta},
+    "file-active-color-l-delta": #{$file-active-color-l-delta},
+  ));
+
+  display:         flex;
+  position:        relative;
+  justify-content: flex-start;
+  align-items:     stretch;
+
+  // colors
+  @each $name, $pair in $file-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "file-h": vs.getVar($name, "", "-h"),
+        "file-s": vs.getVar($name, "", "-s"),
+        "file-background-l": vs.getVar($name, "", "-l"),
+        "file-border-l": vs.getVar($name, "", "-l"),
+        "file-cta-color-l": vs.getVar($name, "", "-l"),
+        "file-name-color-l": vs.getVar($name, "", "-l"),
+      ));
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-normal {
+    font-size: vs.getVar("size-normal");
+  }
+
+  &.#{vi.$prefix}is-medium {
+  }
+
+  &.#{vi.$prefix}is-large {
+  }
+
+  // modifiers
+  &.#{vi.$prefix}has-name {}
+
+  &.#{vi.$prefix}is-boxed {}
+
+  &.#{vi.$prefix}is-centered {}
+
+  &.#{vi.$prefix}is-fullwidth {}
+
+  &.#{vi.$prefix}is-right {}
+}
+
+.#{vi.$prefix}file-label {}
+
+.#{vi.$prefix}file-input {}
+
+.#{vi.$prefix}file-cta,
+.#{vi.$prefix}file-name {}
+
+.#{vi.$prefix}file-cta {}
+
+.#{vi.$prefix}file-name {}
+
+.#{vi.$prefix}file-icon {}
