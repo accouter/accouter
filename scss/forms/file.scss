@@ -206,7 +206,19 @@ $file-colors:                    shared.$form-colors !default;
     }
   }
 
-  &.#{vi.$prefix}is-right {}
+  &.#{vi.$prefix}is-right {
+    justify-content: flex-end;
+
+    .#{vi.$prefix}file-cta {
+      border-radius: 0 vs.getVar("file-radius") vs.getVar("file-radius") 0;
+    }
+
+    .#{vi.$prefix}file-name {
+      border-radius: vs.getVar("file-radius") 0 0 vs.getVar("file-radius");
+      border-width:  1px 0 1px 1px;
+      order:         -1;
+    }
+  }
 }
 
 .#{vi.$prefix}file-label {}
