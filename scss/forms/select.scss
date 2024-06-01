@@ -6,3 +6,37 @@
 @use "../configs/extends";
 
 $select-colors: shared.$form-colors !default;
+
+.#{vi.$prefix}select {
+  @include vs.register-vars((
+    "input-h": #{vs.getVar("scheme-h")},
+    "input-s": #{vs.getVar("scheme-s")},
+    "input-border-style": solid,
+    "input-border-width": 1px,
+    "input-border-l": #{vs.getVar("border-l")},
+  ));
+
+  display:        inline-block;
+  position:       relative;
+  max-width:      100%;
+  vertical-align: top;
+
+  &:not(.#{vi.$prefix}is-multiple) {
+    height: shared.$input-height;
+  }
+
+  &:not(.#{vi.$prefix}is-multiple):not(.#{vi.$prefix}is-loading) {
+    &::after {
+      @extend %arrow;
+      inset-inline-end: 1.125em;
+      z-index:          4;
+    }
+  }
+
+  &.#{vi.$prefix}is-rounded {
+    select {
+      border-radius:        vs.getVar("radius-rounded");
+      padding-inline-start: 1em;
+    }
+  }
+}
