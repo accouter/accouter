@@ -1,0 +1,32 @@
+@use "shared";
+@use "../configs/variables-init" as vi;
+
+%checkbox-radio {
+  display:     inline-block;
+  position:    relative;
+  cursor:      pointer;
+  line-height: 1.25;
+
+  input {
+    cursor: pointer;
+  }
+
+  &[disabled],
+  fieldset[disabled] &,
+  input[disabled] {
+    cursor: not-allowed;
+    color:  shared.$input-disabled-color;
+  }
+}
+
+.#{vi.$prefix}checkbox {
+  @extend %checkbox-radio;
+}
+
+.#{vi.$prefix}radio {
+  @extend %checkbox-radio;
+
+  & + .#{vi.$prefix}radio {
+    margin-inline-start: 0.5em;
+  }
+}
