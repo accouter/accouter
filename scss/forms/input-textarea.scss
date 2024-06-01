@@ -73,7 +73,19 @@ $textarea-colors:     vd.$colors !default;
   }
 }
 
-.#{vi.$prefix}input {}
+.#{vi.$prefix}input {
+  @extend %input-textarea;
+
+  &.#{vi.$prefix}is-static {
+    border-color:     transparent;
+    background-color: transparent;
+    box-shadow:       none;
+    padding-left:     0;
+    padding-right:    0;
+  }
+
+  &.#{vi.$prefix}is-rounded {}
+}
 
 .#{vi.$prefix}textarea {
   @extend %input-textarea;
