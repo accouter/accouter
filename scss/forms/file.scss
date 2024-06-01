@@ -268,7 +268,10 @@ $file-colors:                    shared.$form-colors !default;
   padding-right: 1em;
 }
 
-.#{vi.$prefix}file-cta {}
+.#{vi.$prefix}file-cta {
+  background-color: hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-background-l")} + #{vs.getVar("file-background-l-delta")}));
+  color:            hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-cta-color-l")} + #{vs.getVar("file-color-l-delta")}));
+}
 
 .#{vi.$prefix}file-name {}
 
