@@ -273,6 +273,27 @@ $file-colors:                    shared.$form-colors !default;
   color:            hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-cta-color-l")} + #{vs.getVar("file-color-l-delta")}));
 }
 
-.#{vi.$prefix}file-name {}
+.#{vi.$prefix}file-name {
+  display:       block;
+  max-width:     vs.getVar("file-name-max-width");
+  overflow:      hidden;
+  text-align:    inherit;
+  text-overflow: ellipsis;
+  border-color:  hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-border-l")} + #{vs.getVar("file-color-l-delta")}));
+  border-style:  vs.getVar("file-name-border-style");
+  border-width:  vs.getVar("file-name-border-width");
+  color:         hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-name-color-l")} + #{vs.getVar("file-color-l-delta")}));
+}
 
-.#{vi.$prefix}file-icon {}
+.#{vi.$prefix}file-icon {
+  display:           flex;
+  align-items:       center;
+  justify-content:   center;
+  height:            1em;
+  width:             1em;
+  margin-inline-end: 0.5em;
+
+  .#{vi.$prefix}fa {
+    font-size: 1em;
+  }
+}
