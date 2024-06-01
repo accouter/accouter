@@ -11,3 +11,38 @@ $help-size:    vs.getVar("size-small") !default;
 
 $label-colors: shared.$form-colors !default;
 
+.#{vi.$prefix}label {
+  display:     block;
+  color:       $label-color;
+  font-size:   vs.getVar("size-normal");
+  font-weight: $label-weight;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-medium");
+  }
+
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-large");
+  }
+}
+
+.#{vi.$prefix}help {}
+
+// containers
+
+.#{vi.$prefix}field {}
+
+.#{vi.$prefix}field-label {}
+
+.#{vi.$prefix}field-body {}
+
+.#{vi.$prefix}control {}
