@@ -195,7 +195,16 @@ $file-colors:                    shared.$form-colors !default;
     justify-content: center;
   }
 
-  &.#{vi.$prefix}is-fullwidth {}
+  &.#{vi.$prefix}is-fullwidth {
+    .#{vi.$prefix}file-label {
+      width: 100%;
+    }
+
+    .#{vi.$prefix}file-name {
+      max-width: none;
+      flex-grow: 1;
+    }
+  }
 
   &.#{vi.$prefix}is-right {}
 }
