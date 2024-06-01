@@ -4,7 +4,31 @@
 @use "../configs/extends";
 @use "../configs/controls";
 
-$file-radius: vs.getVar("radius") !default;
+$file-radius:                    vs.getVar("radius") !default;
 
-$file-h:      vs.getVar("scheme-h");
-$file-s:      vs.getVar("scheme-s");
+$file-h:                         vs.getVar("scheme-h");
+$file-s:                         vs.getVar("scheme-s");
+$file-background-l:              vs.getVar("scheme-main-ter-l");
+$file-background-l-delta:        0%;
+$file-hover-background-l-delta:  -5%;
+$file-active-background-l-delta: -10%;
+$file-border-l:                  vs.getVar("border-l");
+$file-border-l-delta:            0%;
+$file-hover-border-l-delta:      -10%;
+$file-active-border-l-delta:     -20%;
+$file-cta-color-l:               vs.getVar("text-strong-l");
+$file-name-color-l:              vs.getVar("text-strong-l");
+$file-color-l-delta:             0%;
+$file-hover-color-l-delta:       -5%;
+$file-active-color-l-delta:      -10%;
+
+$file-cta-color:                 vs.getVar("text") !default;
+$file-cta-hover-color:           vs.getVar("text-strong") !default;
+$file-cta-active-color:          vs.getVar("text-strong") !default;
+
+$file-name-border-color:         vs.getVar("border") !default;
+$file-name-border-style:         solid !default;
+$file-name-border-width:         1px 1px 1px 0 !default;
+$file-name-max-width:            16em !default;
+
+$file-colors:                    shared.$form-colors !default;
