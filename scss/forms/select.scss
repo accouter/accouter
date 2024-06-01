@@ -73,6 +73,19 @@ $select-colors: shared.$form-colors !default;
   }
 
   // colors
+  @each $name, $pair in $select-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "input-h": #{vs.getVar($name, "", "-h")},
+        "input-s": #{vs.getVar($name, "", "-s")},
+        "input-l": #{vs.getVar($name, "", "-l")},
+        "input-focus-h": #{vs.getVar($name, "", "-h")},
+        "input-focus-s": #{vs.getVar($name, "", "-s")},
+        "input-focus-l": #{vs.getVar($name, "", "-l")},
+        "arrow-color": #{vs.getVar($name)},
+      ));
+    }
+  }
 
   // sizes
 
