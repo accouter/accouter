@@ -248,7 +248,7 @@ header,
                                 calc(#{vs.getVar("header-item-background-l")} + #{vs.getVar("header-item-background-l-delta")})
                             );
 
-          &.#{vi.$prefix}is-active
+          &.#{vi.$prefix}is-active,
           &.#{vi.$prefix}is-selected {
             @include vs.register-vars((
               "header-h": #{vs.getVar("header-item-selected-h")},
@@ -260,6 +260,36 @@ header,
           }
         }
       }
+    }
+  }
+
+  .#{vi.$prefix}header-burger {}
+
+  .#{vi.$prefix}header-item,
+  .#{vi.$prefix}header-link {}
+
+  .#{vi.$prefix}header-item {}
+
+  .#{vi.$prefix}header-menu {}
+
+  .#{vi.$prefix}header-start {}
+
+  .#{vi.$prefix}header-end {}
+
+  .#{vi.$prefix}header-dropdown {}
+
+  .#{vi.$prefix}header-divider {}
+
+  header > .#{vi.$prefix}container,
+  .#{vi.$prefix}header > .#{vi.$prefix}container,
+  .#{vi.$prefix}container > header,
+  .#{vi.$prefix}container > .#{vi.$prefix}header {
+    .#{vi.$prefix}header-brand {
+      margin-inline-start: -0.75em;
+    }
+
+    .#{vi.$prefix}header-menu {
+      margin-inline-end: -0.75em;
     }
   }
 }
