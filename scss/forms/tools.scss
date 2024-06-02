@@ -120,11 +120,20 @@ $label-colors: shared.$form-colors !default;
       }
     }
 
-    &.#{vi.$prefix}has-addons-centered {}
+    &.#{vi.$prefix}has-addons-centered {
+      justify-content: center;
+    }
 
-    &.#{vi.$prefix}has-addons-right {}
+    &.#{vi.$prefix}has-addons-right {
+      justify-content: flex-end;
+    }
 
-    &.#{vi.$prefix}has-addons-fullwidth {}
+    &.#{vi.$prefix}has-addons-fullwidth {
+      .#{vi.$prefix}control {
+        flex-grow:   1;
+        flex-shrink: 0;
+      }
+    }
   }
 
   &.#{vi.$prefix}is-grouped {}
