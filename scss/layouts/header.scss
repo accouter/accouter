@@ -272,9 +272,15 @@ header,
 
   .#{vi.$prefix}header-menu {}
 
-  .#{vi.$prefix}header-start {}
+  .#{vi.$prefix}header-start {
+    justify-content:   flex-start;
+    margin-inline-end: auto;
+  }
 
-  .#{vi.$prefix}header-end {}
+  .#{vi.$prefix}header-end {
+    justify-content:     flex-end;
+    margin-inline-start: auto;
+  }
 
   .#{vi.$prefix}header-dropdown {}
 
