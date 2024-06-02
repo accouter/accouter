@@ -239,6 +239,27 @@ header,
       @include vs.register-vars((
         "header-item-background-a": 0,
       ));
+
+      .#{vi.$prefix}header-dropdown {
+        a.#{vi.$prefix}header-item {
+          background-color: hsl(
+                                #{vs.getVar("header-h")},
+                                #{vs.getVar("header-s")},
+                                calc(#{vs.getVar("header-item-background-l")} + #{vs.getVar("header-item-background-l-delta")})
+                            );
+
+          &.#{vi.$prefix}is-active
+          &.#{vi.$prefix}is-selected {
+            @include vs.register-vars((
+              "header-h": #{vs.getVar("header-item-selected-h")},
+              "header-s": #{vs.getVar("header-item-selected-s")},
+              "header-l": #{vs.getVar("header-item-selected-l")},
+              "header-item-background-l": #{vs.getVar("header-item-selected-background-l")},
+              "header-item-color-l": #{vs.getVar("header-item-selected-color-l")},
+            ));
+          }
+        }
+      }
     }
   }
 }
