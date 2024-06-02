@@ -302,10 +302,46 @@ header,
   // fixed header
   header,
   .#{vi.$prefix}header {
+    &.#{vi.$prefix}is-fixed-bottom-desktop,
+    &.#{vi.$prefix}is-fixed-top-desktop {
+      @include navbar-fixed;
+    }
 
+    &.#{vi.$prefix}is-fixed-bottom-desktop {
+      bottom: 0;
+
+      &.#{vi.$prefix}has-shadow {
+        box-shadow: 0 -0.125em 0.1875em hsla(
+                        #{vs.getVar("scheme-h")},
+                        #{vs.getVar("scheme-s")},
+                        #{vs.getVar("scheme-invert-l")},
+                        0.1
+                    );
+      }
+    }
+
+    &.#{vi.$prefix}is-fixed-top-desktop {
+      top: 0;
+    }
   }
 
   html,
-  body {}
+  body {
+    &.#{vi.$prefix}has-header-fixed-top-desktop {
+      padding-top: vs.getVar("header-height");
+    }
+
+    &.#{vi.$prefix}has-header-fixed-bottom-desktop {
+      padding-bottom: vs.getVar("header-height");
+    }
+
+    &.#{vi.$prefix}has-header-spaced-fixed-top {
+      padding-top: calc(#{vs.getVar("header-height")} + #{vs.getVar("header-padding-vertical")} * 2);
+    }
+
+    &.#{vi.$prefix}has-header-spaced-fixed-bottom {
+      padding-bottom: calc(#{vs.getVar("header-height")} + #{vs.getVar("header-padding-vertical")} * 2);
+    }
+  }
 }
 
