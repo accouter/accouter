@@ -49,7 +49,67 @@ $label-colors: shared.$form-colors !default;
 
 // containers
 
-.#{vi.$prefix}field {}
+.#{vi.$prefix}field {
+  @include vs.register-vars((
+    "block-spacing": 0.75rem,
+  ));
+
+  @extend %block;
+
+  // modifiers
+  &.#{vi.$prefix}has-addons {
+    display:         flex;
+    justify-content: flex-start;
+
+    .#{vi.$prefix}control {
+      &:not(:last-child) {}
+
+      &:not(:first-child):not(:last-child) {}
+
+      &:first-child:not(:only-child) {}
+
+      &:last-child:not(:only-child) {}
+
+      .#{vi.$prefix}button,
+      .#{vi.$prefix}input,
+      .#{vi.$prefix}select select {
+        &:not([disabled]) {
+          &:hover,
+          &.#{vi.$prefix}is-hovered {
+            z-index: 2;
+          }
+
+          &:focus,
+          &.#{vi.$prefix}is-focused,
+          &:active,
+          &.#{vi.$prefix}is-active {
+            z-index: 3;
+
+            &:hover {
+              z-index: 4;
+
+            }
+          }
+        }
+      }
+
+      &.#{vi.$prefix}is-expanded {
+        flex-grow:   1;
+        flex-shrink: 0;
+      }
+    }
+
+    &.#{vi.$prefix}has-addons-centered {}
+
+    &.#{vi.$prefix}has-addons-right {}
+
+    &.#{vi.$prefix}has-addons-fullwidth {}
+  }
+
+  &.#{vi.$prefix}is-grouped {}
+
+  &.#{vi.$prefix}is-horizontal {}
+}
 
 .#{vi.$prefix}field-label {}
 
