@@ -163,7 +163,11 @@ $label-colors: shared.$form-colors !default;
     }
   }
 
-  &.#{vi.$prefix}is-horizontal {}
+  &.#{vi.$prefix}is-horizontal {
+    @include mx.tablet {
+      display: flex;
+    }
+  }
 }
 
 .#{vi.$prefix}field-label {}
