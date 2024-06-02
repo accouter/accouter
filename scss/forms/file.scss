@@ -1,0 +1,299 @@
+@use "shared";
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/controls";
+
+$file-radius:                    vs.getVar("radius") !default;
+
+$file-h:                         vs.getVar("scheme-h");
+$file-s:                         vs.getVar("scheme-s");
+$file-background-l:              vs.getVar("scheme-main-ter-l");
+$file-background-l-delta:        0%;
+$file-hover-background-l-delta:  -5%;
+$file-active-background-l-delta: -10%;
+$file-border-l:                  vs.getVar("border-l");
+$file-border-l-delta:            0%;
+$file-hover-border-l-delta:      -10%;
+$file-active-border-l-delta:     -20%;
+$file-cta-color-l:               vs.getVar("text-strong-l");
+$file-name-color-l:              vs.getVar("text-strong-l");
+$file-color-l-delta:             0%;
+$file-hover-color-l-delta:       -5%;
+$file-active-color-l-delta:      -10%;
+
+$file-cta-color:                 vs.getVar("text") !default;
+$file-cta-hover-color:           vs.getVar("text-strong") !default;
+$file-cta-active-color:          vs.getVar("text-strong") !default;
+
+$file-name-border-color:         vs.getVar("border") !default;
+$file-name-border-style:         solid !default;
+$file-name-border-width:         1px 1px 1px 0 !default;
+$file-name-max-width:            16em !default;
+
+$file-colors:                    shared.$form-colors !default;
+
+.#{vi.$prefix}file {
+  @extend %block;
+  @extend %unselectable;
+
+  @include vs.register-vars((
+    "file-radius": #{$file-radius},
+    "file-name-border-color": #{$file-name-border-color},
+    "file-name-border-style": #{$file-name-border-style},
+    "file-name-border-width": #{$file-name-border-width},
+    "file-name-max-width": #{$file-name-max-width},
+    "file-h": #{$file-h},
+    "file-s": #{$file-s},
+    "file-background-l": #{$file-background-l},
+    "file-background-l-delta": #{$file-background-l-delta},
+    "file-hover-background-l-delta": #{$file-hover-background-l-delta},
+    "file-active-background-l-delta": #{$file-active-background-l-delta},
+    "file-border-l": #{$file-border-l},
+    "file-border-l-delta": #{$file-border-l-delta},
+    "file-hover-border-l-delta": #{$file-hover-border-l-delta},
+    "file-active-border-l-delta": #{$file-active-border-l-delta},
+    "file-cta-color-l": #{$file-cta-color-l},
+    "file-name-color-l": #{$file-name-color-l},
+    "file-color-l-delta": #{$file-color-l-delta},
+    "file-hover-color-l-delta": #{$file-hover-color-l-delta},
+    "file-active-color-l-delta": #{$file-active-color-l-delta},
+  ));
+
+  display:         flex;
+  position:        relative;
+  justify-content: flex-start;
+  align-items:     stretch;
+
+  // colors
+  @each $name, $pair in $file-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "file-h": vs.getVar($name, "", "-h"),
+        "file-s": vs.getVar($name, "", "-s"),
+        "file-background-l": vs.getVar($name, "", "-l"),
+        "file-border-l": vs.getVar($name, "", "-l"),
+        "file-cta-color-l": vs.getVar($name, "", "-l"),
+        "file-name-color-l": vs.getVar($name, "", "-l"),
+      ));
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-normal {
+    font-size: vs.getVar("size-normal");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-medium");
+
+    .#{vi.$prefix}file-icon {
+      .#{vi.$prefix}fa {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-large");
+
+    .#{vi.$prefix}file-icon {
+      .#{vi.$prefix}fa {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // modifiers
+  &.#{vi.$prefix}has-name {
+    &.#{vi.$prefix}file-cta {
+      border-end-end-radius:   0;
+      border-start-end-radius: 0;
+    }
+
+    &.#{vi.$prefix}file-name {
+      border-end-start-radius:   0;
+      border-start-start-radius: 0;
+    }
+
+    &.#{vi.$prefix}is-empty {
+      .#{vi.$prefix}file-cta {
+        border-radius: vs.getVar("file-radius");
+      }
+
+      .#{vi.$prefix}file-name {
+        display: none;
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-boxed {
+    .#{vi.$prefix}file-label {
+      flex-direction: column;
+    }
+
+    .#{vi.$prefix}file-cta {
+      flex-direction: column;
+      height:         auto;
+      padding:        1em 3em;
+    }
+
+    .#{vi.$prefix}file-name {
+      border-width: 0 1px 1px;
+    }
+
+    .#{vi.$prefix}file-icon {
+      height: 1.5em;
+      width:  1.5em;
+
+      .#{vi.$prefix}fa {
+        font-size: 1.5rem;
+      }
+    }
+
+    &.#{vi.$prefix}is-small {
+      .#{vi.$prefix}file-icon .#{vi.$prefix}fa {
+        font-size: 1rem;
+      }
+    }
+
+    &.#{vi.$prefix}is-medium {
+      .#{vi.$prefix}file-icon .#{vi.$prefix}fa {
+        font-size: 2rem;
+      }
+    }
+
+    &.#{vi.$prefix}is-large {
+      .#{vi.$prefix}file-icon .#{vi.$prefix}fa {
+        font-size: 2.5rem;
+      }
+    }
+
+    &.#{vi.$prefix}has-name {
+      .#{vi.$prefix}file-cta {
+        border-end-end-radius:     0;
+        border-end-start-radius:   0;
+        border-start-end-radius:   vs.getVar("file-radius");
+        border-start-start-radius: vs.getVar("file-radius");
+      }
+
+      .#{vi.$prefix}file-name {
+        border-end-end-radius:     vs.getVar("file-radius");
+        border-end-start-radius:   vs.getVar("file-radius");
+        border-start-end-radius:   0;
+        border-start-start-radius: 0;
+        border-width:              0 1px 1px;
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-centered {
+    justify-content: center;
+  }
+
+  &.#{vi.$prefix}is-fullwidth {
+    .#{vi.$prefix}file-label {
+      width: 100%;
+    }
+
+    .#{vi.$prefix}file-name {
+      max-width: none;
+      flex-grow: 1;
+    }
+  }
+
+  &.#{vi.$prefix}is-right {
+    justify-content: flex-end;
+
+    .#{vi.$prefix}file-cta {
+      border-radius: 0 vs.getVar("file-radius") vs.getVar("file-radius") 0;
+    }
+
+    .#{vi.$prefix}file-name {
+      border-radius: vs.getVar("file-radius") 0 0 vs.getVar("file-radius");
+      border-width:  1px 0 1px 1px;
+      order:         -1;
+    }
+  }
+}
+
+.#{vi.$prefix}file-label {
+  display:         flex;
+  position:        relative;
+  align-items:     stretch;
+  justify-content: flex-start;
+  overflow:        hidden;
+  cursor:          pointer;
+
+  &:hover {
+    @include vs.register-vars((
+      "file-background-l-delta": #{vs.getVar("file-hover-background-l-delta")},
+      "file-border-l-delta": #{vs.getVar("file-hover-border-l-delta")},
+      "file-color-l-delta": #{vs.getVar("file-hover-color-l-delta")},
+    ));
+  }
+
+  &:active {
+    @include vs.register-vars((
+      "file-background-l-delta": #{vs.getVar("file-active-background-l-delta")},
+      "file-border-l-delta": #{vs.getVar("file-active-border-l-delta")},
+      "file-color-l-delta": #{vs.getVar("file-active-color-l-delta")},
+    ));
+  }
+}
+
+.#{vi.$prefix}file-input {
+  position: absolute;
+  height:   100%;
+  width:    100%;
+  top:      0;
+  left:     0;
+  opacity:  0;
+  outline:  none;
+}
+
+.#{vi.$prefix}file-cta,
+.#{vi.$prefix}file-name {
+  @extend %control;
+
+  border-color:  hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-border-l")} + #{vs.getVar("file-border-l-delta")}));
+  border-radius: vs.getVar("file-radius");
+  white-space:   nowrap;
+  font-size:     1em;
+  padding-left:  1em;
+  padding-right: 1em;
+}
+
+.#{vi.$prefix}file-cta {
+  background-color: hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-background-l")} + #{vs.getVar("file-background-l-delta")}));
+  color:            hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-cta-color-l")} + #{vs.getVar("file-color-l-delta")}));
+}
+
+.#{vi.$prefix}file-name {
+  display:       block;
+  max-width:     vs.getVar("file-name-max-width");
+  overflow:      hidden;
+  text-align:    inherit;
+  text-overflow: ellipsis;
+  border-color:  hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-border-l")} + #{vs.getVar("file-color-l-delta")}));
+  border-style:  vs.getVar("file-name-border-style");
+  border-width:  vs.getVar("file-name-border-width");
+  color:         hsl(vs.getVar("file-h"), vs.getVar("file-s"), calc(#{vs.getVar("file-name-color-l")} + #{vs.getVar("file-color-l-delta")}));
+}
+
+.#{vi.$prefix}file-icon {
+  display:           flex;
+  align-items:       center;
+  justify-content:   center;
+  height:            1em;
+  width:             1em;
+  margin-inline-end: 0.5em;
+
+  .#{vi.$prefix}fa {
+    font-size: 1em;
+  }
+}

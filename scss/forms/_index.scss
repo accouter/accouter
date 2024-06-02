@@ -1,5 +1,9 @@
 @charset "utf-8";
 
 /* Accouter Form */
-
 @forward "shared";
+@forward "input-textarea";
+@forward "checkbox-radio";
+@forward "select";
+@forward "file";
+@forward "tools";

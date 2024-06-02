@@ -1,0 +1,142 @@
+@use "shared";
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/controls";
+@use "../configs/extends";
+
+$select-colors: shared.$form-colors !default;
+
+.#{vi.$prefix}select {
+  @include vs.register-vars((
+    "input-h": #{vs.getVar("scheme-h")},
+    "input-s": #{vs.getVar("scheme-s")},
+    "input-border-style": solid,
+    "input-border-width": 1px,
+    "input-border-l": #{vs.getVar("border-l")},
+  ));
+
+  display:        inline-block;
+  position:       relative;
+  max-width:      100%;
+  vertical-align: top;
+
+  &:not(.#{vi.$prefix}is-multiple) {
+    height: shared.$input-height;
+  }
+
+  &:not(.#{vi.$prefix}is-multiple):not(.#{vi.$prefix}is-loading) {
+    &::after {
+      @extend %arrow;
+      inset-inline-end: 1.125em;
+      z-index:          4;
+    }
+  }
+
+  &.#{vi.$prefix}is-rounded {
+    select {
+      border-radius:        vs.getVar("radius-rounded");
+      padding-inline-start: 1em;
+    }
+  }
+
+  select {
+    @extend %input;
+
+    display:   block;
+    max-width: 100%;
+    font-size: 1em;
+    cursor:    pointer;
+    outline:   none;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &[disabled]:hover,
+    fieldset[disabled] &:hover {
+      border-color: shared.$input-disabled-border-color;
+    }
+
+    &:not([multiple]) {
+      padding-inline-end: 2.5em;
+    }
+
+    &[multiple] {
+      height:  auto;
+      padding: 0;
+
+      option {
+        padding: 0.5em 1em;
+      }
+    }
+  }
+
+  // colors
+  @each $name, $pair in $select-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "input-h": #{vs.getVar($name, "", "-h")},
+        "input-s": #{vs.getVar($name, "", "-s")},
+        "input-l": #{vs.getVar($name, "", "-l")},
+        "input-focus-h": #{vs.getVar($name, "", "-h")},
+        "input-focus-s": #{vs.getVar($name, "", "-s")},
+        "input-focus-l": #{vs.getVar($name, "", "-l")},
+        "arrow-color": #{vs.getVar($name)},
+      ));
+    }
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    @include controls.control-small;
+  }
+
+  &.#{vi.$prefix}is-medium {
+    @include controls.control-medium;
+  }
+
+  &.#{vi.$prefix}is-large {
+    @include controls.control-large;
+  }
+
+  // modifiers
+  &.#{vi.$prefix}is-disabled {
+    &::after {
+      border-color: shared.$input-disabled-color !important;
+      opacity:      0.5;
+    }
+  }
+
+  &.#{vi.$prefix}is-fullwidth {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &.#{vi.$prefix}is-loading {
+    &::after {
+      @extend %loader;
+
+      position:         absolute;
+      top:              0.625em;
+      margin-top:       0;
+      transform:        none;
+      inset-inline-end: 0.625em;
+    }
+
+    &.#{vi.$prefix}is-small:after {
+      font-size: vs.getVar("size-small");
+    }
+
+    &.#{vi.$prefix}is-medium:after {
+      font-size: vs.getVar("size-medium");
+    }
+
+    &.#{vi.$prefix}is-large:after {
+      font-size: vs.getVar("size-large");
+    }
+  }
+}
