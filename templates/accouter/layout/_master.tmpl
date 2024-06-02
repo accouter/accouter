@@ -79,14 +79,16 @@
   </aside>
   <header>
     {{^_disableNavbar}}
-      <nav class="expand-xl" role="navigation">
-        <div class="collapse navbar-collapse">
-          <form action="./" method="get" autocomplete="off" novalidate>
-            <span class="input-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+      <nav class="is-fullwidth" role="navigation">
+        <div class="field has-addons">
+          <div class="control has-icon-left">
+            <form action="./" method="get" autocomplete="off" novalidate>
+            <span class="icon is-small is-left">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
             </span>
-            <input type="text" value=" class=form-control" placeholder="Search_" aria-label="Search admin portal">
-          </form>
+              <input class="input" type="text" value="" placeholder="Search_" aria-label="Search admin portal">
+            </form>
+          </div>
         </div>
       </nav>
     {{/_disableNavbar}}
