@@ -136,7 +136,32 @@ $label-colors: shared.$form-colors !default;
     }
   }
 
-  &.#{vi.$prefix}is-grouped {}
+  &.#{vi.$prefix}is-grouped {
+    display:         flex;
+    justify-content: flex-start;
+    gap:             0.75rem;
+
+    & > .#{vi.$prefix}control {
+      flex-shrink: 0;
+
+      &.#{vi.$prefix}is-expanded {
+        flex-grow:   1;
+        flex-shrink: 1;
+      }
+    }
+
+    &.#{vi.$prefix}is-grounded-centered {
+      justify-content: center;
+    }
+
+    &.#{vi.$prefix}is-grouped-right {
+      justify-content: flex-end;
+    }
+
+    &.#{vi.$prefix}is-grouped-multiline {
+      flex-wrap: wrap;
+    }
+  }
 
   &.#{vi.$prefix}is-horizontal {}
 }
