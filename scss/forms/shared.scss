@@ -91,6 +91,7 @@ $input-radius:                     vs.getVar("radius") !default;
       "input-border-l-delta": vs.getVar("input-hover-border-l-delta"),
     ));
   }
+
   &:active,
   &.#{vi.$prefix}is-active {
     @include vs.register-vars((
@@ -102,7 +103,7 @@ $input-radius:                     vs.getVar("radius") !default;
   &:focus-within,
   &.#{vi.$prefix}is-focused {
     border-color: hsl(vs.getVar("input-focus-h"), vs.getVar("input-focus-s"), vs.getVar("input-focus-l"));
-    box-shadow:   vs.getVar("input-focus-shadow-size") hsla(vs.getVar("input-focus-h"), vs.getVar("input-focus-s"), vs.getVar("input-focus-l"), vs.getVar("input-focus-shadow-alpha"));
+    box-shadow:   vs.getVar("input-focus-shadow-size") hsla(#{vs.getVar("input-focus-h")}, #{vs.getVar("input-focus-s")}, #{vs.getVar("input-focus-l")}, #{vs.getVar("input-focus-shadow-alpha")});
   }
 
   &[disabled],
