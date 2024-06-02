@@ -99,7 +99,8 @@ $header-colors:                         vd.$colors !default;
   ))
 }
 
-header {
+header,
+.#{vi.$prefix}header {
   @include vs.register-vars((
     "header-h": #{$header-h},
     "header-s": #{$header-s},
@@ -158,29 +159,37 @@ header {
   ));
 }
 
-header {
+header,
+.#{vi.$prefix}header {
+  position:         relative;
+  min-height:       vs.getVar("header-height");
   background-color: vs.getVar("header-background-color");
-  height:           vs.getVar("header-height");
-  position:         fixed;
-  top:              0;
-  left:             0;
-  right:            0;
   z-index:          vs.getVar("header-z-index");
-  align-items:      flex-start;
-  padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
-  box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
 
   @include mx.desktop {
     margin-left: vs.getVar("sidebar-width");
   }
 
-  nav {
-    position:   relative;
-    min-height: vs.getVar("header-height");
+  nav,
+  .#{vi.$prefix}nav {
+    display:     flex;
+    position:    relative;
+    width:       100%;
+    min-height:  vs.getVar("header-height");
+    align-items: stretch;
     //margin:     0;
     //padding:    0;
 
-    .brand {
+    //position:         fixed;
+    //top:              0;
+    //left:             0;
+    //right:            0;
+    //z-index:          vs.getVar("header-z-index");
+    //align-items:      flex-start;
+    //padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
+    //box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
+
+    .#{vi.$prefix}brand {
       display:     inline-flex;
       align-items: center;
       line-height: 1;
@@ -191,22 +200,46 @@ header {
       margin:      0;
       white-space: nowrap;
     }
+  }
+}
 
-    .expand {}
+@include mx.until($header-breakpoint) {
 
-    .brand-image {}
+}
 
-    .toggler {}
+@include mx.from($header-breakpoint) {
+  header,
+  .#{vi.$prefix}header,
+  .#{vi.$prefix}header-menu,
+  .#{vi.$prefix}header-start,
+  .#{vi.$prefix}header-end {
+    display:     flex;
+    align-items: stretch;
+  }
 
-    .toggler-icon {}
+  header,
+  .#{vi.$prefix}header {
+    min-height: vs.getVar("header-height");
 
-    .transparent {}
+    &.#{vi.$prefix}is-spaced {
+      padding: vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
 
-    .nav {}
+      .#{vi.$prefix}header-start,
+      .#{vi.$prefix}header-end {
+        align-items: center;
+      }
 
-    .side {}
+      a.#{vi.$prefix}header-item,
+      .#{vi.$prefix}header-link {
+        border-radius: vs.getVar("radius");
+      }
+    }
 
-    .overlap {}
+    &.#{vi.$prefix}is-transparent {
+      @include vs.register-vars((
+        "header-item-background-a": 0,
+      ));
+    }
   }
 }
 
