@@ -207,6 +207,33 @@ $label-colors: shared.$form-colors !default;
   }
 }
 
-.#{vi.$prefix}field-body {}
+.#{vi.$prefix}field-body {
+  .#{vi.$prefix}field .#{vi.$prefix}field {
+    margin-bottom: 0;
+  }
+
+  @include mx.tablet {
+    display:     flex;
+    flex-basis:  0;
+    flex-grow:   5;
+    flex-shrink: 1;
+
+    .#{vi.$prefix}field {
+      margin-bottom: 0;
+    }
+
+    & > .#{vi.$prefix}field {
+      flex-shrink: 1;
+
+      &:not(.#{vi.$prefix}is-narrow) {
+        flex-grow: 1;
+      }
+
+      &:not(:last-child) {
+        margin-inline-end: 0.75rem;
+      }
+    }
+  }
+}
 
 .#{vi.$prefix}control {}
