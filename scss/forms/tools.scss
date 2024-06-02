@@ -249,7 +249,16 @@ $label-colors: shared.$form-colors !default;
 
   &.#{vi.$prefix}has-icons-left {}
 
-  &.#{vi.$prefix}has-icons-right {}
+  &.#{vi.$prefix}has-icons-right {
+    .#{vi.$prefix}input,
+    .#{vi.$prefix}select select {
+      padding-right: vs.getVar("input-height");
+    }
+
+    .#{vi.$prefix}icon.#{vi.$prefix}is-right {
+      right: 0;
+    }
+  }
 
   &.#{vi.$prefix}is-loading {
     &::after {
