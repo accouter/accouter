@@ -321,7 +321,7 @@ header,
   .#{vi.$prefix}header {
     &.#{vi.$prefix}is-fixed-bottom-desktop,
     &.#{vi.$prefix}is-fixed-top-desktop {
-      @include navbar-fixed;
+      @include header-fixed;
     }
 
     &.#{vi.$prefix}is-fixed-bottom-desktop {
