@@ -245,7 +245,38 @@ $label-colors: shared.$form-colors !default;
 
   // modifiers
   &.#{vi.$prefix}has-icon-left,
-  &.#{vi.$prefix}has-icon-right {}
+  &.#{vi.$prefix}has-icon-right {
+    .#{vi.$prefix}input,
+    .#{vi.$prefix}select select {
+      &:hover {}
+
+      &:focus {}
+
+      &.#{vi.$prefix}is-small ~ .#{vi.$prefix}icon {
+        font-size: vs.getVar("size-small");
+      }
+
+      &.#{vi.$prefix}is-normal ~ .#{vi.$prefix}icon {}
+
+      &.#{vi.$prefix}is-medium ~ .#{vi.$prefix}icon {
+        font-size: vs.getVar("size-medium");
+      }
+
+      &.#{vi.$prefix}is-large ~ .#{vi.$prefix}icon {
+        font-size: vs.getVar("size-large");
+      }
+    }
+
+    .#{vi.$prefix}icon {
+      position:       absolute;
+      top:            0;
+      z-index:        4;
+      width:          vs.getVar("input-height");
+      height:         vs.getVar("input-height");
+      color:          vs.getVar("input-icon-color");
+      pointer-events: none;
+    }
+  }
 
   &.#{vi.$prefix}has-icons-left {
     .#{vi.$prefix}input,
