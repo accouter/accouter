@@ -1,0 +1,325 @@
+@use "shared";
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$label-color:  vs.getVar("text-strong") !default;
+$label-weight: vs.getVar("weight-semibold") !default;
+
+$help-size:    vs.getVar("size-small") !default;
+
+$label-colors: shared.$form-colors !default;
+
+.#{vi.$prefix}label {
+  display:     block;
+  color:       $label-color;
+  font-size:   vs.getVar("size-normal");
+  font-weight: $label-weight;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  // sizes
+  &.#{vi.$prefix}is-small {
+    font-size: vs.getVar("size-small");
+  }
+
+  &.#{vi.$prefix}is-medium {
+    font-size: vs.getVar("size-medium");
+  }
+
+  &.#{vi.$prefix}is-large {
+    font-size: vs.getVar("size-large");
+  }
+}
+
+.#{vi.$prefix}help {
+  display:    block;
+  margin-top: 0.25rem;
+  font-size:  $help-size;
+
+  @each $name, $pair in $label-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      color: hsl(#{vs.getVar($name, "", "-h")}, #{vs.getVar($name, "", "-s")}, #{vs.getVar($name, "", "-on-scheme-l")});
+    }
+  }
+}
+
+// containers
+
+.#{vi.$prefix}field {
+  @include vs.register-vars((
+    "block-spacing": 0.75rem,
+  ));
+
+  @extend %block;
+
+  // modifiers
+  &.#{vi.$prefix}has-addons {
+    display:         flex;
+    justify-content: flex-start;
+
+    .#{vi.$prefix}control {
+      &:not(:last-child) {
+        margin-inline-end: -1px;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        .#{vi.$prefix}button,
+        .#{vi.$prefix}input,
+        .#{vi.$prefix}select select {
+          border-radius: 0;
+        }
+      }
+
+      &:first-child:not(:only-child) {
+        .#{vi.$prefix}button,
+        .#{vi.$prefix}input,
+        .#{vi.$prefix}select select {
+          border-top-left-radius:    0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      &:last-child:not(:only-child) {
+        .#{vi.$prefix}button,
+        .#{vi.$prefix}input,
+        .#{vi.$prefix}select select {
+          border-top-left-radius:    0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      .#{vi.$prefix}button,
+      .#{vi.$prefix}input,
+      .#{vi.$prefix}select select {
+        &:not([disabled]) {
+          &:hover,
+          &.#{vi.$prefix}is-hovered {
+            z-index: 2;
+          }
+
+          &:focus,
+          &.#{vi.$prefix}is-focused,
+          &:active,
+          &.#{vi.$prefix}is-active {
+            z-index: 3;
+
+            &:hover {
+              z-index: 4;
+            }
+          }
+        }
+      }
+
+      &.#{vi.$prefix}is-expanded {
+        flex-grow:   1;
+        flex-shrink: 0;
+      }
+    }
+
+    &.#{vi.$prefix}has-addons-centered {
+      justify-content: center;
+    }
+
+    &.#{vi.$prefix}has-addons-right {
+      justify-content: flex-end;
+    }
+
+    &.#{vi.$prefix}has-addons-fullwidth {
+      .#{vi.$prefix}control {
+        flex-grow:   1;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &.#{vi.$prefix}is-grouped {
+    display:         flex;
+    justify-content: flex-start;
+    gap:             0.75rem;
+
+    & > .#{vi.$prefix}control {
+      flex-shrink: 0;
+
+      &.#{vi.$prefix}is-expanded {
+        flex-grow:   1;
+        flex-shrink: 1;
+      }
+    }
+
+    &.#{vi.$prefix}is-grounded-centered {
+      justify-content: center;
+    }
+
+    &.#{vi.$prefix}is-grouped-right {
+      justify-content: flex-end;
+    }
+
+    &.#{vi.$prefix}is-grouped-multiline {
+      flex-wrap: wrap;
+    }
+  }
+
+  &.#{vi.$prefix}is-horizontal {
+    @include mx.tablet {
+      display: flex;
+    }
+  }
+}
+
+.#{vi.$prefix}field-label {
+  .#{vi.$prefix}label {
+    font-size: inherit;
+  }
+
+  @include mx.mobile {
+    margin-bottom: 0.5rem;
+  }
+
+  @include mx.tablet {
+    flex-basis:        0;
+    flex-grow:         1;
+    flex-shrink:       0;
+    text-align:        right;
+    margin-inline-end: 1.5rem;
+
+    &.#{vi.$prefix}is-small {
+      padding-top: 0.375em;
+      font-size:   vs.getVar("size-small");
+    }
+
+    &.#{vi.$prefix}is-normal {
+      padding-top: 0.375em;
+    }
+
+    &.#{vi.$prefix}is-medium {
+      padding-top: 0.375em;
+      font-size:   vs.getVar("size-medium");
+    }
+
+    &.#{vi.$prefix}is-large {
+      padding-top: 0.375em;
+      font-size:   vs.getVar("size-large");
+    }
+  }
+}
+
+.#{vi.$prefix}field-body {
+  .#{vi.$prefix}field .#{vi.$prefix}field {
+    margin-bottom: 0;
+  }
+
+  @include mx.tablet {
+    display:     flex;
+    flex-basis:  0;
+    flex-grow:   5;
+    flex-shrink: 1;
+
+    .#{vi.$prefix}field {
+      margin-bottom: 0;
+    }
+
+    & > .#{vi.$prefix}field {
+      flex-shrink: 1;
+
+      &:not(.#{vi.$prefix}is-narrow) {
+        flex-grow: 1;
+      }
+
+      &:not(:last-child) {
+        margin-inline-end: 0.75rem;
+      }
+    }
+  }
+}
+
+.#{vi.$prefix}control {
+  position:   relative;
+  clear:      both;
+  text-align: inherit;
+  box-sizing: border-box;
+  font-size:  vs.getVar("size-normal");
+
+  // modifiers
+  &.#{vi.$prefix}has-icon-left,
+  &.#{vi.$prefix}has-icon-right {
+    .#{vi.$prefix}input,
+    .#{vi.$prefix}select select {
+      &:hover {}
+
+      &:focus {}
+
+      &.#{vi.$prefix}is-small ~ .#{vi.$prefix}icon {
+        font-size: vs.getVar("size-small");
+      }
+
+      &.#{vi.$prefix}is-normal ~ .#{vi.$prefix}icon {}
+
+      &.#{vi.$prefix}is-medium ~ .#{vi.$prefix}icon {
+        font-size: vs.getVar("size-medium");
+      }
+
+      &.#{vi.$prefix}is-large ~ .#{vi.$prefix}icon {
+        font-size: vs.getVar("size-large");
+      }
+    }
+
+    .#{vi.$prefix}icon {
+      position:       absolute;
+      top:            0;
+      z-index:        4;
+      width:          vs.getVar("input-height");
+      height:         vs.getVar("input-height");
+      color:          vs.getVar("input-icon-color");
+      pointer-events: none;
+    }
+  }
+
+  &.#{vi.$prefix}has-icons-left {
+    .#{vi.$prefix}input,
+    .#{vi.$prefix}select select {
+      padding-left: vs.getVar("input-height");
+    }
+
+    .#{vi.$prefix}icon.#{vi.$prefix}is-left {
+      left: 0;
+    }
+  }
+
+  &.#{vi.$prefix}has-icons-right {
+    .#{vi.$prefix}input,
+    .#{vi.$prefix}select select {
+      padding-right: vs.getVar("input-height");
+    }
+
+    .#{vi.$prefix}icon.#{vi.$prefix}is-right {
+      right: 0;
+    }
+  }
+
+  &.#{vi.$prefix}is-loading {
+    &::after {
+      @extend %loader;
+
+      position:         absolute !important;
+      top:              0.75em;
+      inset-inline-end: 0.75em;
+      z-index:          4;
+    }
+
+    &.#{vi.$prefix}is-small:after {
+      font-size: vs.getVar("size-small");
+    }
+
+    &.#{vi.$prefix}is-medium:after {
+      font-size: vs.getVar("size-medium");
+    }
+
+    &.#{vi.$prefix}is-large:after {
+      font-size: vs.getVar("size-large");
+    }
+  }
+}
