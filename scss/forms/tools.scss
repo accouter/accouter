@@ -244,8 +244,8 @@ $label-colors: shared.$form-colors !default;
   font-size:  vs.getVar("size-normal");
 
   // modifiers
-  &.#{vi.$prefix}has-icon-left,
-  &.#{vi.$prefix}has-icon-right {
+  &.#{vi.$prefix}has-icons-left,
+  &.#{vi.$prefix}has-icons-right {
     .#{vi.$prefix}input,
     .#{vi.$prefix}select select {
       &:hover {}

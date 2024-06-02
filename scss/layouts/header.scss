@@ -4,23 +4,94 @@
 @use "../configs/extends";
 @use "../configs/mixins" as mx;
 
-@mixin header-nav {}
+$header-h:                              vs.getVar("scheme-h");
+$header-s:                              vs.getVar("scheme-s");
+$header-l:                              vs.getVar("scheme-main-l");
+$header-background-color:               vs.getVar("scheme-main-bis") !default;
+$header-box-shadow-size:                0 0.125em 0 0 !default;
+$header-box-shadow-color:               vs.getVar("gray-darkest") !default;
+$header-height:                         vd.$header-min-height !default;
+$header-padding-vertical:               1rem !default;
+$header-padding-horizontal:             2rem !default;
+$header-z-index:                        30 !default;
+$header-fixed-z-index:                  30 !default;
 
-$header-h:                  vs.getVar("scheme-h");
-$header-s:                  vs.getVar("scheme-s");
-$header-l:                  vs.getVar("scheme-main-l");
-$header-background-color:   vs.getVar("scheme-main-bis") !default;
-$header-box-shadow-size:    0 0.125em 0 0 !default;
-$header-box-shadow-color:   vs.getVar("gray-darkest") !default;
-$header-height:             vd.$header-min-height !default;
-$header-padding-vertical:   0 !default;
-$header-padding-horizontal: 0 !default;
-$header-z-index:            30 !default;
-$header-fixed-z-index:      30 !default;
-$header-brand-font-size:    vs.getVar("size-4") !default;
-$header-brand-font-weight:  700 !default;
-$header-brand-color:        vs.getVar("white-ter") !default;
-$header-brand-gap:          vi.$gap !default;
+$header-item-background-a:              0;
+$header-item-background-l:              vs.getVar("scheme-main-l");
+$header-item-background-l-delta:        0%;
+$header-item-hover-background-l-delta:  vs.getVar("hover-background-l-delta");
+$header-item-active-background-l-delta: vs.getVar("active-background-l-delta");
+$header-item-color-l:                   vs.getVar("text-l");
+$header-item-selected-h:                vs.getVar("link-h");
+$header-item-selected-s:                vs.getVar("link-s");
+$header-item-selected-l:                vs.getVar("link-l");
+$header-item-selected-background-l:     vs.getVar("link-l");
+$header-item-selected-color-l:          vs.getVar("link-invert-l");
+$header-item-img-max-height:            1.75rem !default;
+
+$header-burger-color:                   vs.getVar("header-item-color");
+
+$header-dropdown-item-h:                vs.getVar("scheme-h");
+$header-dropdown-item-s:                vs.getVar("scheme-s");
+$header-dropdown-item-l:                vs.getVar("scheme-main-l");
+$header-dropdown-item-background-l:     vs.getVar("scheme-main-l");
+$header-dropdown-item-color-l:          vs.getVar("text-l");
+
+$header-dropdown-background-color:      vs.getVar("scheme-main") !default;
+$header-dropdown-border-l:              vs.getVar("border-l") !default;
+$header-dropdown-border-color:          hsl(
+                                            vs.getVar("header-h"),
+                                            vs.getVar("header-s"),
+                                            vs.getVar("header-dropdown-border-l")
+                                        ) !default;
+$header-dropdown-border-width:          0.125em !default;
+$header-dropdown-border-style:          solid !default;
+$header-dropdown-offset:                -0.25em !default;
+$header-dropdown-arrow:                 vs.getVar("link") !default;
+$header-dropdown-radius:                vs.getVar("radius-large") !default;
+$header-dropdown-z-index:               20 !default;
+$header-dropdown-boxed-radius:          vs.getVar("radius-large") !default;
+$header-dropdown-boxed-shadow:          0 0.5em 0.5em hsla(
+                                            vs.getVar("scheme-h"),
+                                            vs.getVar("scheme-s"),
+                                            vs.getVar("scheme-invert-l"),
+                                            0.1
+                                        ),
+                                        0 0 0 1px hsla(
+                                            vs.getVar("scheme-h"),
+                                            vs.getVar("scheme-s"),
+                                            vs.getVar("scheme-invert-l"),
+                                            0.1
+                                        ) !default;
+
+$header-tab-hover-background-color:     transparent !default;
+$header-tab-hover-border-bottom-color:  vs.getVar("link") !default;
+$header-tab-active-color:               vs.getVar("link") !default;
+$header-tab-active-background-color:    transparent !default;
+$header-tab-active-border-bottom-color: vs.getVar("link") !default;
+$header-tab-active-border-bottom-style: solid !default;
+$header-tab-active-border-bottom-width: 0.1875em !default;
+
+$header-brand-font-size:                vs.getVar("size-4") !default;
+$header-brand-font-weight:              700 !default;
+$header-brand-color:                    vs.getVar("white-ter") !default;
+$header-brand-gap:                      vi.$gap !default;
+
+$header-divider-background-l:           vs.getVar("background-l") !default;
+$header-divider-height:                 0.125em !default;
+
+$header-bottom-box-shadow-size:         0 -0.125em 0 0 !default;
+
+$header-breakpoint:                     vi.$desktop !default;
+
+$header-colors:                         vd.$colors !default;
+
+@mixin header-fixed {
+  position: fixed;
+  left:     0;
+  right:    0;
+  z-index:  vs.getVar("header-fixed-z-index");
+}
 
 :root {
   @include vs.register-vars((
@@ -28,7 +99,8 @@ $header-brand-gap:          vi.$gap !default;
   ))
 }
 
-header {
+header,
+.#{vi.$prefix}header {
   @include vs.register-vars((
     "header-h": #{$header-h},
     "header-s": #{$header-s},
@@ -36,10 +108,50 @@ header {
     "header-background-color": #{$header-background-color},
     "header-box-shadow-size": #{$header-box-shadow-size},
     "header-box-shadow-color": #{$header-box-shadow-color},
-    "header-z-index": #{$header-z-index},
-    "header-fixed-z-index": #{$header-fixed-z-index},
+    "header-height": #{$header-height},
     "header-padding-vertical": #{$header-padding-vertical},
     "header-padding-horizontal": #{$header-padding-horizontal},
+    "header-z-index": #{$header-z-index},
+    "header-fixed-z-index": #{$header-fixed-z-index},
+    "header-item-background-a": #{$header-item-background-a},
+    "header-item-background-l": #{$header-item-background-l},
+    "header-item-background-l-delta": #{$header-item-background-l-delta},
+    "header-item-hover-background-l-delta": #{$header-item-hover-background-l-delta},
+    "header-item-active-background-l-delta": #{$header-item-active-background-l-delta},
+    "header-item-color-l": #{$header-item-color-l},
+    "header-item-selected-h": #{$header-item-selected-h},
+    "header-item-selected-s": #{$header-item-selected-s},
+    "header-item-selected-l": #{$header-item-selected-l},
+    "header-item-selected-background-l": #{$header-item-selected-background-l},
+    "header-item-selected-color-l": #{$header-item-selected-color-l},
+    "header-item-img-max-height": #{$header-item-img-max-height},
+    "header-burger-color": #{$header-burger-color},
+    "header-dropdown-item-h": #{$header-dropdown-item-h},
+    "header-dropdown-item-s": #{$header-dropdown-item-s},
+    "header-dropdown-item-l": #{$header-dropdown-item-l},
+    "header-dropdown-item-background-l": #{$header-dropdown-item-background-l},
+    "header-dropdown-item-color-l": #{$header-dropdown-item-color-l},
+    "header-dropdown-background-color": #{$header-dropdown-background-color},
+    "header-dropdown-border-l": #{$header-dropdown-border-l},
+    "header-dropdown-border-color": #{$header-dropdown-border-color},
+    "header-dropdown-border-width": #{$header-dropdown-border-width},
+    "header-dropdown-border-style": #{$header-dropdown-border-style},
+    "header-dropdown-offset": #{$header-dropdown-offset},
+    "header-dropdown-arrow": #{$header-dropdown-arrow},
+    "header-dropdown-radius": #{$header-dropdown-radius},
+    "header-dropdown-z-index": #{$header-dropdown-z-index},
+    "header-dropdown-boxed-radius": #{$header-dropdown-boxed-radius},
+    "header-dropdown-boxed-shadow": #{$header-dropdown-boxed-shadow},
+    "header-tab-hover-background-color": #{$header-tab-hover-background-color},
+    "header-tab-hover-border-bottom-color": #{$header-tab-hover-border-bottom-color},
+    "header-tab-active-color": #{$header-tab-active-color},
+    "header-tab-active-background-color": #{$header-tab-active-background-color},
+    "header-tab-active-border-bottom-color": #{$header-tab-active-border-bottom-color},
+    "header-tab-active-border-bottom-style": #{$header-tab-active-border-bottom-style},
+    "header-tab-active-border-bottom-width": #{$header-tab-active-border-bottom-width},
+    "header-divider-background-l": #{$header-divider-background-l},
+    "header-divider-height": #{$header-divider-height},
+    "header-bottom-box-shadow-size": #{$header-bottom-box-shadow-size},
     "header-brand-font-weight": #{$header-brand-font-weight},
     "header-brand-font-size": #{$header-brand-font-size},
     "header-brand-color": #{$header-brand-color},
@@ -47,31 +159,37 @@ header {
   ));
 }
 
-header {
+header,
+.#{vi.$prefix}header {
+  position:         relative;
+  min-height:       vs.getVar("header-height");
   background-color: vs.getVar("header-background-color");
-  height:           vs.getVar("header-height");
-  position:         fixed;
-  top:              0;
-  left:             0;
-  right:            0;
   z-index:          vs.getVar("header-z-index");
-  align-items:      flex-start;
-  padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
-  box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
 
   @include mx.desktop {
     margin-left: vs.getVar("sidebar-width");
   }
 
-  nav {
-    margin:  0;
-    padding: 0;
+  nav,
+  .#{vi.$prefix}nav {
+    display:     flex;
+    position:    relative;
+    width:       100%;
+    min-height:  vs.getVar("header-height");
+    align-items: stretch;
+    //margin:     0;
+    //padding:    0;
 
-    .nav {}
+    //position:         fixed;
+    //top:              0;
+    //left:             0;
+    //right:            0;
+    //z-index:          vs.getVar("header-z-index");
+    //align-items:      flex-start;
+    //padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
+    //box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
 
-    .expand {}
-
-    .brand {
+    .#{vi.$prefix}brand {
       display:     inline-flex;
       align-items: center;
       line-height: 1;
@@ -82,20 +200,112 @@ header {
       margin:      0;
       white-space: nowrap;
     }
-
-    .brand-image {}
-
-    .toggler {}
-
-    .toggler-icon {}
-
-    .transparent {}
-
-    .nav {}
-
-    .side {}
-
-    .overlap {}
   }
+}
+
+@include mx.until($header-breakpoint) {
+
+}
+
+@include mx.from($header-breakpoint) {
+  header,
+  .#{vi.$prefix}header,
+  .#{vi.$prefix}header-menu,
+  .#{vi.$prefix}header-start,
+  .#{vi.$prefix}header-end {
+    display:     flex;
+    align-items: stretch;
+  }
+
+  header,
+  .#{vi.$prefix}header {
+    min-height: vs.getVar("header-height");
+
+    &.#{vi.$prefix}is-spaced {
+      padding: vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
+
+      .#{vi.$prefix}header-start,
+      .#{vi.$prefix}header-end {
+        align-items: center;
+      }
+
+      a.#{vi.$prefix}header-item,
+      .#{vi.$prefix}header-link {
+        border-radius: vs.getVar("radius");
+      }
+    }
+
+    &.#{vi.$prefix}is-transparent {
+      @include vs.register-vars((
+        "header-item-background-a": 0,
+      ));
+
+      .#{vi.$prefix}header-dropdown {
+        a.#{vi.$prefix}header-item {
+          background-color: hsl(
+                                #{vs.getVar("header-h")},
+                                #{vs.getVar("header-s")},
+                                calc(#{vs.getVar("header-item-background-l")} + #{vs.getVar("header-item-background-l-delta")})
+                            );
+
+          &.#{vi.$prefix}is-active,
+          &.#{vi.$prefix}is-selected {
+            @include vs.register-vars((
+              "header-h": #{vs.getVar("header-item-selected-h")},
+              "header-s": #{vs.getVar("header-item-selected-s")},
+              "header-l": #{vs.getVar("header-item-selected-l")},
+              "header-item-background-l": #{vs.getVar("header-item-selected-background-l")},
+              "header-item-color-l": #{vs.getVar("header-item-selected-color-l")},
+            ));
+          }
+        }
+      }
+    }
+  }
+
+  .#{vi.$prefix}header-burger {}
+
+  .#{vi.$prefix}header-item,
+  .#{vi.$prefix}header-link {}
+
+  .#{vi.$prefix}header-item {}
+
+  .#{vi.$prefix}header-menu {}
+
+  .#{vi.$prefix}header-start {
+    justify-content:   flex-start;
+    margin-inline-end: auto;
+  }
+
+  .#{vi.$prefix}header-end {
+    justify-content:     flex-end;
+    margin-inline-start: auto;
+  }
+
+  .#{vi.$prefix}header-dropdown {}
+
+  .#{vi.$prefix}header-divider {}
+
+  header > .#{vi.$prefix}container,
+  .#{vi.$prefix}header > .#{vi.$prefix}container,
+  .#{vi.$prefix}container > header,
+  .#{vi.$prefix}container > .#{vi.$prefix}header {
+    .#{vi.$prefix}header-brand {
+      margin-inline-start: -0.75em;
+    }
+
+    .#{vi.$prefix}header-menu {
+      margin-inline-end: -0.75em;
+    }
+  }
+
+  // fixed header
+  header,
+  .#{vi.$prefix}header {
+
+  }
+
+  html,
+  body {}
 }
 
