@@ -62,7 +62,9 @@ $label-colors: shared.$form-colors !default;
     justify-content: flex-start;
 
     .#{vi.$prefix}control {
-      &:not(:last-child) {}
+      &:not(:last-child) {
+        margin-inline-end: -1px;
+      }
 
       &:not(:first-child):not(:last-child) {
         .#{vi.$prefix}button,
