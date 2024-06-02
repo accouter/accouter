@@ -189,7 +189,7 @@ header,
     //padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
     //box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
 
-    .#{vi.$prefix}brand {
+    .#{vi.$prefix}header-brand {
       display:     inline-flex;
       align-items: center;
       line-height: 1;
@@ -204,7 +204,22 @@ header,
 }
 
 @include mx.until($header-breakpoint) {
+  header > .#{vi.$prefix}container,
+  .#{vi.$prefix}header > .#{vi.$prefix}container {}
 
+  .#{vi.$prefix}header-brand,
+  .#{vi.$prefix}header-tabs {}
+
+  .#{vi.$prefix}header-link {}
+
+  .#{vi.$prefix}header-menu {}
+
+  // fixed header
+  header,
+  .#{vi.$prefix}header {}
+
+  html,
+  body {}
 }
 
 @include mx.from($header-breakpoint) {
@@ -284,7 +299,9 @@ header,
 
   .#{vi.$prefix}header-dropdown {}
 
-  .#{vi.$prefix}header-divider {}
+  .#{vi.$prefix}header-divider {
+
+  }
 
   header > .#{vi.$prefix}container,
   .#{vi.$prefix}header > .#{vi.$prefix}container,
@@ -302,10 +319,46 @@ header,
   // fixed header
   header,
   .#{vi.$prefix}header {
+    &.#{vi.$prefix}is-fixed-bottom-desktop,
+    &.#{vi.$prefix}is-fixed-top-desktop {
+      @include header-fixed;
+    }
 
+    &.#{vi.$prefix}is-fixed-bottom-desktop {
+      bottom: 0;
+
+      &.#{vi.$prefix}has-shadow {
+        box-shadow: 0 -0.125em 0.1875em hsla(
+                        #{vs.getVar("scheme-h")},
+                        #{vs.getVar("scheme-s")},
+                        #{vs.getVar("scheme-invert-l")},
+                        0.1
+                    );
+      }
+    }
+
+    &.#{vi.$prefix}is-fixed-top-desktop {
+      top: 0;
+    }
   }
 
   html,
-  body {}
+  body {
+    &.#{vi.$prefix}has-header-fixed-top-desktop {
+      padding-top: vs.getVar("header-height");
+    }
+
+    &.#{vi.$prefix}has-header-fixed-bottom-desktop {
+      padding-bottom: vs.getVar("header-height");
+    }
+
+    &.#{vi.$prefix}has-header-spaced-fixed-top {
+      padding-top: calc(#{vs.getVar("header-height")} + #{vs.getVar("header-padding-vertical")} * 2);
+    }
+
+    &.#{vi.$prefix}has-header-spaced-fixed-bottom {
+      padding-bottom: calc(#{vs.getVar("header-height")} + #{vs.getVar("header-padding-vertical")} * 2);
+    }
+  }
 }
 
