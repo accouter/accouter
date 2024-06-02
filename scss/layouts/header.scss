@@ -292,5 +292,14 @@ header,
       margin-inline-end: -0.75em;
     }
   }
+
+  // fixed header
+  header,
+  .#{vi.$prefix}header {
+
+  }
+
+  html,
+  body {}
 }
 
