@@ -64,11 +64,31 @@ $label-colors: shared.$form-colors !default;
     .#{vi.$prefix}control {
       &:not(:last-child) {}
 
-      &:not(:first-child):not(:last-child) {}
+      &:not(:first-child):not(:last-child) {
+        .#{vi.$prefix}button,
+        .#{vi.$prefix}input,
+        .#{vi.$prefix}select select {
+          border-radius: 0;
+        }
+      }
 
-      &:first-child:not(:only-child) {}
+      &:first-child:not(:only-child) {
+        .#{vi.$prefix}button,
+        .#{vi.$prefix}input,
+        .#{vi.$prefix}select select {
+          border-top-left-radius:    0;
+          border-bottom-left-radius: 0;
+        }
+      }
 
-      &:last-child:not(:only-child) {}
+      &:last-child:not(:only-child) {
+        .#{vi.$prefix}button,
+        .#{vi.$prefix}input,
+        .#{vi.$prefix}select select {
+          border-top-left-radius:    0;
+          border-bottom-left-radius: 0;
+        }
+      }
 
       .#{vi.$prefix}button,
       .#{vi.$prefix}input,
@@ -87,7 +107,6 @@ $label-colors: shared.$form-colors !default;
 
             &:hover {
               z-index: 4;
-
             }
           }
         }
