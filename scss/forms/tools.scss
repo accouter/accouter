@@ -170,7 +170,42 @@ $label-colors: shared.$form-colors !default;
   }
 }
 
-.#{vi.$prefix}field-label {}
+.#{vi.$prefix}field-label {
+  .#{vi.$prefix}label {
+    font-size: inherit;
+  }
+
+  @include mx.mobile {
+    margin-bottom: 0.5rem;
+  }
+
+  @include mx.tablet {
+    flex-basis:        0;
+    flex-grow:         1;
+    flex-shrink:       0;
+    text-align:        right;
+    margin-inline-end: 1.5rem;
+
+    &.#{vi.$prefix}is-small {
+      padding-top: 0.375em;
+      font-size:   vs.getVar("size-small");
+    }
+
+    &.#{vi.$prefix}is-normal {
+      padding-top: 0.375em;
+    }
+
+    &.#{vi.$prefix}is-medium {
+      padding-top: 0.375em;
+      font-size:   vs.getVar("size-medium");
+    }
+
+    &.#{vi.$prefix}is-large {
+      padding-top: 0.375em;
+      font-size:   vs.getVar("size-large");
+    }
+  }
+}
 
 .#{vi.$prefix}field-body {}
 
