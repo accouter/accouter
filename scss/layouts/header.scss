@@ -189,7 +189,7 @@ header,
     //padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
     //box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
 
-    .#{vi.$prefix}brand {
+    .#{vi.$prefix}header-brand {
       display:     inline-flex;
       align-items: center;
       line-height: 1;
@@ -204,7 +204,22 @@ header,
 }
 
 @include mx.until($header-breakpoint) {
+  header > .#{vi.$prefix}container,
+  .#{vi.$prefix}header > .#{vi.$prefix}container {}
 
+  .#{vi.$prefix}header-brand,
+  .#{vi.$prefix}header-tabs {}
+
+  .#{vi.$prefix}header-link {}
+
+  .#{vi.$prefix}header-menu {}
+
+  // fixed header
+  header,
+  .#{vi.$prefix}header {}
+
+  html,
+  body {}
 }
 
 @include mx.from($header-breakpoint) {
@@ -284,7 +299,9 @@ header,
 
   .#{vi.$prefix}header-dropdown {}
 
-  .#{vi.$prefix}header-divider {}
+  .#{vi.$prefix}header-divider {
+
+  }
 
   header > .#{vi.$prefix}container,
   .#{vi.$prefix}header > .#{vi.$prefix}container,
