@@ -177,17 +177,6 @@ header,
     width:       100%;
     min-height:  vs.getVar("header-height");
     align-items: stretch;
-    //margin:     0;
-    //padding:    0;
-
-    //position:         fixed;
-    //top:              0;
-    //left:             0;
-    //right:            0;
-    //z-index:          vs.getVar("header-z-index");
-    //align-items:      flex-start;
-    //padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
-    //box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
 
     .#{vi.$prefix}header-brand {
       display:     inline-flex;
