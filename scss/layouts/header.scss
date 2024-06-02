@@ -181,6 +181,16 @@ header,
         "header-item-selected-h": #{vs.getVar($name, "", "-h")},
         "header-item-selected-s": #{vs.getVar($name, "", "-s")},
         "header-item-selected-l": #{vs.getVar($name, "", "-l")},
+        "header-item-selected-background-l": #{vs.getVar($name, "", "-l")},
+        "header-item-selected-color-l": #{vs.getVar($name, "", "-invert-l")},
+        "header-dropdown-item-h": #{vs.getVar($name, "", "-h")},
+        "header-dropdown-item-s": #{vs.getVar($name, "", "-s")},
+        "header-dropdown-arrow": #{vs.getVar($name, "", "-invert-l")},
+        "header-dropdown-background-color": hsl(
+            #{vs.getVar($name, "", "-h")},
+            #{vs.getVar($name, "", "-s")},
+            #{vs.getVar("header-dropdown-item-background-l")}
+        ),
       ));
     }
   }
