@@ -166,6 +166,35 @@ header,
   background-color: vs.getVar("header-background-color");
   z-index:          vs.getVar("header-z-index");
 
+  @each $name, $pair in $header-colors {
+    &.#{vi.$prefix}is-#{$name} {
+      @include vs.register-vars((
+        "header-h": #{vs.getVar($name, "", "-h")},
+        "header-s": #{vs.getVar($name, "", "-s")},
+        "header-l": #{vs.getVar($name, "", "-l")},
+        "burger-h": #{vs.getVar($name, "", "-h")},
+        "burger-s": #{vs.getVar($name, "", "-s")},
+        "burger-l": #{vs.getVar($name, "", "-l")},
+        "header-background-color": #{vs.getVar($name)},
+        "header-item-background-l": #{vs.getVar($name, "", "-l")},
+        "header-item-color-l": #{vs.getVar($name, "", "-invert-l")},
+        "header-item-selected-h": #{vs.getVar($name, "", "-h")},
+        "header-item-selected-s": #{vs.getVar($name, "", "-s")},
+        "header-item-selected-l": #{vs.getVar($name, "", "-l")},
+        "header-item-selected-background-l": #{vs.getVar($name, "", "-l")},
+        "header-item-selected-color-l": #{vs.getVar($name, "", "-invert-l")},
+        "header-dropdown-item-h": #{vs.getVar($name, "", "-h")},
+        "header-dropdown-item-s": #{vs.getVar($name, "", "-s")},
+        "header-dropdown-arrow": #{vs.getVar($name, "", "-invert-l")},
+        "header-dropdown-background-color": hsl(
+            #{vs.getVar($name, "", "-h")},
+            #{vs.getVar($name, "", "-s")},
+            #{vs.getVar("header-dropdown-item-background-l")}
+        ),
+      ));
+    }
+  }
+
   @include mx.desktop {
     margin-left: vs.getVar("sidebar-width");
   }
@@ -174,33 +203,50 @@ header,
   .#{vi.$prefix}nav {
     display:     flex;
     position:    relative;
+    align-items: stretch;
     width:       100%;
     min-height:  vs.getVar("header-height");
-    align-items: stretch;
-    //margin:     0;
-    //padding:    0;
 
-    //position:         fixed;
-    //top:              0;
-    //left:             0;
-    //right:            0;
-    //z-index:          vs.getVar("header-z-index");
-    //align-items:      flex-start;
-    //padding:          vs.getVar("header-padding-vertical") vs.getVar("header-padding-horizontal");
-    //box-shadow:       vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
+    & > .#{vi.$prefix}container {
+      display:     flex;
+      align-items: stretch;
+      width:       100%;
+      min-height:  vs.getVar("header-height");
+    }
 
-    .#{vi.$prefix}header-brand {
-      display:     inline-flex;
-      align-items: center;
-      line-height: 1;
-      gap:         vs.getVar("header-brand-gap");
-      font-weight: vs.getVar("header-brand-font-weight");
-      font-size:   vs.getVar("header-brand-font-size");
-      color:       vs.getVar("header-brand-color");
-      margin:      0;
-      white-space: nowrap;
+    &.#{vi.$prefix}has-shadow {
+      box-shadow: vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
+    }
+
+    &.#{vi.$prefix}is-fixed-top,
+    &.#{vi.$prefix}is-fixed-bottom {
+      @include header-fixed;
+    }
+
+    &.#{vi.$prefix}is-fixed-top {
+      top: 0;
+    }
+
+    &.#{vi.$prefix}is-fixed-bottom {
+      bottom: 0;
+
+      &.#{vi.$prefix}has-shadow {
+        box-shadow: vs.getVar("header-bottom-box-shadow-size") vs.getVar("header-box-shadow-color");
+      }
     }
   }
+}
+
+.#{vi.$prefix}header-brand {
+  display:     inline-flex;
+  align-items: center;
+  line-height: 1;
+  gap:         vs.getVar("header-brand-gap");
+  font-weight: vs.getVar("header-brand-font-weight");
+  font-size:   vs.getVar("header-brand-font-size");
+  color:       vs.getVar("header-brand-color");
+  margin:      0;
+  white-space: nowrap;
 }
 
 @include mx.until($header-breakpoint) {
