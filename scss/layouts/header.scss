@@ -207,18 +207,23 @@ header,
     min-height:  vs.getVar("header-height");
     align-items: stretch;
 
-    .#{vi.$prefix}header-brand {
-      display:     inline-flex;
-      align-items: center;
-      line-height: 1;
-      gap:         vs.getVar("header-brand-gap");
-      font-weight: vs.getVar("header-brand-font-weight");
-      font-size:   vs.getVar("header-brand-font-size");
-      color:       vs.getVar("header-brand-color");
-      margin:      0;
-      white-space: nowrap;
+    & > .#{vi.$prefix}container{
+      align-items: stretch;
+
     }
   }
+}
+
+.#{vi.$prefix}header-brand {
+  display:     inline-flex;
+  align-items: center;
+  line-height: 1;
+  gap:         vs.getVar("header-brand-gap");
+  font-weight: vs.getVar("header-brand-font-weight");
+  font-size:   vs.getVar("header-brand-font-size");
+  color:       vs.getVar("header-brand-color");
+  margin:      0;
+  white-space: nowrap;
 }
 
 @include mx.until($header-breakpoint) {
