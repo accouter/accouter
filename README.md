@@ -23,3 +23,13 @@ You can select and customize the layouts and components you need to ensure a con
 Each component is crafted with meticulous attention to detail to enhance the beauty of your interface.
 
 [![Preview](https://raw.githubusercontent.com/accouter/accouter/main/assets/preview.png)](https://preview.accouter.dev/)
+
+## 🚀 Features
+
+## 📖 Documentation
+
+## 📦 Installation
+
+```bash
+npm install --save @accouter/core
+```
