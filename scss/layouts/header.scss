@@ -286,7 +286,43 @@ body {
 }
 
 a.#{vi.$prefix}header-item,
-.#{vi.$prefix}header-link {}
+.#{vi.$prefix}header-link {
+  cursor:           pointer;
+  background-color: hsla(
+                        #{vs.getVar("header-h")},
+                        #{vs.getVar("header-s")},
+                        calc(#{vs.getVar("header-item-background-l")} + #{vs.getVar("header-item-background-l-delta")}),
+                        #{vs.getVar("header-item-background-a")}
+                    );
+
+  &:focus,
+  &:focus-within,
+  &:hover {
+    @include vs.register-vars((
+      "header-item-background-l-delta": #{vs.getVar("header-item-hover-background-l-delta")},
+      "header-item-background-a": 1,
+    ));
+  }
+
+  &:active {
+    @include vs.register-vars((
+      "header-item-background-l-delta": #{vs.getVar("header-item-active-background-l-delta")},
+      "header-item-background-a": 1,
+    ));
+  }
+
+  &.#{vi.$prefix}is-active,
+  &.#{vi.$prefix}is-selected {
+    @include vs.register-vars((
+      "header-h": #{vs.getVar("header-item-selected-h")},
+      "header-s": #{vs.getVar("header-item-selected-s")},
+      "header-l": #{vs.getVar("header-item-selected-l")},
+      "header-item-background-l": #{vs.getVar("header-item-selected-background-l")},
+      "header-item-background-a": 1,
+      "header-item-color-l": #{vs.getVar("header-item-selected-color-l")},
+    ));
+  }
+}
 
 .#{vi.$prefix}header-item {}
 
