@@ -273,7 +273,17 @@ body {
 }
 
 .#{vi.$prefix}header-item,
-.#{vi.$prefix}header-link {}
+.#{vi.$prefix}header-link {
+  display:     block;
+  position:    relative;
+  padding:     0.5rem 0.75rem;
+  line-height: 1.5;
+  color:       hsl(
+                   #{vs.getVar("header-h")},
+                   #{vs.getVar("header-s")},
+                   #{vs.getVar("header-item-color-l")}
+               );
+}
 
 a.#{vi.$prefix}header-item,
 .#{vi.$prefix}header-link {}
