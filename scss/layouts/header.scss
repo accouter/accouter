@@ -258,14 +258,19 @@ body {
 
 .#{vi.$prefix}header-tabs {
   @include mx.overflow-touch;
-  max-width: 100vw;
+  max-width:  100vw;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-.#{vi.$prefix}header-burger {}
+.#{vi.$prefix}header-burger {
+  @extend %reset;
+  @include mx.burger(2.5rem);
+}
 
-.#{vi.$prefix}header-menu {}
+.#{vi.$prefix}header-menu {
+  display: none;
+}
 
 .#{vi.$prefix}header-item,
 .#{vi.$prefix}header-link {}
