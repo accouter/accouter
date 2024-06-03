@@ -122,6 +122,44 @@
 @mixin burger($dimensions) {
   display:        inline-flex;
   flex-direction: column;
+  flex-shrink:    0;
+  position:       relative;
+  align-items:    center;
+  vertical-align: top;
+  height:         $dimensions;
+  width:          $dimensions;
+  appearance:     none;
+  background:     none;
+  border:         none;
+  border-radius:  vs.getVar("burger-border-radius");
+  cursor:         pointer;
+  color:          hsl(
+                      vs.getVar("burger-h"),
+                      vs.getVar("burger-s"),
+                      vs.getVar("burger-l")
+                  );
+
+  span {}
+
+  &:hover {}
+  &:active {}
+
+  // modifiers
+  &.#{vi.$prefix}is-active {
+    span {
+      &:nth-child(1) {
+        transform: rotate(-45deg);
+      }
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        opacity: 0;
+      }
+    }
+  }
 }
 
 @mixin transition($transition...) {
