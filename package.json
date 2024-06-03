@@ -1,6 +1,6 @@
 {
-  "name": "accouter",
-  "version": "1.0.0",
+  "name": "@accouter/core",
+  "version": "0.0.2",
   "homepage": "https://accouter.dev",
   "description": "Semantic and open source administrative template with responsive and clean design.",
   "license": "MIT",
