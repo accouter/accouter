@@ -203,13 +203,36 @@ header,
   .#{vi.$prefix}nav {
     display:     flex;
     position:    relative;
+    align-items: stretch;
     width:       100%;
     min-height:  vs.getVar("header-height");
-    align-items: stretch;
 
-    & > .#{vi.$prefix}container{
+    & > .#{vi.$prefix}container {
+      display:     flex;
       align-items: stretch;
+      width:       100%;
+      min-height:  vs.getVar("header-height");
+    }
 
+    &.#{vi.$prefix}has-shadow {
+      box-shadow: vs.getVar("header-box-shadow-size") vs.getVar("header-box-shadow-color");
+    }
+
+    &.#{vi.$prefix}is-fixed-top,
+    &.#{vi.$prefix}is-fixed-bottom {
+      @include header-fixed;
+    }
+
+    &.#{vi.$prefix}is-fixed-top {
+      top: 0;
+    }
+
+    &.#{vi.$prefix}is-fixed-bottom {
+      bottom: 0;
+
+      &.#{vi.$prefix}has-shadow {
+        box-shadow: vs.getVar("header-bottom-box-shadow-size") vs.getVar("header-box-shadow-color");
+      }
     }
   }
 }
