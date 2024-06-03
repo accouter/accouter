@@ -237,17 +237,46 @@ header,
   }
 }
 
-.#{vi.$prefix}header-brand {
-  display:     inline-flex;
-  align-items: center;
-  line-height: 1;
-  gap:         vs.getVar("header-brand-gap");
-  font-weight: vs.getVar("header-brand-font-weight");
-  font-size:   vs.getVar("header-brand-font-size");
-  color:       vs.getVar("header-brand-color");
-  margin:      0;
-  white-space: nowrap;
+html,
+body {
+  &.#{vi.$prefix}has-header-fixed-top {
+    padding-top: vs.getVar("header-height");
+  }
+
+  &.#{vi.$prefix}has-header-fixed-bottom {
+    padding-bottom: vs.getVar("header-height");
+  }
 }
+
+.#{vi.$prefix}header-brand,
+.#{vi.$prefix}header-tabs {
+  display:     flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  min-height:  vs.getVar("header-height");
+}
+
+.#{vi.$prefix}header-tabs {}
+
+.#{vi.$prefix}header-burger {}
+
+.#{vi.$prefix}header-menu {}
+
+.#{vi.$prefix}header-item,
+.#{vi.$prefix}header-link {}
+
+a.#{vi.$prefix}header-item,
+.#{vi.$prefix}header-link {}
+
+.#{vi.$prefix}header-item {}
+
+.#{vi.$prefix}header-content {}
+
+.#{vi.$prefix}header-link:not(.#{vi.$prefix}is-arrowless) {}
+
+.#{vi.$prefix}header-dropdown {}
+
+.#{vi.$prefix}header-divider {}
 
 @include mx.until($header-breakpoint) {
   header > .#{vi.$prefix}container,
