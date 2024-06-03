@@ -324,7 +324,45 @@ a.#{vi.$prefix}header-item,
   }
 }
 
-.#{vi.$prefix}header-item {}
+.#{vi.$prefix}header-item {
+  flex-shrink: 0;
+  flex-grow:   0;
+
+  img,
+  svg {
+    max-height: vs.getVar("header-item-img-max-height");
+  }
+
+  &.#{vi.$prefix}has-dropdown {
+    padding: 0;
+  }
+
+  &.#{vi.$prefix}is-expanded {
+    flex-shrink: 1;
+    flex-grow:   1;
+  }
+
+  &.#{vi.$prefix}is-tab {
+    min-height:     vs.getVar("header-height");
+    padding-bottom: calc(0.5rem - 1px);
+    border-bottom:  1px solid transparent;
+
+    &:focus,
+    &:hover {
+      background-color:    vs.getVar("header-tab-hover-background-color");
+      border-bottom-color: vs.getVar("header-tab-hover-border-bottom-color");
+    }
+
+    &.#{vi.$prefix}is-active {
+      color:               vs.getVar("header-tab-active-color");
+      background-color:    vs.getVar("header-tab-active-background-color");
+      border-bottom-color: vs.getVar("header-tab-active-border-bottom-color");
+      border-bottom-style: vs.getVar("header-tab-active-border-bottom-style");
+      border-bottom-width: vs.getVar("header-tab-active-border-bottom-width");
+      padding-bottom: calc(0.5rem - #{vs.getVar("header-tab-active-border-bottom-width")});
+    }
+  }
+}
 
 .#{vi.$prefix}header-content {}
 
