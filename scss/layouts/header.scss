@@ -256,7 +256,12 @@ body {
   min-height:  vs.getVar("header-height");
 }
 
-.#{vi.$prefix}header-tabs {}
+.#{vi.$prefix}header-tabs {
+  @include mx.overflow-touch;
+  max-width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 
 .#{vi.$prefix}header-burger {}
 
