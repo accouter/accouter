@@ -14,3 +14,12 @@
     <img src='https://raw.githubusercontent.com/accouter/static/main/sponsors.svg'>
   </a>
 </p>
+
+## 🔎 Preview
+
+Accouter is designed to be fully responsive and compatible with all modern browsers. 
+Its modern, user-friendly design allows you to create a functional interface that users will love. 
+You can select and customize the layouts and components you need to ensure a consistent and visually appealing design. 
+Each component is crafted with meticulous attention to detail to enhance the beauty of your interface.
+
+[![Preview](https://raw.githubusercontent.com/accouter/accouter/main/assets/preview.png)](https://preview.accouter.dev/)
