@@ -1,1 +1,27 @@
-nav{}
+@use "../configs/variables-scss" as vs;
+@use "../configs/variables-derived" as vd;
+@use "../configs/variables-init" as vi;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$nav-height:             3.5rem !default;
+$nav-padding-vertical:   0.5rem !default;
+$nav-padding-horizontal: 1rem !default;
+$nav-z-index:            20 !default;
+$nav-fixed-z-index:      20 !default;
+
+:root {
+  @include vs.register-vars((
+    "nav-height" : #{$nav-height},
+  ));
+}
+
+nav,
+.#{vi.$prefix}nav {
+  @include vs.register-vars((
+    "nav-padding-vertical" : #{$nav-padding-vertical},
+    "nav-padding-horizontal" : #{$nav-padding-horizontal},
+    "nav-z-index" : #{$nav-z-index},
+    "nav-fixed-z-index" : #{$nav-fixed-z-index},
+  ));
+}
