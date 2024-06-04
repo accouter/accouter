@@ -3,7 +3,9 @@
   A semantic and open source administrative template with responsive and clean design.
 </p>
 
-
+[![NPM Version](https://img.shields.io/npm/v/@accouter/core?color=1864ab&label=Latest+version)](https://www.npmjs.com/package/@accouter/core)
+[![NPM Downloads](https://img.shields.io/npm/dm/@accouter/core?color=1971c2&label=Downloads)](https://www.npmjs.com/package/@accouter/core)
+[![Preview](https://img.shields.io/static/v1?label=Demo&message=preview&color=228be6)](https://preview.accouter.dev/)
 [![License](https://img.shields.io/github/license/accouter/accouter)](https://github.com/accouter/accouter/blob/main/LICENSE)
 [![Build status](https://dev.azure.com/wangkanai/Accouter/_apis/build/status/main-ci)](https://dev.azure.com/wangkanai/Accouter/_build/latest?definitionId=44)
 [![Github stars](https://img.shields.io/github/stars/accouter/accouter?style=social")](https://github.com/accouter/accouter)
@@ -41,8 +43,8 @@ With just basic HTML and CSS knowledge (and a touch of [docfx](https://dotnet.gi
 * **Responsive:** Experience flawless performance across all devices! Whether you're on mobile, tablet, or desktop, Accouter adapts seamlessly to every major browser.
 * **Cross Browser:** Enjoy perfect compatibility with the latest versions of Chrome, Firefox+, Safari, Opera, Edge, and mobile browsers. We relentlessly ensure top-notch support for a smooth experience.
 * **HTML5 & CSS3:** Dive into the world of modern web technologies with HTML5 and CSS3. Our theme dazzles with subtle CSS3 animations designed to captivate and engage your audience.
-* **Clean Code:** Integration is a breeze! We've rigorously followed Bootstrap’s guidelines, ensuring all code is handwritten and W3C valid, making your development process smoother than ever.
-* **Demo Pages:** Unleash your creativity with over 20 individual demo pages, each featuring versatile components. Customize colors and styles effortlessly using Sass. The sky's the limit!
+* **Clean Code:** Integration is a breeze! We've rigorously followed Bulma’s guidelines, ensuring all code is handwritten and W3C valid, making your development process smoother than ever.
+* **Demo Pages:** Unleash your creativity with over 10 individual demo pages, each featuring versatile components. Customize colors and styles effortlessly using Sass. The sky's the limit!
 
 Get ready to revolutionize your admin panel experience with Accouter!
 
