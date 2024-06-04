@@ -369,7 +369,16 @@ a.#{vi.$prefix}header-item,
   flex-shrink: 1;
 }
 
-.#{vi.$prefix}header-link:not(.#{vi.$prefix}is-arrowless) {}
+.#{vi.$prefix}header-link:not(.#{vi.$prefix}is-arrowless) {
+  padding-inline-end: 2.5em;
+
+  &::after {
+    @extend %arrow;
+    border-color:     vs.getVar("header-dropdown-arrow");
+    margin-top:       -0.375em;
+    inset-inline-end: 1.125em;
+  }
+}
 
 .#{vi.$prefix}header-dropdown {}
 
