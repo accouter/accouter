@@ -380,7 +380,29 @@ a.#{vi.$prefix}header-item,
   }
 }
 
-.#{vi.$prefix}header-dropdown {}
+.#{vi.$prefix}header-dropdown {
+  font-size:      0.875rem;
+  padding-bottom: 0.75rem;
+  padding-top:    0.5rem;
+
+  .#{vi.$prefix}header-item {
+    padding-left:  1.5rem;
+    padding-right: 1.5rem;
+
+    &:not(.is-active, .is-selected) {
+      background-color: hsl(
+                            #{vs.getVar("header-dropdown-item-h")},
+                            #{vs.getVar("header-dropdown-item-s")},
+                            calc(#{vs.getVar("header-dropdown-item-background-l")} + #{vs.getVar("header-dropdown-item-background-l-delta")})
+                        );
+      color:            hsl(
+                            #{vs.getVar("header-dropdown-item-h")},
+                            #{vs.getVar("header-dropdown-item-s")},
+                            #{vs.getVar("header-dropdown-item-color-l")}
+                        );
+    }
+  }
+}
 
 .#{vi.$prefix}header-divider {}
 
