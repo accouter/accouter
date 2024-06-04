@@ -3,7 +3,9 @@
   A semantic and open source administrative template with responsive and clean design.
 </p>
 
-
+[![NPM Version](https://img.shields.io/npm/v/@accouter/core?color=1864ab&label=Latest+version)](https://www.npmjs.com/package/@accouter/core)
+[![NPM Downloads](https://img.shields.io/npm/dm/@accouter/core?color=1971c2&label=Downloads)](https://www.npmjs.com/package/@accouter/core)
+[![Preview](https://img.shields.io/static/v1?label=Demo&message=preview&color=228be6)](https://preview.accouter.dev/)
 [![License](https://img.shields.io/github/license/accouter/accouter)](https://github.com/accouter/accouter/blob/main/LICENSE)
 [![Build status](https://dev.azure.com/wangkanai/Accouter/_apis/build/status/main-ci)](https://dev.azure.com/wangkanai/Accouter/_build/latest?definitionId=44)
 [![Github stars](https://img.shields.io/github/stars/accouter/accouter?style=social")](https://github.com/accouter/accouter)
