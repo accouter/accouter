@@ -455,14 +455,36 @@ a.#{vi.$prefix}header-item,
   header,
   .#{vi.$prefix}header {
     &.#{vi.$prefix}is-fixed-top-touch,
-    &.#{vi.$prefix}is-fixed-bottom-touch {}
+    &.#{vi.$prefix}is-fixed-bottom-touch {
+      @include header-fixed;
+    }
 
-    &.#{vi.$prefix}is-fixed-top-touch {}
+    &.#{vi.$prefix}is-fixed-top-touch {
+      bottom: 0;
 
-    &.#{vi.$prefix}is-fixed-bottom-touch {}
+      &.#{vi.$prefix}has-shadow {
+        box-shadow: 0 -0.125em 0.1875em hsla(
+                        #{vs.getVar("scheme-h")},
+                        #{vs.getVar("scheme-s")},
+                        #{vs.getVar("scheme-invert-l")},
+                        0.1
+                    );
+      }
+    }
+
+    &.#{vi.$prefix}is-fixed-bottom-touch {
+      top: 0;
+    }
 
     &.#{vi.$prefix}is-fixed-top,
-    &.#{vi.$prefix}is-fixed-top-touch {}
+    &.#{vi.$prefix}is-fixed-top-touch {
+      .#{vi.$prefix}header-menu {}
+
+      @include mx.overflow-touch;
+
+      max-height: calc(100vh - #{vs.getVar("header-height")});
+      overflow-y: auto;
+    }
   }
 
   html,
