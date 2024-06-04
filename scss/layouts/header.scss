@@ -453,10 +453,28 @@ a.#{vi.$prefix}header-item,
 
   // fixed header
   header,
-  .#{vi.$prefix}header {}
+  .#{vi.$prefix}header {
+    &.#{vi.$prefix}is-fixed-top-touch,
+    &.#{vi.$prefix}is-fixed-bottom-touch {}
+
+    &.#{vi.$prefix}is-fixed-top-touch {}
+
+    &.#{vi.$prefix}is-fixed-bottom-touch {}
+
+    &.#{vi.$prefix}is-fixed-top,
+    &.#{vi.$prefix}is-fixed-top-touch {}
+  }
 
   html,
-  body {}
+  body {
+    &.#{vi.$prefix}has-header-fixed-top-touch {
+      padding-top: vs.getVar("header-height");
+    }
+
+    &.#{vi.$prefix}has-header-fixed-bottom-touch {
+      padding-bottom: vs.getVar("header-height");
+    }
+  }
 }
 
 @include mx.from($header-breakpoint) {
