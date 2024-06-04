@@ -404,7 +404,17 @@ a.#{vi.$prefix}header-item,
   }
 }
 
-.#{vi.$prefix}header-divider {}
+.#{vi.$prefix}header-divider {
+  display:          none;
+  height:           vs.getVar("header-divider-height");
+  border:           none;
+  margin:           0.5rem 0;
+  background-color: hsl(
+                        #{vs.getVar("header-h")},
+                        #{vs.getVar("header-s")},
+                        #{vs.getVar("header-divider-background-l")}
+                    );
+}
 
 @include mx.until($header-breakpoint) {
   header > .#{vi.$prefix}container,
