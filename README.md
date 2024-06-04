@@ -34,6 +34,17 @@ npm install --save @accouter/core
 
 ## 🚀 Features
 
+We've crafted an admin panel for everyone eager to create stunning templates using our pre-made components. 
+Our mission is to deliver a user-friendly, clear, and incredibly intuitive administration panel that serves both simple websites and sophisticated systems. 
+With just basic HTML and CSS knowledge (and a touch of [docfx](https://dotnet.github.io/docfx/)), you'll unlock the power to manage and visualize diverse data effortlessly!
+
+* **Responsive:** Experience flawless performance across all devices! Whether you're on mobile, tablet, or desktop, Accouter adapts seamlessly to every major browser.
+* **Cross Browser:** Enjoy perfect compatibility with the latest versions of Chrome, Firefox+, Safari, Opera, Edge, and mobile browsers. We relentlessly ensure top-notch support for a smooth experience.
+* **HTML5 & CSS3:** Dive into the world of modern web technologies with HTML5 and CSS3. Our theme dazzles with subtle CSS3 animations designed to captivate and engage your audience.
+* **Clean Code:** Integration is a breeze! We've rigorously followed Bootstrap’s guidelines, ensuring all code is handwritten and W3C valid, making your development process smoother than ever.
+* **Demo Pages:** Unleash your creativity with over 20 individual demo pages, each featuring versatile components. Customize colors and styles effortlessly using Sass. The sky's the limit!
+
+Get ready to revolutionize your admin panel experience with Accouter!
 
 ## 📖 Documentation
 
