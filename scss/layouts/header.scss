@@ -418,12 +418,23 @@ a.#{vi.$prefix}header-item,
 
 @include mx.until($header-breakpoint) {
   header > .#{vi.$prefix}container,
-  .#{vi.$prefix}header > .#{vi.$prefix}container {}
+  .#{vi.$prefix}header > .#{vi.$prefix}container {
+    display: block;
+  }
 
   .#{vi.$prefix}header-brand,
-  .#{vi.$prefix}header-tabs {}
+  .#{vi.$prefix}header-tabs {
+    .#{vi.$prefix}header-item {
+      display:     flex;
+      align-items: center;
+    }
+  }
 
-  .#{vi.$prefix}header-link {}
+  .#{vi.$prefix}header-link {
+    &::after {
+      display: none;
+    }
+  }
 
   .#{vi.$prefix}header-menu {}
 
