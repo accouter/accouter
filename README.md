@@ -24,8 +24,6 @@ Each component is crafted with meticulous attention to detail to enhance the bea
 
 [![Preview](https://raw.githubusercontent.com/accouter/accouter/main/assets/preview.png)](https://preview.accouter.dev/)
 
-## 🚀 Features
-
 ## 📦 Installation
 
 Accouter is distributed via npm.
@@ -34,5 +32,15 @@ Accouter is distributed via npm.
 npm install --save @accouter/core
 ```
 
+## 🚀 Features
+
+
 ## 📖 Documentation
 
+Documentation is available as a part of Accouter preview: https://accouter.dev/docs
+
+To run the documentation site locally, follow instructions in the [Documentation README](https://github.com/accouter/accouter/blob/main/README.md).
+
+```bash
+npm run docfx
+```
