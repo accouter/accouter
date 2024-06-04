@@ -436,7 +436,20 @@ a.#{vi.$prefix}header-item,
     }
   }
 
-  .#{vi.$prefix}header-menu {}
+  .#{vi.$prefix}header-menu {
+    padding:          0.5rem 0;
+    background-color: vs.getVar("header-background-color");
+    box-shadow:       0 0.5em 1em hsla(
+                          #{vs.getVar("scheme-h")},
+                          #{vs.getVar("scheme-s")},
+                          #{vs.getVar("scheme-invert-l")},
+                          0.1
+                      );
+
+    &.#{vi.$prefix}is-active {
+      display: block;
+    }
+  }
 
   // fixed header
   header,
