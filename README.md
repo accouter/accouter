@@ -26,10 +26,13 @@ Each component is crafted with meticulous attention to detail to enhance the bea
 
 ## 🚀 Features
 
-## 📖 Documentation
-
 ## 📦 Installation
+
+Accouter is distributed via npm.
 
 ```bash
 npm install --save @accouter/core
 ```
+
+## 📖 Documentation
+
