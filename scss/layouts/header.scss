@@ -359,7 +359,7 @@ a.#{vi.$prefix}header-item,
       border-bottom-color: vs.getVar("header-tab-active-border-bottom-color");
       border-bottom-style: vs.getVar("header-tab-active-border-bottom-style");
       border-bottom-width: vs.getVar("header-tab-active-border-bottom-width");
-      padding-bottom: calc(0.5rem - #{vs.getVar("header-tab-active-border-bottom-width")});
+      padding-bottom:      calc(0.5rem - #{vs.getVar("header-tab-active-border-bottom-width")});
     }
   }
 }
@@ -531,3 +531,10 @@ a.#{vi.$prefix}header-item,
   }
 }
 
+// combinations
+
+.#{vi.$prefix}hero {
+  &.#{vi.$prefix}is-fullwidth-with-header {
+    min-height: calc(100vh - #{vs.getVar("header-height")});
+  }
+}
