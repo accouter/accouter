@@ -364,7 +364,10 @@ a.#{vi.$prefix}header-item,
   }
 }
 
-.#{vi.$prefix}header-content {}
+.#{vi.$prefix}header-content {
+  flex-grow:   1;
+  flex-shrink: 1;
+}
 
 .#{vi.$prefix}header-link:not(.#{vi.$prefix}is-arrowless) {}
 
