@@ -103,9 +103,22 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
   }
 
   &-image {
-    &:first-child {}
+    display:  block;
+    position: relative;
 
-    &:last-child {}
+    &:first-child {
+      img {
+        border-start-start-radius: vs.getVar("card-radius");
+        border-start-end-radius:   vs.getVar("card-radius");
+      }
+    }
+
+    &:last-child {
+      img {
+        border-end-start-radius: vs.getVar("card-radius");
+        border-end-end-radius:   vs.getVar("card-radius");
+      }
+    }
   }
 
   &-content {}
