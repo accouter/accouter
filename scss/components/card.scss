@@ -47,3 +47,21 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
     "card-media-margin": $card-media-margin,
   ));
 }
+
+.#{vi.$prefix}card {}
+
+%card-item {
+  &:first-child {}
+
+  &:last-child {}
+}
+
+.#{vi.$prefix}card {
+  &-header {
+    &-title {
+      &.#{vi.$prefix}is-centered {}
+    }
+
+    &-icon {}
+  }
+}
