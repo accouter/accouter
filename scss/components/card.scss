@@ -128,8 +128,24 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
   }
 
   &-footer {
+    @extend %card-item;
+    display:          flex;
+    align-items:      stretch;
+    background-color: vs.getVar("card-footer-background-color");
+    border-top:       vs.getVar("card-footer-border-top");
+
     &-item {
-      &:not(:last-child) {}
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      flex-basis:      0;
+      flex-grow:       1;
+      flex-shrink:     0;
+      padding:         vs.getVar("card-footer-padding");
+
+      &:not(:last-child) {
+        border-inline-end: vs.getVar("card-footer-border-top");
+      }
     }
   }
 }
