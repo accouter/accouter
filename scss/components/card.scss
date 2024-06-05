@@ -1,0 +1,157 @@
+@use "../configs/variables-init" as vi;
+@use "../configs/variables-scss" as vs;
+@use "../configs/extends";
+@use "../configs/mixins" as mx;
+
+$card-color:                    vs.getVar("text") !default;
+$card-background-color:         vs.getVar("scheme-main") !default;
+$card-shadow:                   vs.getVar("shadow") !default;
+$card-radius:                   0.75rem !default;
+
+$card-header-background-color:  transparent !default;
+$card-header-color:             vs.getVar("text-strong") !default;
+$card-header-weight:            vs.getVar("weight-bold") !default;
+$card-header-padding:           0.75rem 1rem !default;
+$card-header-shadow:            0 0.125em 0.25em hsla(
+                                    #{vs.getVar("scheme-h")},
+                                    #{vs.getVar("scheme-s")},
+                                    #{vs.getVar("scheme-invert-l")},
+                                    0.1
+                                ) !default;
+
+$card-content-background-color: transparent !default;
+$card-content-padding:          1.5rem !default;
+
+$card-footer-background-color:  transparent !default;
+$card-footer-border-top:        1px solid vs.getVar("border-weak") !default;
+$card-footer-padding:           0.75rem !default;
+
+$card-media-margin:             vs.getVar("block-spacing") !default;
+
+.#{vi.$prefix}card {
+  @include vs.register-vars((
+    "card-color": $card-color,
+    "card-background-color": $card-background-color,
+    "card-shadow": $card-shadow,
+    "card-radius": $card-radius,
+    "card-header-background-color": $card-header-background-color,
+    "card-header-color": $card-header-color,
+    "card-header-padding": $card-header-padding,
+    "card-header-shadow": $card-header-shadow,
+    "card-header-weight": $card-header-weight,
+    "card-content-background-color": $card-content-background-color,
+    "card-content-padding": $card-content-padding,
+    "card-footer-background-color": $card-footer-background-color,
+    "card-footer-border-top": $card-footer-border-top,
+    "card-footer-padding": $card-footer-padding,
+    "card-media-margin": $card-media-margin,
+  ));
+}
+
+.#{vi.$prefix}card {
+  @extend %block;
+  position:         relative;
+  max-width:        100%;
+  color:            vs.getVar("card-color");
+  background-color: vs.getVar("card-background-color");
+  border-radius:    vs.getVar("card-radius");
+  box-shadow:       vs.getVar("card-shadow");
+}
+
+%card-item {
+  &:first-child {
+    border-start-start-radius: vs.getVar("card-radius");
+    border-start-end-radius:   vs.getVar("card-radius");
+  }
+
+  &:last-child {
+    border-end-start-radius: vs.getVar("card-radius");
+    border-end-end-radius:   vs.getVar("card-radius");
+  }
+}
+
+.#{vi.$prefix}card {
+  &-header {
+    @extend %card-item;
+    display:          flex;
+    align-items:      stretch;
+    background-color: vs.getVar("card-header-background-color");
+    box-shadow:       vs.getVar("card-header-shadow");
+
+    &-title {
+      display:     flex;
+      flex-grow:   1;
+      align-items: center;
+      padding:     vs.getVar("card-header-padding");
+      color:       vs.getVar("card-header-color");
+      font-weight: vs.getVar("card-header-weight");
+
+      &.#{vi.$prefix}is-centered {
+        justify-content: center;
+      }
+    }
+
+    &-icon {
+      @include mx.reset;
+
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      cursor:          pointer;
+      padding:         vs.getVar("card-header-padding");
+    }
+  }
+
+  &-image {
+    display:  block;
+    position: relative;
+
+    &:first-child {
+      img {
+        border-start-start-radius: vs.getVar("card-radius");
+        border-start-end-radius:   vs.getVar("card-radius");
+      }
+    }
+
+    &:last-child {
+      img {
+        border-end-start-radius: vs.getVar("card-radius");
+        border-end-end-radius:   vs.getVar("card-radius");
+      }
+    }
+  }
+
+  &-content {
+    @extend %card-item;
+    background-color: vs.getVar("card-content-background-color");
+    padding:          vs.getVar("card-content-padding");
+  }
+
+  &-footer {
+    @extend %card-item;
+    display:          flex;
+    align-items:      stretch;
+    background-color: vs.getVar("card-footer-background-color");
+    border-top:       vs.getVar("card-footer-border-top");
+
+    &-item {
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      flex-basis:      0;
+      flex-grow:       1;
+      flex-shrink:     0;
+      padding:         vs.getVar("card-footer-padding");
+
+      &:not(:last-child) {
+        border-inline-end: vs.getVar("card-footer-border-top");
+      }
+    }
+  }
+}
+
+.#{vi.$prefix}card {
+  .#{vi.$prefix}media:not(:last-child) {
+    margin-bottom: vs.getVar("card-media-margin");
+  }
+}
