@@ -151,5 +151,7 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
 }
 
 .#{vi.$prefix}card {
-  .#{vi.$prefix}media:not(:last-child) {}
+  .#{vi.$prefix}media:not(:last-child) {
+    margin-bottom: vs.getVar("card-media-margin");
+  }
 }
