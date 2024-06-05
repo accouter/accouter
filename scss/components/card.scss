@@ -64,4 +64,22 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
 
     &-icon {}
   }
+
+  &-image {
+    &:first-child {}
+
+    &:last-child {}
+  }
+
+  &-content {}
+
+  &-footer {
+    &-item {
+      &:not(:last-child) {}
+    }
+  }
+}
+
+.#{vi.$prefix}card {
+  .#{vi.$prefix}media:not(:last-child) {}
 }
