@@ -48,7 +48,16 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
   ));
 }
 
-.#{vi.$prefix}card {}
+.#{vi.$prefix}card {
+  @extend %block;
+
+  position:         relative;
+  max-width:        100%;
+  color:            vs.getVar("card-color");
+  background-color: vs.getVar("card-background-color");
+  border-radius:    vs.getVar("card-radius");
+  box-shadow:       vs.getVar("card-shadow");
+}
 
 %card-item {
   &:first-child {}
