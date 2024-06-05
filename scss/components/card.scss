@@ -60,9 +60,15 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
 }
 
 %card-item {
-  &:first-child {}
+  &:first-child {
+    border-start-start-radius: vs.getVar("card-radius");
+    border-start-end-radius:   vs.getVar("card-radius");
+  }
 
-  &:last-child {}
+  &:last-child {
+    border-end-start-radius: vs.getVar("card-radius");
+    border-end-end-radius:   vs.getVar("card-radius");
+  }
 }
 
 .#{vi.$prefix}card {
