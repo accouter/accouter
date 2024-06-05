@@ -121,7 +121,11 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
     }
   }
 
-  &-content {}
+  &-content {
+    @extend %card-item;
+    background-color: vs.getVar("card-content-background-color");
+    padding:          vs.getVar("card-content-padding");
+  }
 
   &-footer {
     &-item {
