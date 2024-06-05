@@ -50,7 +50,6 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
 
 .#{vi.$prefix}card {
   @extend %block;
-
   position:         relative;
   max-width:        100%;
   color:            vs.getVar("card-color");
@@ -73,11 +72,34 @@ $card-media-margin:             vs.getVar("block-spacing") !default;
 
 .#{vi.$prefix}card {
   &-header {
+    @extend %card-item;
+    display:          flex;
+    align-items:      stretch;
+    background-color: vs.getVar("card-header-background-color");
+    box-shadow:       vs.getVar("card-header-shadow");
+
     &-title {
-      &.#{vi.$prefix}is-centered {}
+      display:     flex;
+      flex-grow:   1;
+      align-items: center;
+      padding:     vs.getVar("card-header-padding");
+      color:       vs.getVar("card-header-color");
+      font-weight: vs.getVar("card-header-weight");
+
+      &.#{vi.$prefix}is-centered {
+        justify-content: center;
+      }
     }
 
-    &-icon {}
+    &-icon {
+      @include mx.reset;
+
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      cursor:          pointer;
+      padding:         vs.getVar("card-header-padding");
+    }
   }
 
   &-image {
