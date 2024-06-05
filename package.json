@@ -23,7 +23,8 @@
     "watch-scss": "nodemon -x 'npm run build'  --config nodemon-scss.json",
     "watch-style": "nodemon -x 'npm run docfx-style' --config nodemon-style.json",
     "watch-serve": "nodemon -x 'npm run docfx-serve' --config nodemon-serve.json",
-    "watch-browser": "browser-sync start --server _site/ --port 8080 --no-open --files='_site/*'"
+    "watch-browser": "browser-sync start --server _site/ --port 8080 --no-open --files='_site/*'",
+    "start": "npm-run-all clean build docfx-style docfx"
   },
   "repository": {
     "type": "git",

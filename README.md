@@ -54,5 +54,5 @@ Documentation is available as a part of Accouter preview: https://accouter.dev/d
 To run the documentation site locally, follow instructions in the [Documentation README](https://github.com/accouter/accouter/blob/main/README.md).
 
 ```bash
-npm run docfx
+npm run start
 ```
